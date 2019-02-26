@@ -1,0 +1,2 @@
+D:\software\clion\mingw64\bin\ar.exe qc libSolution.a  CMakeFiles/Solution.dir/Solution.cpp.obj
+D:\software\clion\mingw64\bin\ranlib.exe libSolution.a
