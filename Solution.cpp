@@ -35,4 +35,16 @@ bool MySolution::Solution::duplicate(int *numbers, int length, int *duplication)
     }
     return false;
 }
+//二维数组的传参方式：int numbers[][10], int (*numbers)[10], int** numbers, 或者将其降维成一维数组
+bool MySolution::Solution::find_2dArrary(int *numbers, int rows, int columns, int target) {
+    assert(numbers != NULL && rows > 0 && columns > 0);
+    int row = 0;
+    int column = columns - 1;
+    while(column >= 0 && row <= (rows-1)){
+        if(numbers[row*columns + column] > target) column--;
+        else if(numbers[row*columns + column] < target) row++;
+        else return true;
+    }
+    return false;
 
+}

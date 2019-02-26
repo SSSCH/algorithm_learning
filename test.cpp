@@ -22,6 +22,14 @@ void test_duplicate(){
    EXPECT_EQ(true, solution.duplicate(numbers, 6, duplication), "%d");
    EXPECT_EQ(3, *duplication, "%d");
 }
+void test_find2dArrary(){
+    int numbers[] =    {1,3,5,7,9,
+                        2,4,6,8,10,
+                        3,5,7,9,11,
+                        4,6,8,10,12,
+                        5,7,9,11,13,};
+    EXPECT_EQ(true, solution.find_2dArrary(numbers, 5, 5, 4), "%d");
+}
 
 void test_solution(){
     test_duplicate();
