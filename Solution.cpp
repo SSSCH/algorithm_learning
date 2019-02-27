@@ -61,7 +61,7 @@ char* MySolution::Solution::submit_blank(char string[]) {
     }
     newlenth = originlenth + blank*2;
     //string = (char*)realloc(string, blank*2);
-    while (originlenth != 0) {
+    while (originlenth != newlenth) {
         if (string[originlenth] != ' ') {
             string[newlenth] = string[originlenth];
             newlenth--;

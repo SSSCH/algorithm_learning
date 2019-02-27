@@ -4,7 +4,7 @@
 #include "Solution.h"
 #define EXPTCT_EQ_STRING(expect, actual, length)  do{ \
     test_count ++;\
-    if(sizeof(expect) == (length + 1) && memcmp(expect, actual, length) == 0) {\
+    if(sizeof(expect) == (length+1) && memcmp(expect, actual, length) == 0) {\
         test_parse_count++;} \
     else {\
         fprintf(stderr, "%s%d, expect: %s, actual: %s\n", __FILE__, __LINE__, expect, actual);}\
@@ -40,8 +40,8 @@ void test_find2dArrary(){
     EXPECT_EQ(true, solution.find_2dArrary(numbers, 5, 5, 4), "%d");
 }
 void test_SubmitBlank(){
-    char string[17] = "hello world !";
-    EXPTCT_EQ_STRING("hello%20world%20!", solution.submit_blank(string), 17);
+    char string[27] = " hello world  ! ";
+    EXPTCT_EQ_STRING("%20hello%20world%20%20!%20", solution.submit_blank(string), 26);
 }
 void test_solution(){
     test_duplicate();
