@@ -1,10 +1,19 @@
 #include <iostream>
+#include <memory.h>
+
 #include "Solution.h"
+#define EXPTCT_EQ_STRING(expect, actual, length)  do{ \
+    test_count ++;\
+    if(sizeof(expect) == (length + 1) && memcmp(expect, actual, length) == 0) {\
+        test_parse_count++;} \
+    else {\
+        fprintf(stderr, "%s%d, expect: %s, actual: %s\n", __FILE__, __LINE__, expect, actual);}\
+}while(0)
 
 #define EXPECT_EQ(expect, actual, object_format)   EXPECT_EQ_BASE((expect==actual), expect, actual, object_format)
 #define EXPECT_EQ_BASE(equality, expect, actual, object_format) \
                                 do{  \
-                                test_count ++; \
+                                test_count++; \
                                 if(!equality){ \
                                 fprintf(stderr, "%s%d, expect: " object_format ", actual:" object_format "\n", __FILE__, __LINE__, expect, actual); \
                                 } \
@@ -30,9 +39,14 @@ void test_find2dArrary(){
                         5,7,9,11,13,};
     EXPECT_EQ(true, solution.find_2dArrary(numbers, 5, 5, 4), "%d");
 }
-
+void test_SubmitBlank(){
+    char string[17] = "hello world !";
+    EXPTCT_EQ_STRING("hello%20world%20!", solution.submit_blank(string), 17);
+}
 void test_solution(){
     test_duplicate();
+    test_find2dArrary();
+    test_SubmitBlank();
 }
 
 int main() {
@@ -40,7 +54,7 @@ int main() {
     cin >> s1 >> s2;
     cout << s1 << s2<< endl;*/
     test_solution();
-    printf("test count:%d, test pass count:%d, pass rate: %3.2f%%\n", test_count/2, test_parse_count/2, test_parse_count*100.0/test_count);
+    printf("test count:%d, test pass count:%d, pass rate: %3.2f%%\n", test_count, test_parse_count, test_parse_count*100.0/test_count);
     // std::cout << "test count:"<< test_count << ",test_parse_count:" << test_parse_count << ",success_rate:" << test_parse_count*1.000/test_count << std::endl;
     return 0;
 }

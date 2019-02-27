@@ -3,13 +3,15 @@
 //
 
 #include <assert.h>
+#include <cstring>
 #include "Solution.h"
-/*#include <vector>
+#include <vector>
 #include <string>
 using std::vector;
 using std::string;
 vector<int> v(3, 7); //= vector<int> v{7, 7, 7}
-string s = "sssccchhh";*/
+string s = "sssccchhh";
+
 
 void swap(int* nums, int j, int i){
     assert(nums);
@@ -46,5 +48,30 @@ bool MySolution::Solution::find_2dArrary(int *numbers, int rows, int columns, in
         else return true;
     }
     return false;
+}
 
+char* MySolution::Solution::submit_blank(char string[]) {
+    assert(string);
+    size_t blank = 0;
+    size_t originlenth = 0;
+    size_t newlenth = 0;
+    originlenth = strlen(string);
+    for (int i = 0; i < originlenth; ++i) {
+        if (string[i] == ' ') blank++;
+    }
+    newlenth = originlenth + blank*2;
+    //string = (char*)realloc(string, blank*2);
+    while (originlenth != 0) {
+        if (string[originlenth] != ' ') {
+            string[newlenth] = string[originlenth];
+            newlenth--;
+
+        } else {
+            string[newlenth--] = '0';
+            string[newlenth--] = '2';
+            string[newlenth--] = '%';
+        }
+        originlenth --;
+    }
+    return string;
 }

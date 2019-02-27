@@ -6,18 +6,12 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/SCH/CLionProjects/algorithm_learning/Solution.cpp
-assert.h
--
-Solution.h
-C:/Users/SCH/CLionProjects/algorithm_learning/Solution.h
-string
--
-
 C:/Users/SCH/CLionProjects/algorithm_learning/Solution.h
 
 C:/Users/SCH/CLionProjects/algorithm_learning/test.cpp
 iostream
+-
+memory.h
 -
 Solution.h
 C:/Users/SCH/CLionProjects/algorithm_learning/Solution.h
