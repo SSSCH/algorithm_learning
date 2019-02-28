@@ -43,10 +43,27 @@ void test_SubmitBlank(){
     char string[27] = " hello world  ! ";
     EXPTCT_EQ_STRING("%20hello%20world%20%20!%20", solution.submit_blank(string), 26);
 }
+void test_PrintListReversingly_Iteratively(){
+    ListNode head; head.m_nKey = 1;
+    ListNode second; second.m_nKey = 2;
+    ListNode third; third.m_nKey = 3;
+    ListNode forth; forth.m_nKey = 4;
+    ListNode fifth; fifth.m_nKey = 5;
+    ListNode sixth; sixth.m_nKey = 6;
+    head.M_pNext = &second;
+    second.M_pNext = &third;
+    third.M_pNext = &forth;
+    forth.M_pNext = &fifth;
+    fifth.M_pNext = &sixth;
+    sixth.M_pNext = nullptr;
+    solution.PrintListReversing_Iteratively(&head);
+    solution.PrintListReversing_Recursively(&head);
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
     test_SubmitBlank();
+    test_PrintListReversingly_Iteratively();
 }
 
 int main() {

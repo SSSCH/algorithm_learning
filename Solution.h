@@ -4,6 +4,10 @@
 #ifndef ALGORITHM_LEARNING_SOLUTION_H
 
 #define ALGORITHM_LEARNING_SOLUTION_H
+struct ListNode{
+    int m_nKey;
+    ListNode* M_pNext;
+};
 namespace MySolution{
     class Solution {
     public:
@@ -27,6 +31,13 @@ namespace MySolution{
          * return:the processed string
          * */
         char* submit_blank(char string[]);
+        /*
+         * 6.从尾到头打印链表
+         *Parameters:@phead(input):链表头节点
+         *
+         * */
+        void PrintListReversing_Iteratively(ListNode* phead);//迭代地，栈实现
+        void PrintListReversing_Recursively(ListNode* phead);//递归地，递归实现
     };
 }
 

@@ -7,6 +7,7 @@
 #include "Solution.h"
 #include <vector>
 #include <string>
+#include <stack>
 using std::vector;
 using std::string;
 vector<int> v(3, 7); //= vector<int> v{7, 7, 7}
@@ -39,7 +40,7 @@ bool MySolution::Solution::duplicate(int *numbers, int length, int *duplication)
 }
 //二维数组的传参方式：int numbers[][10], int (*numbers)[10], int** numbers, 或者将其降维成一维数组
 bool MySolution::Solution::find_2dArrary(int *numbers, int rows, int columns, int target) {
-    assert(numbers != NULL && rows > 0 && columns > 0);
+    assert(numbers != nullptr && rows > 0 && columns > 0);
     int row = 0;
     int column = columns - 1;
     while(column >= 0 && row <= (rows-1)){
@@ -74,4 +75,29 @@ char* MySolution::Solution::submit_blank(char string[]) {
         originlenth --;
     }
     return string;
+}
+
+void MySolution::Solution::PrintListReversing_Iteratively(ListNode* phead) {
+    std::stack<ListNode*> ListStack;
+    ListNode* tmp = phead;
+    //遍历链表，入栈
+    while (tmp->M_pNext != nullptr) {
+          ListStack.push(tmp);
+          tmp = tmp->M_pNext;
+    }
+    //出栈，打印
+    while (!ListStack.empty()) {
+        printf("%d\t", ListStack.top()->m_nKey);
+        ListStack.pop();
+    }
+    printf("\n");
+}
+
+void MySolution::Solution::PrintListReversing_Recursively(ListNode *phead) {
+    if (phead != nullptr) {
+        if (phead->M_pNext != nullptr) {
+            PrintListReversing_Recursively(phead->M_pNext);
+        }
+        printf("%d\t", phead->m_nKey);
+    }
 }
