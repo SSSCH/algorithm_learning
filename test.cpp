@@ -24,6 +24,7 @@
 static int test_count = 0;
 static int test_parse_count = 0;
 MySolution::Solution solution;
+
 using namespace std;
 void test_duplicate(){
    int numbers[] = {3, 5, 4 ,3, 2, 1};
@@ -59,12 +60,23 @@ void test_PrintListReversingly_Iteratively(){
     solution.PrintListReversing_Iteratively(&head);
     solution.PrintListReversing_Recursively(&head);
 }
+void test_2stack_simulate_queue(){
+    MySolution::CQueue<int> myQueue;
+    for (int i = 0; i < 7 ; ++i) {
+        myQueue.AppendTail(i);
+        std::cout << "head is: " << myQueue.BOTTON() << "\t" << std::endl;
+        myQueue.DeletHead();
+    }
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
     test_SubmitBlank();
     test_PrintListReversingly_Iteratively();
+    test_2stack_simulate_queue();
 }
+
+
 
 int main() {
     /*string s1, s2;

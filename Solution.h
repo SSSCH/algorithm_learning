@@ -1,6 +1,8 @@
 //
 // Created by SCH on 2019/2/25.
 //
+#include <stack>
+
 #ifndef ALGORITHM_LEARNING_SOLUTION_H
 
 #define ALGORITHM_LEARNING_SOLUTION_H
@@ -39,6 +41,57 @@ namespace MySolution{
         void PrintListReversing_Iteratively(ListNode* phead);//迭代地，栈实现
         void PrintListReversing_Recursively(ListNode* phead);//递归地，递归实现
     };
+    template<typename T>
+    class CQueue {
+    public:
+        /*添加队列尾节点
+         * @paramers:@node(input) 类型的引用
+         * */
+        void AppendTail(const T& node);
+        /*
+         * 删除隊列头节点
+         * */
+        void DeletHead();
+        /*返回头节点
+         * */
+        T BOTTON();
+
+    private:
+        std::stack<T> stack_for_queuepush;
+        std::stack<T> stack_for_queuepop;
+    };
+    template<typename T> void MySolution::CQueue<T>::AppendTail(const T& node) {
+        stack_for_queuepush.push(node);
+    }
+
+    template<typename T> void MySolution::CQueue<T>::DeletHead() {
+
+        if (stack_for_queuepop.empty() && (!stack_for_queuepush.empty())) {
+            while (!stack_for_queuepush.empty()) {
+                T& tmp = stack_for_queuepush.top();
+                stack_for_queuepop.push(tmp);
+                stack_for_queuepush.pop();
+            }
+        } else if(stack_for_queuepop.empty() && stack_for_queuepush.empty()) {
+            throw new std::exception();
+        }
+        stack_for_queuepop.top();
+        stack_for_queuepop.pop();
+    }
+    template<typename T> T MySolution::CQueue<T>::BOTTON() {
+        T ret;
+        if (stack_for_queuepop.empty() && (!stack_for_queuepush.empty())) {
+            while (!stack_for_queuepush.empty()) {
+                T& tmp = stack_for_queuepush.top();
+                stack_for_queuepop.push(tmp);
+                stack_for_queuepush.pop();
+            }
+        } else if(stack_for_queuepop.empty() && stack_for_queuepush.empty()) {
+            throw new std::exception();
+        }
+        ret = stack_for_queuepop.top();
+        return ret;
+    }
 }
 
 

@@ -8,6 +8,8 @@
 #include <vector>
 #include <string>
 #include <stack>
+#include <iostream>
+
 using std::vector;
 using std::string;
 vector<int> v(3, 7); //= vector<int> v{7, 7, 7}
@@ -76,12 +78,12 @@ char* MySolution::Solution::submit_blank(char string[]) {
     }
     return string;
 }
-
+//用栈实现
 void MySolution::Solution::PrintListReversing_Iteratively(ListNode* phead) {
     std::stack<ListNode*> ListStack;
     ListNode* tmp = phead;
     //遍历链表，入栈
-    while (tmp->M_pNext != nullptr) {
+    while (tmp != nullptr) {
           ListStack.push(tmp);
           tmp = tmp->M_pNext;
     }
@@ -92,7 +94,7 @@ void MySolution::Solution::PrintListReversing_Iteratively(ListNode* phead) {
     }
     printf("\n");
 }
-
+//递归实现，递归的本质就是一个栈结构
 void MySolution::Solution::PrintListReversing_Recursively(ListNode *phead) {
     if (phead != nullptr) {
         if (phead->M_pNext != nullptr) {
@@ -101,3 +103,4 @@ void MySolution::Solution::PrintListReversing_Recursively(ListNode *phead) {
         printf("%d\t", phead->m_nKey);
     }
 }
+
