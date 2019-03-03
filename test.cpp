@@ -67,6 +67,15 @@ void test_2stack_simulate_queue(){
         std::cout << "head is: " << myQueue.BOTTON() << "\t" << std::endl;
         myQueue.DeletHead();
     }
+
+}
+void test_Fibonacci(){
+    EXPECT_EQ(solution.Fibonacci_Recursively(3), solution.Fibonacci_Iteratively(3), "%lld");
+    EXPECT_EQ(solution.Fibonacci_Recursively(5), solution.Fibonacci_Iteratively(5), "%lld");
+    //EXPECT_EQ(solution.Fibonacci_Recursively(50), solution.Fibonacci_Iteratively(50), "%lld");  //此时，递归的效率已经十分的低，速度太慢了
+    EXPECT_EQ(solution.JumpStep(1)+solution.JumpStep(2), solution.JumpStep(3), "%lld");
+    EXPECT_EQ(solution.JumpStep(7)+solution.JumpStep(8), solution.JumpStep(9), "%lld");
+    EXPECT_EQ(solution.JumpStepPlus_Math(17), solution.JumpStepPlus_DynamicPlan(17),"%lld");
 }
 void test_solution(){
     test_duplicate();
@@ -74,6 +83,7 @@ void test_solution(){
     test_SubmitBlank();
     test_PrintListReversingly_Iteratively();
     test_2stack_simulate_queue();
+    test_Fibonacci();
 }
 
 

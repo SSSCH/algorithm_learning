@@ -9,7 +9,7 @@
 #include <string>
 #include <stack>
 #include <iostream>
-
+#include <math.h>
 using std::vector;
 using std::string;
 vector<int> v(3, 7); //= vector<int> v{7, 7, 7}
@@ -103,4 +103,64 @@ void MySolution::Solution::PrintListReversing_Recursively(ListNode *phead) {
         printf("%d\t", phead->m_nKey);
     }
 }
+//递归实现
+long long MySolution::Solution::Fibonacci_Recursively(unsigned int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    if (n > 1) {
+        return (Fibonacci_Recursively(n - 1) + Fibonacci_Recursively(n - 2));
+    }
+}
+//迭代，循环实现
+long long MySolution::Solution::Fibonacci_Iteratively(unsigned int n) {
+    long long FibonacciMinusOne = 1;
+    long long FibonacciMinusTwo = 0;
+    long long TmpTarget = 1;
+    for (int i = 2; i <= n; ++i) {
+        TmpTarget = FibonacciMinusOne + FibonacciMinusTwo;
+        FibonacciMinusTwo = FibonacciMinusOne;
+        FibonacciMinusOne = TmpTarget;
 
+    }
+    return TmpTarget;
+}
+//f(n)=f(n-1)+f(n-2)
+long long MySolution::Solution::JumpStep(unsigned int n) {
+    long long FibonacciMinusOne = 2;
+    long long FibonacciMinusTwo = 1;
+    long long TmpTarget = 3;
+    if (n == 1) return FibonacciMinusTwo;
+    if (n == 2) return FibonacciMinusOne;
+    for (int i = 3; i <= n ; ++i) {
+        TmpTarget = FibonacciMinusOne + FibonacciMinusTwo;
+        FibonacciMinusTwo = FibonacciMinusOne;
+        FibonacciMinusOne = TmpTarget;
+    }
+    return TmpTarget;
+};
+//f(n)=f(n-1)+...+f(0) ==f(n)=2f(n-1)
+long long MySolution::Solution::JumpStepPlus_DynamicPlan(unsigned int n) {
+    long long tmp = 2;
+    long long TmpTarget = 0;
+    if (n == 1) return 1;
+    if (n == 2) return 2;
+    for (int i = 3; i <= n; ++i) {
+        TmpTarget = 2*tmp;
+        tmp = TmpTarget;
+    }
+    return TmpTarget;
+}
+/**
+ * c++中math.h的pow返回类型是double,so,自己寫一個*/
+long long Math_pow(unsigned m, unsigned int n){
+    assert(n>=1);
+    long long TmpTarget = 1;
+    for (int i = 1; i <=n; ++i) {
+        TmpTarget *= m;
+    }
+    return TmpTarget;
+}
+long long MySolution::Solution::JumpStepPlus_Math(unsigned int n) {
+    assert(n>=1);
+    return Math_pow(2, n-1);
+}
