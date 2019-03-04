@@ -9,6 +9,17 @@
     else {\
         fprintf(stderr, "%s%d, expect: %s, actual: %s\n", __FILE__, __LINE__, expect, actual);}\
 }while(0)
+#define EXPTCT_EQ_DATA(expect, actual, length)  do{ \
+    test_count ++;\
+    if((sizeof(expect)/4) == (length) && memcmp(expect, actual, length-1) == 0) {\
+        test_parse_count++;} \
+    else {\
+        fprintf(stderr, "%s%d\n", __FILE__, __LINE__);\
+        for(int i =0; i < length; i++){\
+            fprintf(stderr, "%d\t", actual[i]);\
+        }\
+    }\
+}while(0)
 
 #define EXPECT_EQ(expect, actual, object_format)   EXPECT_EQ_BASE((expect==actual), expect, actual, object_format)
 #define EXPECT_EQ_BASE(equality, expect, actual, object_format) \
@@ -77,6 +88,15 @@ void test_Fibonacci(){
     EXPECT_EQ(solution.JumpStep(7)+solution.JumpStep(8), solution.JumpStep(9), "%lld");
     EXPECT_EQ(solution.JumpStepPlus_Math(17), solution.JumpStepPlus_DynamicPlan(17),"%lld");
 }
+void test_quick_sort(){
+    int data2[] = {1,2};
+    int data1[16] = {-1, 27, 4, 44, 2, 5, 17, 8, 3, 7, 10, 15,25, 20, -30, 50};
+    int data_sorted1[16] = {-30,-1, 2, 3, 4, 5, 7, 8, 10, 15, 17, 20, 25, 27, 44, 50};
+    solution.QuickSort(data1, 16, 0, 15);
+    solution.QuickSort(data2, 2 ,0, 1);
+    EXPTCT_EQ_DATA(data_sorted1, data1, 16);
+    EXPTCT_EQ_DATA(data2, data2, 2);
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -84,6 +104,7 @@ void test_solution(){
     test_PrintListReversingly_Iteratively();
     test_2stack_simulate_queue();
     test_Fibonacci();
+    test_quick_sort();
 }
 
 

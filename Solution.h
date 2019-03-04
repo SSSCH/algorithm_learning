@@ -2,9 +2,11 @@
 // Created by SCH on 2019/2/25.
 //
 #include <stack>
+#include <vector>
 #ifndef ALGORITHM_LEARNING_SOLUTION_H
 
 #define ALGORITHM_LEARNING_SOLUTION_H
+using namespace std;
 struct ListNode{
     int m_nKey;
     ListNode* M_pNext;
@@ -61,6 +63,12 @@ namespace MySolution{
          * */
         long long JumpStepPlus_DynamicPlan(unsigned int n);
         long long JumpStepPlus_Math(unsigned int n);
+
+        /**11.快速排序的递归实现与循环实现
+         *
+         * */
+         int _QuickSort(int data[], int lenth, int begin, int end);
+         void QuickSort(int data[], int length, int begin, int end);
 
     };
     /***

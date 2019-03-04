@@ -5,18 +5,22 @@
 #include <assert.h>
 #include <cstring>
 #include "Solution.h"
-#include <vector>
 #include <string>
 #include <stack>
 #include <iostream>
 #include <math.h>
+#include <stdlib.h>
 using std::vector;
 using std::string;
 vector<int> v(3, 7); //= vector<int> v{7, 7, 7}
 string s = "sssccchhh";
 
-
-void swap(int* nums, int j, int i){
+void Swap(int* a, int* b){
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+void swap(int nums[], int j, int i){
     assert(nums);
     int tmp = nums[j];
     nums[j] = nums[i];
@@ -163,4 +167,41 @@ long long Math_pow(unsigned m, unsigned int n){
 long long MySolution::Solution::JumpStepPlus_Math(unsigned int n) {
     assert(n>=1);
     return Math_pow(2, n-1);
+}
+
+int RandomInRange(int n, int m){
+    assert(n>=0 && m>=0 && m >= n);
+    return (rand()%(m-n+1)+n);
+}
+int MySolution::Solution::_QuickSort(int data[], int length, int begin, int end) {
+    //int index = RandomInRange(begin, end); //index range: [begin, end]
+    int index = RandomInRange(begin, end); //也可以不用生成随机数，直接取中值（begin+end）/2也行， 类似二分法（二分排序？）
+    Swap(&data[index], &data[end]);
+    int SmallIndex = begin -1;
+    for (int i = begin; i < end; ++i) {
+        if (data[i] < data[end]) {
+            SmallIndex++;
+            if (SmallIndex != i) {
+                Swap(&data[SmallIndex], &data[i]);
+            }
+        }
+    }
+    SmallIndex++;
+    swap(data, SmallIndex, end);
+    return SmallIndex;
+}
+void MySolution::Solution::QuickSort(int data[], int length, int begin, int end) {
+    assert(length >= 0 && begin >= 0 && end >= begin);
+    if (begin == end) {
+        return;
+    }
+    int index = _QuickSort(data, end-begin+1, begin, end);
+    if(index > begin) {
+        /**特別注意：index>begin 这边不能有等号，否则循环永远无法结束，最终导致程序栈溢出，下面也是
+         * */
+        QuickSort(data, end-begin+1, begin, index-1);
+    }
+    if (index < end) {
+        QuickSort(data, end-begin+1, index+1, end);
+    }
 }
