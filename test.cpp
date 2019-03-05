@@ -97,6 +97,16 @@ void test_quick_sort(){
     EXPTCT_EQ_DATA(data_sorted1, data1, 16);
     EXPTCT_EQ_DATA(data2, data2, 2);
 }
+void test_MinNumberInRotatArrary(){
+    int rotatArrary1[] = {14,14,15,16,17,18,19,20,22,23,24,25,26,29,33,34,3,4,5,6,7,8,9,10,11,12,13};
+    int rotatArrary2[] = {1};
+    int rotatArrary3[] = {1,1,1,1,0,1,1};
+    int rotatArrary4[] = {1,2,3,4,5,6,7,8,9};
+    EXPECT_EQ(3, solution.MinNumberInRotateArrary(rotatArrary1, (sizeof(rotatArrary1)/ sizeof(int))), "%d");
+    EXPECT_EQ(1, solution.MinNumberInRotateArrary(rotatArrary2, (sizeof(rotatArrary2)/ sizeof(int))), "%d");
+    EXPECT_EQ(0, solution.MinNumberInRotateArrary(rotatArrary3, (sizeof(rotatArrary3)/ sizeof(int))), "%d");
+    EXPECT_EQ(1, solution.MinNumberInRotateArrary(rotatArrary4, (sizeof(rotatArrary4)/ sizeof(int))), "%d");
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -105,6 +115,7 @@ void test_solution(){
     test_2stack_simulate_queue();
     test_Fibonacci();
     test_quick_sort();
+    test_MinNumberInRotatArrary();
 }
 
 

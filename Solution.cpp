@@ -205,3 +205,33 @@ void MySolution::Solution::QuickSort(int data[], int length, int begin, int end)
         QuickSort(data, end-begin+1, index+1, end);
     }
 }
+
+int MySolution::Solution::MinNumberInRotateArrary(int *RotatArrary, int length) {
+    assert(RotatArrary != nullptr && length > 0);
+    int begin = 0;
+    int end = length -1;
+    int mid = 0;
+    while (begin != (end - 1)) {
+        mid = (begin + end)/2;
+        if (RotatArrary[mid] == RotatArrary[begin] && RotatArrary[mid] == RotatArrary[end]) { //特殊情况：『1，1，1，1，0，1，1』,此时只能用顺序查找
+            return MinNumberByOrder(RotatArrary, length);
+        }
+        if (RotatArrary[mid] >= RotatArrary[begin]) {
+            begin = mid;
+        }
+        if (RotatArrary[mid] <= RotatArrary[end]) {
+            end = mid;
+        }
+    }
+    return RotatArrary[end];
+}
+int MySolution::Solution::MinNumberByOrder(int *RotatArrary, int length) {
+    int* arrary = RotatArrary;
+    int result = arrary[0];
+    for (int i = 1; i < length; ++i) {
+        if (result > arrary[i]) {
+            result = arrary[i];
+        }
+    }
+    return result;
+}

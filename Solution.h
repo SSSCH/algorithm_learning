@@ -69,7 +69,13 @@ namespace MySolution{
          * */
          int _QuickSort(int data[], int lenth, int begin, int end);
          void QuickSort(int data[], int length, int begin, int end);
-
+         /**12.旋转数组最小值
+          * @修改二分法实现 & 顺序查找实现
+          * @input:@number,输入的旋转数组；@length，数组的长度
+          * @output/return:最小值
+          * */
+        int MinNumberInRotateArrary(int RotatArrary[], int length);
+        int MinNumberByOrder(int RotatArrary[], int length);
     };
     /***
      * 9.用两个栈模拟队列
