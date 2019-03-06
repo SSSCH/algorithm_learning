@@ -10,6 +10,7 @@
 #include <iostream>
 #include <math.h>
 #include <stdlib.h>
+#include <array>
 using std::vector;
 using std::string;
 vector<int> v(3, 7); //= vector<int> v{7, 7, 7}
@@ -234,4 +235,43 @@ int MySolution::Solution::MinNumberByOrder(int *RotatArrary, int length) {
         }
     }
     return result;
+}
+
+bool MySolution::Solution::_FindPathInMatrix(char *matrix, int col, int cols, int row, int rows, char *str, int*PathCharIndex, bool *IsMarked) {
+    if (str[*PathCharIndex] == '\0') {  //路径找完了
+        return true;
+    }
+    if (col >= 0 && col < cols && row >= 0 && row < rows && matrix[col*rows + row] == str[*PathCharIndex] && !IsMarked[col*rows + row]) {
+        IsMarked[col*rows + row] = true;  //标记该位置已经走过
+        (*PathCharIndex)++;  //指向下一个字符
+        if (!_FindPathInMatrix(matrix, col-1, cols, row, rows, str, PathCharIndex, IsMarked) && //up
+            !_FindPathInMatrix(matrix, col+1, cols, row, rows, str, PathCharIndex, IsMarked) &&  //down
+            !_FindPathInMatrix(matrix, col, cols, row-1, rows, str, PathCharIndex, IsMarked) && //left
+            !_FindPathInMatrix(matrix, col, cols, row+1, rows, str, PathCharIndex, IsMarked) ) {//right
+                IsMarked[col*rows + row] = false; //此路不通，撤回标记
+                (*PathCharIndex)--;  //字符路径撤回
+                return false;
+        }else{
+            return true;
+        }
+    }
+    return false;
+}
+bool MySolution::Solution::FindPathInMatrix(char *matrix, int cols, int rows, char *str) {
+    assert(matrix != nullptr && rows >= 1 && cols >= 1  && str != nullptr);
+    int col = 0;
+    int row = 0;
+    bool *IsMarked = new bool[cols*rows];//标记某点是否已经走过（不能往回走）
+    for (int i = 0; i < cols*rows; ++i) {
+        IsMarked[i] = false;
+    }
+    int index = 0;
+    for (col = 0; col < cols; ++col) {
+        for (row = 0; row < rows; ++row) {
+            if(_FindPathInMatrix(matrix, col, cols, row, rows, str, &index, IsMarked))
+                return true;
+        }
+    }
+    delete[](IsMarked);
+    return false;
 }

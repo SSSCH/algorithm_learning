@@ -76,6 +76,21 @@ namespace MySolution{
           * */
         int MinNumberInRotateArrary(int RotatArrary[], int length);
         int MinNumberByOrder(int RotatArrary[], int length);
+
+        /**13字符矩阵中的路径
+         * @回溯算法
+         * @input:matrix：字符数组
+         * rows：列数
+         * row：当前列坐标
+         * cols：行数
+         * col：当前行坐标
+         * str：需要找到的路径
+         * PathCharIdex:用于指示str的下标，表示当前正在 寻找哪个字母的路径
+         * IsMarked：用于标记矩阵中的某一位是否已经走过，走过则为true，否则为false
+         * @return:true:路径存在，otherwise not exist
+   * */
+        bool _FindPathInMatrix(char* matrix, int col, int cols, int row, int rows, char* str, int* PathCharIdex, bool *IsMarked);
+        bool FindPathInMatrix(char* matrix, int cols, int rows, char* str);
     };
     /***
      * 9.用两个栈模拟队列

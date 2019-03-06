@@ -107,6 +107,27 @@ void test_MinNumberInRotatArrary(){
     EXPECT_EQ(0, solution.MinNumberInRotateArrary(rotatArrary3, (sizeof(rotatArrary3)/ sizeof(int))), "%d");
     EXPECT_EQ(1, solution.MinNumberInRotateArrary(rotatArrary4, (sizeof(rotatArrary4)/ sizeof(int))), "%d");
 }
+void test_Find_Matrix_Path(){
+    char matrix[] = {"wqioeurgss" //10*4
+                     "kjgvbsdvas"
+                     "wuierfvhss"
+                     "klvaskvasf"};
+    char matrix1[] = {"asshjasldfasd"};
+    char matrix2[] = {"ssssssssssss"};
+    char* str1 = "qjkwuierskv";
+    char* str2 = "assh";
+    char* str3 = "wieuof";
+    char* str4 = "sss";
+    EXPECT_EQ(true, solution.FindPathInMatrix(matrix, 4, 10 , str1), "%d");
+    EXPECT_EQ(true, solution.FindPathInMatrix(matrix, 4, 10 , str2), "%d");
+    EXPECT_EQ(true, solution.FindPathInMatrix(matrix, 4, 10 , str4), "%d");
+    EXPECT_EQ(false, solution.FindPathInMatrix(matrix, 4, 10 , str3), "%d");
+    EXPECT_EQ(false, solution.FindPathInMatrix(matrix, 4, 10 , str3), "%d");
+    EXPECT_EQ(true, solution.FindPathInMatrix(matrix1, 1, 13 , str2), "%d");
+    EXPECT_EQ(false, solution.FindPathInMatrix(matrix1, 1, 13 , str1), "%d");
+    EXPECT_EQ(true, solution.FindPathInMatrix(matrix2, 12, 1 , str4), "%d");
+    EXPECT_EQ(false, solution.FindPathInMatrix(matrix2, 12, 1 , str3), "%d");
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -116,6 +137,7 @@ void test_solution(){
     test_Fibonacci();
     test_quick_sort();
     test_MinNumberInRotatArrary();
+    test_Find_Matrix_Path();
 }
 
 
