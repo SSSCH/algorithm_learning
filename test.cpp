@@ -128,6 +128,16 @@ void test_Find_Matrix_Path(){
     EXPECT_EQ(true, solution.FindPathInMatrix(matrix2, 12, 1 , str4), "%d");
     EXPECT_EQ(false, solution.FindPathInMatrix(matrix2, 12, 1 , str3), "%d");
 }
+void test_RobotRunRange(){
+    EXPECT_EQ(7, solution.DigitalSum(7),"%d");
+    EXPECT_EQ(8, solution.DigitalSum(1052), "%d");
+    EXPECT_EQ(6, solution.RobotRunRange(10, 10, 2), "%d");
+    EXPECT_EQ(3, solution.RobotRunRange(1, 10, 2), "%d");
+    EXPECT_EQ(3, solution.RobotRunRange(10, 1, 2), "%d");
+    EXPECT_EQ(99, solution.RobotRunRange(10, 10, 17), "%d");
+    EXPECT_EQ(10, solution.RobotRunRange(11, 11, 3), "%d");
+}
+
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -138,6 +148,7 @@ void test_solution(){
     test_quick_sort();
     test_MinNumberInRotatArrary();
     test_Find_Matrix_Path();
+    test_RobotRunRange();
 }
 
 

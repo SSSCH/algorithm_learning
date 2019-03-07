@@ -275,3 +275,43 @@ bool MySolution::Solution::FindPathInMatrix(char *matrix, int cols, int rows, ch
     delete[](IsMarked);
     return false;
 }
+
+int MySolution::Solution::DigitalSum(int number) {
+    int ret =0;
+    while (number != 0) {
+        ret +=number%10;
+        number = number/10;
+    }
+    return ret;
+}
+
+void MySolution::Solution::_RobotRunRange(int col, int cols, int row, int rows, int k, int *IsMarked) {
+    assert(IsMarked != nullptr);
+    if (col >=0 && col < cols && row >= 0 && row < rows && (DigitalSum(row) + DigitalSum(col)) <= k && IsMarked[col*rows + row] == 0) {
+        IsMarked[col*rows + row] = 1;
+        _RobotRunRange(col - 1, cols , row, rows, k, IsMarked); //up
+        _RobotRunRange(col + 1, cols , row, rows, k, IsMarked); //down
+        _RobotRunRange(col, cols , row - 1, rows, k, IsMarked); //left
+        _RobotRunRange(col, cols , row + 1, rows, k, IsMarked); //right
+    }
+    return ;
+}
+int MySolution::Solution::RobotRunRange(int cols, int rows, int k) {
+    assert(cols > 0 && rows > 0);
+    int isMarked[cols*rows];
+    int col = 0;
+    int row = 0;
+    int ret = 0;
+    for (int i = 0; i < cols*rows; ++i) {
+        isMarked[i] = 0;
+    }
+
+    _RobotRunRange(col, cols, row, rows, k, isMarked);  //相比于14题矩阵中的路径，14题中的路径起点是要自己找的，而这边是固定的从（0，0）开始
+                                                                    //所以，无需循环
+
+    for (int j = 0; j < cols*rows; ++j) {
+        //if (isMarked[j] != 0) ret++;
+        ret+=isMarked[j];
+    }
+    return ret;
+}

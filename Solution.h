@@ -88,9 +88,26 @@ namespace MySolution{
          * PathCharIdex:用于指示str的下标，表示当前正在 寻找哪个字母的路径
          * IsMarked：用于标记矩阵中的某一位是否已经走过，走过则为true，否则为false
          * @return:true:路径存在，otherwise not exist
-   * */
+         * */
         bool _FindPathInMatrix(char* matrix, int col, int cols, int row, int rows, char* str, int* PathCharIdex, bool *IsMarked);
         bool FindPathInMatrix(char* matrix, int cols, int rows, char* str);
+
+        /**
+         * 14.机器人运动范围
+         * @题目描述：在m×n的方格中，机器人从坐标（0,0）开始移动，可上下左右动，但一个坐标只能走一次，而且不能进入坐标位数之和>k的格子。问：机器人能够到达多少个格子
+         * @回溯算法
+         * @input：rows:列数
+         * row：当前列坐标
+         * cols：行数
+         * col：当前行坐标
+         * k：限制值
+         * IsMarked（两个作用合一）:1.用于标记某一位置是否走过，走过为true，否则false；2.同时也用于记录一共走过了多少格子，走过的就对应索引值+1，最后遍历chessboard得出到达的格子数
+         * @output：机器人能够到达的格子数
+         * */
+        int DigitalSum(int number);
+        void _RobotRunRange(int col, int cols, int row, int rows, int k, int* IsMarked);
+        int RobotRunRange(int cols, int rows, int k);
+
     };
     /***
      * 9.用两个栈模拟队列
