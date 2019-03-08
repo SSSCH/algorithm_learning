@@ -108,6 +108,19 @@ namespace MySolution{
         void _RobotRunRange(int col, int cols, int row, int rows, int k, int* IsMarked);
         int RobotRunRange(int cols, int rows, int k);
 
+        /**
+         * 15.剪绳子
+         * @题目描述：将长度为m的绳子减为任意n段，求各段长度乘积的最大值。（m>1，n>1为整数）
+         * @动态规划，贪婪算法
+         *@input:@length:绳子长度
+         *@return：各段长度乘积最大值
+         * */
+         //动态规划
+        unsigned int CutRope_DynamicProgramming(int length);
+        //贪婪算法
+        unsigned int CutRope_GreedyAlgorthm(int length);
+
+
     };
     /***
      * 9.用两个栈模拟队列

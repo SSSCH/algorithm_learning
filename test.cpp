@@ -137,7 +137,14 @@ void test_RobotRunRange(){
     EXPECT_EQ(99, solution.RobotRunRange(10, 10, 17), "%d");
     EXPECT_EQ(10, solution.RobotRunRange(11, 11, 3), "%d");
 }
-
+void test_CutRope(){
+    EXPECT_EQ(2, solution.CutRope_DynamicProgramming(2), "%d");
+    EXPECT_EQ(2, solution.CutRope_GreedyAlgorthm(3), "%d");
+    EXPECT_EQ(36, solution.CutRope_DynamicProgramming(10), "%d");
+    EXPECT_EQ(36, solution.CutRope_GreedyAlgorthm(10), "%d");
+    EXPECT_EQ(243, solution.CutRope_DynamicProgramming(15), "%d");
+    EXPECT_EQ(243, solution.CutRope_GreedyAlgorthm(15), "%d");
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -149,6 +156,7 @@ void test_solution(){
     test_MinNumberInRotatArrary();
     test_Find_Matrix_Path();
     test_RobotRunRange();
+    test_CutRope();
 }
 
 

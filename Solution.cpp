@@ -315,3 +315,51 @@ int MySolution::Solution::RobotRunRange(int cols, int rows, int k) {
     }
     return ret;
 }
+
+unsigned int MySolution::Solution::CutRope_DynamicProgramming(int length) {
+    assert(length > 1);
+    unsigned int Rope[length - 1];
+    for (int i = 0; i <length-1 ; ++i) {
+        Rope[i] = 0;
+    }
+    unsigned int max = 0;
+    Rope[1] = 1;
+    Rope[2] = 2;
+    Rope[3] = 3;
+    switch (length) {
+        case 2:return 1;
+        case 3:return 2;
+        default:
+            for (int j = 4; j <= length; ++j) {  //自下而上将子问题的最优解储存在Rope[]中
+                for (int i = 1; i <= length/2; ++i) {
+                     Rope[j] = Rope[i]*Rope[j-i];
+                    if (max < Rope[j]) max = Rope[j];
+                }
+                Rope[j] = max;
+                max = 0;
+            }
+            return Rope[length];
+    }
+
+}
+unsigned int MySolution::Solution::CutRope_GreedyAlgorthm(int length) {
+    assert(length > 1);
+    unsigned int timeOf3 = 0;
+    switch (length) {
+        case 2:return 1;
+        case 3:return 2;
+        case 4:return 4;
+        default:
+            timeOf3 = (unsigned int)length/3;
+            switch (length%3) {
+                case 0:
+                    return ((unsigned int)pow(3,timeOf3)); //pow()用于求指数
+                case 1:
+                    return ((unsigned int)pow(3,timeOf3-1)*2*2);
+                case 2:
+                    return ((unsigned int)pow(3,timeOf3)*2*1);
+                default:
+                    return 0;
+            }
+    }
+}
