@@ -111,7 +111,7 @@ namespace MySolution{
         /**
          * 15.剪绳子
          * @题目描述：将长度为m的绳子减为任意n段，求各段长度乘积的最大值。（m>1，n>1为整数）
-         * @动态规划，贪婪算法
+         * @动态规划，@贪婪算法
          *@input:@length:绳子长度
          *@return：各段长度乘积最大值
          * */
@@ -119,6 +119,17 @@ namespace MySolution{
         unsigned int CutRope_DynamicProgramming(int length);
         //贪婪算法
         unsigned int CutRope_GreedyAlgorthm(int length);
+
+        /**16.二进制中1的个数
+         * @位运算
+         * @题目描述：输入一个整数，输出该二进制数中1的个数
+         * @input:无符号整数
+         * @return：1的个数
+         * */
+         //迭代，循环32次
+         int Find_1_InNumber(unsigned int number);
+         //迭代，多少个1就循环多少次
+         int Find_1_InNumberX(unsigned int number);
 
 
     };

@@ -138,12 +138,27 @@ void test_RobotRunRange(){
     EXPECT_EQ(10, solution.RobotRunRange(11, 11, 3), "%d");
 }
 void test_CutRope(){
-    EXPECT_EQ(2, solution.CutRope_DynamicProgramming(2), "%d");
+    EXPECT_EQ(1, solution.CutRope_DynamicProgramming(2), "%d");
     EXPECT_EQ(2, solution.CutRope_GreedyAlgorthm(3), "%d");
     EXPECT_EQ(36, solution.CutRope_DynamicProgramming(10), "%d");
     EXPECT_EQ(36, solution.CutRope_GreedyAlgorthm(10), "%d");
     EXPECT_EQ(243, solution.CutRope_DynamicProgramming(15), "%d");
     EXPECT_EQ(243, solution.CutRope_GreedyAlgorthm(15), "%d");
+}
+void test_Find1InNumber(){
+    EXPECT_EQ(0, solution.Find_1_InNumber(0), "%d");
+    EXPECT_EQ(1, solution.Find_1_InNumber(1), "%d");
+    EXPECT_EQ(8,solution.Find_1_InNumber(0b11101010010101),"%d");
+    EXPECT_EQ(0, solution.Find_1_InNumberX(0), "%d");
+    EXPECT_EQ(1, solution.Find_1_InNumberX(1), "%d");
+    EXPECT_EQ(10,solution.Find_1_InNumberX(0b1110101001010111),"%d");
+    EXPECT_EQ(31, solution.Find_1_InNumberX(0x7fffffff), "%d");
+    EXPECT_EQ(32, solution.Find_1_InNumberX(0xffffffff), "%d");
+    EXPECT_EQ(1,solution.Find_1_InNumberX(0x80000000),"%d");
+    EXPECT_EQ(31, solution.Find_1_InNumber(0x7fffffff), "%d");
+    EXPECT_EQ(32, solution.Find_1_InNumber(0xffffffff), "%d");
+    EXPECT_EQ(1,solution.Find_1_InNumber(0x80000000), "%d");
+    printf("%u,\t%u,\t%u\n", -1, 0x7fffffff, 0xffffffff);
 }
 void test_solution(){
     test_duplicate();
@@ -157,6 +172,7 @@ void test_solution(){
     test_Find_Matrix_Path();
     test_RobotRunRange();
     test_CutRope();
+    test_Find1InNumber();
 }
 
 

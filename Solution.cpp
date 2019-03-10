@@ -363,3 +363,23 @@ unsigned int MySolution::Solution::CutRope_GreedyAlgorthm(int length) {
             }
     }
 }
+
+int MySolution::Solution::Find_1_InNumber(unsigned int number) {
+    int ret =0;
+    unsigned int tmpForCmp = 1;
+    for (int i = 0; i <=31; ++i) {
+        if (number & tmpForCmp) {
+            ret++;
+        }
+        tmpForCmp <<=1;
+    }
+    return ret;
+}
+int MySolution::Solution::Find_1_InNumberX(unsigned int number) {
+    int count = 0;
+    while (number != 0) {
+        count++;
+        number = number & (number - 1);
+    }
+    return count;
+}
