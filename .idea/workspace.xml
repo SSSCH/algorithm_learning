@@ -19,13 +19,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Solution.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Solution.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Solution.h" beforeDir="false" afterPath="$PROJECT_DIR$/Solution.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Solution.dir/Solution.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Solution.dir/Solution.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/Solution.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/Solution.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/test.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algorithm_learning.dir/test.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/algorithm_learning.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algorithm_learning.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/libSolution.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libSolution.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -50,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="160" column="31" selection-start-line="160" selection-start-column="29" selection-end-line="160" selection-end-column="31" />
+            <state relative-caret-position="132">
+              <caret line="165" selection-start-line="165" selection-end-line="165" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -60,10 +53,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/software/clion/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cmath">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="417" selection-start-line="417" selection-end-line="417" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Solution.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="378" column="18" selection-start-line="378" selection-start-column="18" selection-end-line="378" selection-end-column="18" />
+            <state relative-caret-position="231">
+              <caret line="405" column="58" selection-start-line="405" selection-start-column="58" selection-end-line="405" selection-end-column="58" />
               <folding>
                 <element signature="e#0#2#0" />
                 <element signature="e#39#58#0" expanded="true" />
@@ -72,25 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Solution.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
-              <caret line="94" column="8" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#2#0" />
-                <element signature="e#171#228#1" />
-                <element signature="e#293#637#0" />
-                <element signature="e#715#945#0" />
-                <element signature="e#1031#1142#0" />
-                <element signature="e#1194#1270#0" />
-                <element signature="e#1422#1497#0" />
-                <element signature="e#1635#1771#0" />
-                <element signature="e#1824#1929#0" />
-                <element signature="e#1938#2009#0" />
-                <element signature="e#2132#2177#0" />
-                <element signature="e#2324#2462#0" />
-              </folding>
+            <state relative-caret-position="240">
+              <caret line="140" column="79" lean-forward="true" selection-start-line="140" selection-start-column="79" selection-end-line="140" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -104,14 +92,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/Solution.cpp" />
-        <option value="$PROJECT_DIR$/test.cpp" />
         <option value="$PROJECT_DIR$/Solution.h" />
+        <option value="$PROJECT_DIR$/test.cpp" />
+        <option value="$PROJECT_DIR$/Solution.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1940" />
@@ -217,12 +205,13 @@
       <workItem from="1551925158865" duration="10327000" />
       <workItem from="1552011186295" duration="5803000" />
       <workItem from="1552122552488" duration="594000" />
-      <workItem from="1552188502627" duration="5002000" />
+      <workItem from="1552188502627" duration="5271000" />
+      <workItem from="1552266790416" duration="5747000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110828000" />
+    <option name="totallyTimeSpent" value="116844000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -400,44 +389,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Solution.cpp">
+    <entry file="file://$PROJECT_DIR$/Solution.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="378" column="18" selection-start-line="378" selection-start-column="18" selection-end-line="378" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#2#0" />
-            <element signature="e#39#58#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="140" column="79" lean-forward="true" selection-start-line="140" selection-start-column="79" selection-end-line="140" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/software/clion/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cmath">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="417" selection-start-line="417" selection-end-line="417" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="160" column="31" selection-start-line="160" selection-start-column="29" selection-end-line="160" selection-end-column="31" />
+        <state relative-caret-position="132">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Solution.h">
+    <entry file="file://$PROJECT_DIR$/Solution.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="94" column="8" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+        <state relative-caret-position="231">
+          <caret line="405" column="58" selection-start-line="405" selection-start-column="58" selection-end-line="405" selection-end-column="58" />
           <folding>
             <element signature="e#0#2#0" />
-            <element signature="e#171#228#1" />
-            <element signature="e#293#637#0" />
-            <element signature="e#715#945#0" />
-            <element signature="e#1031#1142#0" />
-            <element signature="e#1194#1270#0" />
-            <element signature="e#1422#1497#0" />
-            <element signature="e#1635#1771#0" />
-            <element signature="e#1824#1929#0" />
-            <element signature="e#1938#2009#0" />
-            <element signature="e#2132#2177#0" />
-            <element signature="e#2324#2462#0" />
+            <element signature="e#39#58#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -131,7 +131,14 @@ namespace MySolution{
          //迭代，多少个1就循环多少次
          int Find_1_InNumberX(unsigned int number);
 
-
+         /**
+          * 17.数值的整数次方值
+          * @考察1.代码的规范性：书写清晰；命名规范；布局清晰2.代码的完整性：功能测试；边界测试；负面测试3.错误处理方法：返回值；全局变量；抛出异常
+          * @input：底数&指数
+          * @return：运算结果
+          * */
+          double Power(double Base, int Exponent);
+          double PowerWithUnsignedExpenent(double Base, unsigned int Expenent);
     };
     /***
      * 9.用两个栈模拟队列

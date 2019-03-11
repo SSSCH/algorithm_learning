@@ -383,3 +383,30 @@ int MySolution::Solution::Find_1_InNumberX(unsigned int number) {
     }
     return count;
 }
+double  MySolution::Solution::Power(double Base, int Exponent) {
+    if (Base==0 || Exponent==0) {
+        return 1.0;
+    }
+    if(Exponent < 0){
+        double result = PowerWithUnsignedExpenent(Base, (unsigned int)(-Exponent));
+        return 1.0/result;
+    } else {
+        double result = PowerWithUnsignedExpenent(Base, (unsigned int)Exponent);
+        return result;
+    }
+}
+double  MySolution::Solution::PowerWithUnsignedExpenent(double Base, unsigned int Expenent) {
+    double result = 1;
+    if (Expenent == 1) {
+        return Base;
+    }
+    if (Expenent == 0) {
+        return 1;
+    }
+    result = PowerWithUnsignedExpenent(Base, Expenent >> 1);
+    result *= result;
+    if (Expenent & 0x1) { //判断奇偶性
+        result *= Base;
+    }
+    return result;
+}

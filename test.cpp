@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory.h>
-
+#include <math.h>
 #include "Solution.h"
 #define EXPTCT_EQ_STRING(expect, actual, length)  do{ \
     test_count ++;\
@@ -158,7 +158,14 @@ void test_Find1InNumber(){
     EXPECT_EQ(31, solution.Find_1_InNumber(0x7fffffff), "%d");
     EXPECT_EQ(32, solution.Find_1_InNumber(0xffffffff), "%d");
     EXPECT_EQ(1,solution.Find_1_InNumber(0x80000000), "%d");
-    printf("%u,\t%u,\t%u\n", -1, 0x7fffffff, 0xffffffff);
+    printf("有符号数：-1=0x%x,\t无符号数：0x7fffffff=%u,\t0xffffffff=%u\n", -1, 0x7fffffff, 0xffffffff);
+}
+void test_Power(){
+    EXPECT_EQ(1, solution.Power(0.0, 0), "%f");
+    EXPECT_EQ(1, solution.Power(78.0, 0), "%f");
+    EXPECT_EQ(pow(2.0, -8), solution.Power(2.0, -8), "%f");
+    EXPECT_EQ(pow(-13, 9), solution.Power(-13, 9), "%f");
+    EXPECT_EQ(pow(12, 8), solution.Power(12, 8), "%f");
 }
 void test_solution(){
     test_duplicate();
@@ -172,7 +179,8 @@ void test_solution(){
     test_Find_Matrix_Path();
     test_RobotRunRange();
     test_CutRope();
-    test_Find1InNumber();
+    test_Find1InNumber();\
+    test_Power();
 }
 
 
