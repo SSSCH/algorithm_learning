@@ -443,3 +443,20 @@ void MySolution::Solution::PrintNumber(int n) {
     }
     printf("\n");
 }
+void MySolution::Solution::DeletNode(ListNode **Head, ListNode *ToBeDeletde) {
+    assert(Head != nullptr && ToBeDeletde != nullptr);
+    ListNode* tmp = ToBeDeletde->M_pNext;
+
+    if (ToBeDeletde->M_pNext != nullptr) {
+        ToBeDeletde->m_nKey = ToBeDeletde->M_pNext->m_nKey;
+        ToBeDeletde->M_pNext = ToBeDeletde->M_pNext->M_pNext;
+    } else if (*Head == ToBeDeletde) { delete *Head; }
+    else {
+        ListNode* target = *Head;
+        while (target->M_pNext != ToBeDeletde) {
+            target = target->M_pNext;
+        }
+        target->M_pNext = nullptr;
+    }
+    delete tmp;
+}

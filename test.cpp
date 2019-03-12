@@ -173,6 +173,28 @@ void test_PrintNumber(){
     //solution.PrintNumber(4);
 
 }
+void test_DeleteNode(){
+    ListNode* Head = new ListNode;
+    ListNode* first = new ListNode;first->m_nKey = 1;
+    ListNode* second = new ListNode;second->m_nKey = 2;
+    ListNode* third = new ListNode;third->m_nKey = 3;
+    ListNode* forth = new ListNode;forth->m_nKey = 4;
+    ListNode* fifth = new ListNode;fifth->m_nKey = 5;
+    ListNode* sixth = new ListNode;sixth->m_nKey = 6;
+    Head->M_pNext = first;
+    first->M_pNext = second;
+    second->M_pNext = third;
+    third->M_pNext = forth;
+    forth->M_pNext = fifth;
+    fifth->M_pNext = sixth;
+    sixth->M_pNext = nullptr;
+    solution.DeletNode(&Head, first);
+    EXPECT_EQ(2, Head->M_pNext->m_nKey, "%d");
+    solution.DeletNode(&Head, fifth);
+    EXPECT_EQ(6, forth->M_pNext->m_nKey, "%d");
+    /*solution.DeletNode(&Head, sixth);
+    EXPECT_EQ(nullptr, fifth->M_pNext, "s");*/
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -188,6 +210,7 @@ void test_solution(){
     test_Find1InNumber();
     test_Power();
     test_PrintNumber();
+    test_DeleteNode();
 }
 
 

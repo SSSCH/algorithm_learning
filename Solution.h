@@ -148,6 +148,12 @@ namespace MySolution{
            bool IncreaseNumber(char* Number);
            void _PrintNmber(char* Number);
            void PrintNumber(int n);
+
+           /**19.删除链表任意节点，o（1）时间
+            * @input:@Head:链表头节点@ToBeDeleted：需要被删除的节点
+            *
+            * */
+            void DeletNode(ListNode** Head, ListNode* ToBeDeletde);
     };
 
     /***
