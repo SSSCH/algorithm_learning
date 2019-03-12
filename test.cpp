@@ -167,6 +167,12 @@ void test_Power(){
     EXPECT_EQ(pow(-13, 9), solution.Power(-13, 9), "%f");
     EXPECT_EQ(pow(12, 8), solution.Power(12, 8), "%f");
 }
+void test_PrintNumber(){
+    //solution.PrintNumber(0);
+    solution.PrintNumber(2);
+    //solution.PrintNumber(4);
+
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -179,8 +185,9 @@ void test_solution(){
     test_Find_Matrix_Path();
     test_RobotRunRange();
     test_CutRope();
-    test_Find1InNumber();\
+    test_Find1InNumber();
     test_Power();
+    test_PrintNumber();
 }
 
 

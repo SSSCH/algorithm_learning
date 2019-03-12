@@ -410,3 +410,36 @@ double  MySolution::Solution::PowerWithUnsignedExpenent(double Base, unsigned in
     }
     return result;
 }
+bool MySolution::Solution::IncreaseNumber(char *Number) {
+    bool IsLegalNumber = false;
+    int strlength = (int)strlen(Number);
+    for (int i = strlength - 1; i >=0 ; --i) {    //循环的意义是用于进位，当第n位需要进位时说明已经到达n位的最大数
+        Number[i] += 1;
+        if (Number[i] == 10 + '0') {
+            Number[i] = '0';
+        } else{
+            IsLegalNumber = true;
+            break;
+        }
+    }
+    return IsLegalNumber;
+}
+void MySolution::Solution::_PrintNmber(char *Number) {
+    for (int i = 0; i < strlen(Number); ++i) {
+        if (Number[i] != '0'){
+            Number +=i;  //注意，这边Number的增加只是传参过来的拷贝值，实际的Number不受影响；若想实际的Number也增加的话应该传char**
+            break;
+        }
+    }
+    printf("%s\t", Number);
+}
+void MySolution::Solution::PrintNumber(int n) {
+    assert(n > 0);
+    char* Number = new char[n+1];
+    memset(Number, '0', n);
+    Number[n] = '\0';
+    while (IncreaseNumber(Number)) {
+        _PrintNmber(Number);
+    }
+    printf("\n");
+}

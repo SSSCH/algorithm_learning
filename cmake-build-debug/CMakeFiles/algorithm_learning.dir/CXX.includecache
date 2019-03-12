@@ -6,19 +6,29 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/SCH/CLionProjects/algorithm_learning/Solution.cpp
+assert.h
+-
+cstring
+-
+Solution.h
+C:/Users/SCH/CLionProjects/algorithm_learning/Solution.h
+string
+-
+stack
+-
+iostream
+-
+math.h
+-
+stdlib.h
+-
+array
+-
+
 C:/Users/SCH/CLionProjects/algorithm_learning/Solution.h
 stack
 -
 vector
 -
-
-C:/Users/SCH/CLionProjects/algorithm_learning/test.cpp
-iostream
--
-memory.h
--
-math.h
--
-Solution.h
-C:/Users/SCH/CLionProjects/algorithm_learning/Solution.h
 

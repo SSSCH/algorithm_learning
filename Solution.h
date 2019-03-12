@@ -139,7 +139,17 @@ namespace MySolution{
           * */
           double Power(double Base, int Exponent);
           double PowerWithUnsignedExpenent(double Base, unsigned int Expenent);
+
+          /**18.打印1-n位最大的整数
+           * @解决大数问题：1.用字符串模拟数学加减2.字符串的表示
+           * @input：位数n
+           * @return：打印1-n位最大的整数
+           * */
+           bool IncreaseNumber(char* Number);
+           void _PrintNmber(char* Number);
+           void PrintNumber(int n);
     };
+
     /***
      * 9.用两个栈模拟队列
      * */
