@@ -151,9 +151,15 @@ namespace MySolution{
 
            /**19.删除链表任意节点，o（1）时间
             * @input:@Head:链表头节点@ToBeDeleted：需要被删除的节点
-            *
+            *@该算法会导致不能连续删除相邻的节点
             * */
             void DeletNode(ListNode** Head, ListNode* ToBeDeletde);
+
+            /**20.删除链表重复的节点,且重复的节点是连续的
+             * @input:@Head：链表头节点
+             *@return:重复节点的个数
+             * */
+             int DeleteDumplicateNode(ListNode** Head);
     };
 
     /***

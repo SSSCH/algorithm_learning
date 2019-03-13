@@ -192,8 +192,28 @@ void test_DeleteNode(){
     EXPECT_EQ(2, Head->M_pNext->m_nKey, "%d");
     solution.DeletNode(&Head, fifth);
     EXPECT_EQ(6, forth->M_pNext->m_nKey, "%d");
-    /*solution.DeletNode(&Head, sixth);
+    /*solution.DeletNode(&Head, sixth);  //不能连续删除相邻的节点
     EXPECT_EQ(nullptr, fifth->M_pNext, "s");*/
+}
+void test_DeleteDumplicateNode(){
+    ListNode* Head = new ListNode;Head->m_nKey = NULL;
+    ListNode* first = new ListNode;first->m_nKey = 1;
+    ListNode* second = new ListNode;second->m_nKey = 1;
+    ListNode* third = new ListNode;third->m_nKey = 2;
+    ListNode* forth = new ListNode;forth->m_nKey = 2;
+    ListNode* fifth = new ListNode;fifth->m_nKey = 3;
+    ListNode* sixth = new ListNode;sixth->m_nKey = 3;
+    Head->M_pNext = first;
+    first->M_pNext = second;
+    second->M_pNext = third;
+    third->M_pNext = forth;
+    forth->M_pNext = fifth;
+    fifth->M_pNext = sixth;
+    sixth->M_pNext = nullptr;
+    int ret = solution.DeleteDumplicateNode(&Head);  //注意这边不要直接把DeketeDumplicateNode写入EXPECT_EQ,
+                                                     // 因为当expect！=actual时，fprintf会再次打印actual。
+                                                     // 若直接写入函数，相当于再执行一次，此时执行的输入已经没有重复的值了，必然返回0！
+    EXPECT_EQ(3, ret, "%d");
 }
 void test_solution(){
     test_duplicate();
@@ -211,6 +231,7 @@ void test_solution(){
     test_Power();
     test_PrintNumber();
     test_DeleteNode();
+    test_DeleteDumplicateNode();
 }
 
 

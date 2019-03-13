@@ -444,7 +444,7 @@ void MySolution::Solution::PrintNumber(int n) {
     printf("\n");
 }
 void MySolution::Solution::DeletNode(ListNode **Head, ListNode *ToBeDeletde) {
-    assert(Head != nullptr && ToBeDeletde != nullptr);
+    assert(Head != nullptr && ToBeDeletde != nullptr && *Head != nullptr);
     ListNode* tmp = ToBeDeletde->M_pNext;
 
     if (ToBeDeletde->M_pNext != nullptr) {
@@ -457,6 +457,39 @@ void MySolution::Solution::DeletNode(ListNode **Head, ListNode *ToBeDeletde) {
             target = target->M_pNext;
         }
         target->M_pNext = nullptr;
+        delete ToBeDeletde;
     }
     delete tmp;
+}
+int MySolution::Solution::DeleteDumplicateNode(ListNode **Head) {
+    assert(Head != nullptr && *Head != nullptr);
+    int DumplicateCount = 0;
+    ListNode* IndexNode = *Head;
+    ListNode* PreNode = *Head;
+    while (IndexNode->M_pNext != nullptr) {
+        if (IndexNode->m_nKey == IndexNode->M_pNext->m_nKey) {
+            DumplicateCount++;
+            while (IndexNode->M_pNext != nullptr &&(IndexNode->m_nKey == IndexNode->M_pNext->m_nKey)) {
+                ListNode* tmpNode = IndexNode;
+                IndexNode = IndexNode->M_pNext;
+                delete tmpNode;
+                tmpNode = nullptr;
+            }
+            PreNode->M_pNext = IndexNode->M_pNext;
+            if (IndexNode->M_pNext != nullptr) {
+                ListNode* tmpNode = IndexNode;
+                IndexNode = IndexNode->M_pNext;
+                delete tmpNode;
+                tmpNode = nullptr;
+            } else {
+                delete IndexNode;
+                IndexNode = nullptr;
+                return DumplicateCount;
+            }
+        } else {
+            PreNode = IndexNode;
+            IndexNode = IndexNode->M_pNext;
+        }
+    }
+    return DumplicateCount;
 }
