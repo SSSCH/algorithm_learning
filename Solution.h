@@ -160,6 +160,11 @@ namespace MySolution{
              *@return:重复节点的个数
              * */
              int DeleteDumplicateNode(ListNode** Head);
+             /**21.正则表达式的匹配
+              * @input：@str：要匹配的字符串@tempstr：匹配的模板
+              * @retrun:true if match success,otherwise is false
+              * */
+              bool RegularExpressionMatch(const char* str, const char* tempstr);
     };
 
     /***

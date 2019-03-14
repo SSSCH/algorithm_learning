@@ -198,7 +198,7 @@ void test_DeleteNode(){
 void test_DeleteDumplicateNode(){
     ListNode* Head = new ListNode;Head->m_nKey = NULL;
     ListNode* first = new ListNode;first->m_nKey = 1;
-    ListNode* second = new ListNode;second->m_nKey = 1;
+    ListNode* second = new ListNode;second->m_nKey = 2;
     ListNode* third = new ListNode;third->m_nKey = 2;
     ListNode* forth = new ListNode;forth->m_nKey = 2;
     ListNode* fifth = new ListNode;fifth->m_nKey = 3;
@@ -213,7 +213,37 @@ void test_DeleteDumplicateNode(){
     int ret = solution.DeleteDumplicateNode(&Head);  //注意这边不要直接把DeketeDumplicateNode写入EXPECT_EQ,
                                                      // 因为当expect！=actual时，fprintf会再次打印actual。
                                                      // 若直接写入函数，相当于再执行一次，此时执行的输入已经没有重复的值了，必然返回0！
-    EXPECT_EQ(3, ret, "%d");
+    EXPECT_EQ(2, ret, "%d");
+}
+void test_RegularExpressionMtach(){
+    const char* str1 = "gg";
+    const char* str2 = "gfff";
+    const char* str3 = "ffxgggg";
+    const char* str4 = "fgg";
+    const char* str5 = "xggg";
+    const char* str6 = "fhaksdfh";
+    const char* str7 = "abcdefg";
+    const char* tempstr1 = ".f*g";
+    const char* tempstr2 = ".f*";
+    const char* tempstr3 = "f*.ggf*.g";
+    const char* tempstr4 = "f*gg";
+    const char* tempstr5 = ".ggg";
+    const char* tempstr6 = "........";
+    const char* tempstr7 = "abcdefg";
+    bool ret1 = solution.RegularExpressionMatch(str1, tempstr1);
+    bool ret2 = solution.RegularExpressionMatch(str2, tempstr2);
+    bool ret3 = solution.RegularExpressionMatch(str3, tempstr3);
+    bool ret4 = solution.RegularExpressionMatch(str4, tempstr4);
+    bool ret5 = solution.RegularExpressionMatch(str5, tempstr5);
+    bool ret6 = solution.RegularExpressionMatch(str6, tempstr6);
+    bool ret7 = solution.RegularExpressionMatch(str7, tempstr7);
+    EXPECT_EQ(true, ret1, "%d");
+    EXPECT_EQ(true, ret2, "%d");
+    EXPECT_EQ(true, ret3, "%d");
+    EXPECT_EQ(true, ret4, "%d");
+    EXPECT_EQ(true, ret5, "%d");
+    EXPECT_EQ(true, ret6, "%d");
+    EXPECT_EQ(true, ret7, "%d");
 }
 void test_solution(){
     test_duplicate();
@@ -232,6 +262,7 @@ void test_solution(){
     test_PrintNumber();
     test_DeleteNode();
     test_DeleteDumplicateNode();
+    test_RegularExpressionMtach();
 }
 
 

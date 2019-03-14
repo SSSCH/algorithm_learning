@@ -493,3 +493,39 @@ int MySolution::Solution::DeleteDumplicateNode(ListNode **Head) {
     }
     return DumplicateCount;
 }
+bool MySolution::Solution::RegularExpressionMatch(const char *str, const char *tempstr) {
+    assert(str != nullptr && tempstr != nullptr);
+    int strsize = strlen(str);
+    int IndexForErgodic = 0;
+    int IndexFOrMatch = 0;
+    int IndexForTemp = 0;
+    while (tempstr[IndexForErgodic] != '\0') {
+        if (tempstr[IndexForErgodic] == '.') {
+            for (IndexForTemp; IndexForErgodic>IndexForTemp; ++IndexForTemp) {
+                if (str[IndexFOrMatch] != tempstr[IndexForTemp]) return false;
+                else IndexFOrMatch++;
+            }
+            IndexFOrMatch++;
+            IndexForTemp++;
+        }
+
+        else if (tempstr[IndexForErgodic] == '*') {
+            if ((IndexForErgodic-IndexForTemp) != 1) {
+                for (IndexForTemp; (IndexForErgodic-IndexForTemp) > 1; ++IndexForTemp) {
+                    if (str[IndexFOrMatch] != tempstr[IndexForTemp]) return false;
+                    else IndexFOrMatch++;
+                }
+            }
+            while (str[IndexFOrMatch] == tempstr[IndexForErgodic - 1]) {
+                IndexFOrMatch++;
+            }
+            IndexForTemp+=2;
+        }
+        IndexForErgodic++;
+    }
+    for (IndexForTemp; IndexForTemp <= IndexForErgodic; ++IndexForTemp) {
+        if (str[IndexFOrMatch] != tempstr[IndexForTemp]) return false;
+        else IndexFOrMatch++;
+    }
+    return true;
+}
