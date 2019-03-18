@@ -11,6 +11,9 @@
 #include <math.h>
 #include <stdlib.h>
 #include <array>
+#include <errno.h>
+#define ISDIGITAL(ch) ('0' <= (ch) && (ch) <= '9')
+#define ISDIGITAL1T9(ch) ('1' <= (ch) && (ch) <= '9')
 using std::vector;
 using std::string;
 vector<int> v(3, 7); //= vector<int> v{7, 7, 7}
@@ -526,4 +529,74 @@ bool MySolution::Solution::RegularExpressionMatch(const char *str, const char *t
         else IndexFOrMatch++;
     }
     return true;
+}
+
+bool MySolution::Solution::StrToDigital(const char *str, double *number) {
+    assert(str != nullptr && number != nullptr);
+    int DocNumber = 0;
+    for (int i = 0; str[i] != '\0' ; ++i) {
+        if (!ISDIGITAL(str[i])) {
+            switch (str[i]) {
+                case '+':
+                    if (i == 0 || str[i - 1] == 'e' || str[i - 1] == 'E') break;
+                    else return false;
+                case '-':
+                    if (i == 0 || str[i - 1] == 'e' || str[i - 1] == 'E') break;
+                    else return false;
+                case 'e':
+                    break;
+                case 'E':
+                    break;
+                case '.':
+                    DocNumber++;
+                    if (DocNumber>1) return false;
+                    else break;
+                default:
+                    return false;
+            }
+        }
+    }
+    errno = 0;
+    *number = strtod(str, nullptr);
+    if (errno) {
+        printf("errno:%d\n", errno);
+        return false;
+    }
+
+    return true;
+}
+//判断是否为奇数
+bool MySolution::Solution::JudgeOdd(int number) {
+    return (number & 1) == 1;
+}
+void MySolution::Solution::AdjustArary(int arrary[], int length, bool (*func)(int) ) {
+    assert(arrary != nullptr && func != nullptr);
+    int IndexFront = 0;
+    int IndexBack = length - 1;
+
+    while (IndexFront < IndexBack) {
+        //奇偶
+        if (func(arrary[IndexFront]) && (!func(arrary[IndexBack]))) {
+            IndexFront++;
+            IndexBack--;
+        }
+        //偶奇
+        else if ((!func(arrary[IndexFront])) && func(arrary[IndexBack])) {
+            int tmp = arrary[IndexFront];
+            arrary[IndexFront] = arrary[IndexBack];
+            arrary[IndexBack] = tmp;
+            IndexFront++;
+            IndexBack--;
+        }
+        //偶偶
+        else if((!func(arrary[IndexFront])) && (!func(arrary[IndexBack]))){
+            IndexBack--;
+        }
+        //奇奇
+        else {
+            IndexFront++;
+        }
+
+
+    }
 }

@@ -245,6 +245,53 @@ void test_RegularExpressionMtach(){
     EXPECT_EQ(true, ret6, "%d");
     EXPECT_EQ(true, ret7, "%d");
 }
+void test_StrToDigital(){
+    double number = 0;
+    solution.StrToDigital("123", &number);
+    EXPECT_EQ(123, number, "%d");
+    solution.StrToDigital("1.245235", &number);
+    EXPECT_EQ(1.245235, number, "%d");
+    solution.StrToDigital("0.1e+4", &number);
+    EXPECT_EQ(0.1e+4, number, "%d");
+    solution.StrToDigital("0.1E-4", &number);
+    EXPECT_EQ(0.1E-4, number, "%d");
+    EXPECT_EQ(true, solution.StrToDigital("0123", &number), "%d");
+    EXPECT_EQ(false, solution.StrToDigital("0.e.2", &number), "%d");
+    EXPECT_EQ(false, solution.StrToDigital("0..e", &number), "%d");
+    EXPECT_EQ(false, solution.StrToDigital("0.e.2", &number), "%d");
+    EXPECT_EQ(true, solution.StrToDigital("0e", &number), "%d");
+    EXPECT_EQ(false, solution.StrToDigital("23awef12", &number), "%d");
+    EXPECT_EQ(true, solution.StrToDigital("-0234", &number), "%d");
+    //EXPECT_EQ(false, solution.StrToDigital("e+79797941234124123424123413465", &number), "%d");//to large
+
+}
+void test_AdjustArrary(){
+    int arrary1[] = {1,2,3,4,5,6,7,8,9};
+    const int AdjustedArraty1[] = {1,9,3,7,5,6,4,8,2};
+    int arrary2[] = {2,4,6,8,10};
+    const int AdjustedArraty2[] = {2,4,6,8,10};
+    int arrary3[] = {1,3,5,7,9};
+    const int AdjustedArraty3[] = {1,3,5,7,9};
+    int arrary4[] = {1};
+    const int AdjustedArraty4[] = {1};
+    int arrary5[] = {1,4,6,7,3,6,2,8,9,10};
+    const int AdjustedArraty5[] = {1,9,3,7,6,6,2,4,8,10};
+    solution.AdjustArary(arrary1, 9,MySolution::Solution::JudgeOdd);
+    EXPTCT_EQ_DATA(AdjustedArraty1, arrary1, 9);
+
+    solution.AdjustArary(arrary2, 5, MySolution::Solution::JudgeOdd);
+    EXPTCT_EQ_DATA(AdjustedArraty2, arrary2, 5);
+
+    solution.AdjustArary(arrary3, 5, MySolution::Solution::JudgeOdd);
+    EXPTCT_EQ_DATA(AdjustedArraty3, arrary3, 5);
+
+    solution.AdjustArary(arrary4, 1, MySolution::Solution::JudgeOdd);
+    EXPTCT_EQ_DATA(AdjustedArraty4, arrary4, 1);
+
+    solution.AdjustArary(arrary5, 10, MySolution::Solution::JudgeOdd);
+    EXPTCT_EQ_DATA(AdjustedArraty5, arrary5, 10);
+
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -263,6 +310,8 @@ void test_solution(){
     test_DeleteNode();
     test_DeleteDumplicateNode();
     test_RegularExpressionMtach();
+    test_StrToDigital();
+    test_AdjustArrary();
 }
 
 

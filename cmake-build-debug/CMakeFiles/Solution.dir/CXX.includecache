@@ -25,6 +25,8 @@ stdlib.h
 -
 array
 -
+errno.h
+-
 
 C:/Users/SCH/CLionProjects/algorithm_learning/Solution.h
 stack

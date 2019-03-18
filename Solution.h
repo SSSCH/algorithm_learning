@@ -161,10 +161,26 @@ namespace MySolution{
              * */
              int DeleteDumplicateNode(ListNode** Head);
              /**21.正则表达式的匹配
+              * @三指针，两个用来匹配，一个用来循环
               * @input：@str：要匹配的字符串@tempstr：匹配的模板
               * @retrun:true if match success,otherwise is false
               * */
               bool RegularExpressionMatch(const char* str, const char* tempstr);
+
+              /**22.字符串转数字
+               * @功能考虑齐全
+               * @ input：@str:字符串
+               * @output:@number:匹配后的字符串
+               * @return ：if match retrun true,otherwise return false
+               * */
+               bool StrToDigital(const char* str, double* number);
+
+               /**22.调整数组，使得奇数在前，偶数在后
+                * @breaf双指针,代码的可移植性/可扩展性/可重用性
+                * @param：arrary数组，func函数指针，length数组长度
+              * */
+              static bool JudgeOdd(int number);
+              void AdjustArary(int arrary[], int length, bool(*func)(int));
     };
 
     /***
