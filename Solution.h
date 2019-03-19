@@ -181,6 +181,12 @@ namespace MySolution{
               * */
               static bool JudgeOdd(int number);
               void AdjustArary(int arrary[], int length, bool(*func)(int));
+              /**23.链表倒数第k个节点
+               *@brief双指针，鲁棒性
+               * @param:Head链表头节点，k倒数第k个节点
+               * @return倒数第k个节点的值
+               * */
+               int Find_K_InList(ListNode* Head, int k);
     };
 
     /***

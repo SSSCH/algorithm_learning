@@ -596,7 +596,26 @@ void MySolution::Solution::AdjustArary(int arrary[], int length, bool (*func)(in
         else {
             IndexFront++;
         }
-
-
     }
+}
+int MySolution::Solution::Find_K_InList(ListNode *Head, int k) {
+    assert(Head != nullptr && k > 0);
+    ListNode* TmpNode = Head;
+    ListNode* KNode = Head;
+    int Index_1 = 0;
+    while (TmpNode->M_pNext != nullptr) {
+        if (Index_1 != k-1) {
+            Index_1++;
+        } else {
+            KNode = KNode->M_pNext;
+        }
+        TmpNode = TmpNode->M_pNext;
+    }
+    if (KNode != Head) {
+        return KNode->m_nKey;
+    } else {
+        fprintf(stderr, "k = %d is not exist !!\n",k);
+        return -1;
+    }
+
 }

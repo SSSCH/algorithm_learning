@@ -292,6 +292,31 @@ void test_AdjustArrary(){
     EXPTCT_EQ_DATA(AdjustedArraty5, arrary5, 10);
 
 }
+void test_findKinList(){
+    ListNode* Head = new ListNode;Head->m_nKey = NULL;
+    ListNode* first = new ListNode;first->m_nKey = 1;
+    ListNode* second = new ListNode;second->m_nKey = 2;
+    ListNode* third = new ListNode;third->m_nKey = 3;
+    ListNode* forth = new ListNode;forth->m_nKey = 4;
+    ListNode* fifth = new ListNode;fifth->m_nKey = 5;
+    ListNode* sixth = new ListNode;sixth->m_nKey = 6;
+    Head->M_pNext = first;
+    first->M_pNext = second;
+    second->M_pNext = third;
+    third->M_pNext = forth;
+    forth->M_pNext = fifth;
+    fifth->M_pNext = sixth;
+    sixth->M_pNext = nullptr;
+    EXPECT_EQ(6, solution.Find_K_InList(Head, 1), "%d");
+    EXPECT_EQ(5, solution.Find_K_InList(Head, 2), "%d");
+    EXPECT_EQ(4, solution.Find_K_InList(Head, 3), "%d");
+    EXPECT_EQ(3, solution.Find_K_InList(Head, 4), "%d");
+    EXPECT_EQ(2, solution.Find_K_InList(Head, 5), "%d");
+    EXPECT_EQ(1, solution.Find_K_InList(Head, 6), "%d");
+    EXPECT_EQ(-1, solution.Find_K_InList(Head, 7), "%d");
+    EXPECT_EQ(-1, solution.Find_K_InList(Head, 8), "%d");
+
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -311,7 +336,8 @@ void test_solution(){
     test_DeleteDumplicateNode();
     test_RegularExpressionMtach();
     test_StrToDigital();
-    test_AdjustArrary();
+    test_AdjustArrary();\
+    test_findKinList();
 }
 
 
