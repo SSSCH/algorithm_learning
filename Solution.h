@@ -3,6 +3,9 @@
 //
 #include <stack>
 #include <vector>
+#include <list>
+#include <bits/forward_list.h>
+
 #ifndef ALGORITHM_LEARNING_SOLUTION_H
 
 #define ALGORITHM_LEARNING_SOLUTION_H
@@ -187,6 +190,12 @@ namespace MySolution{
                * @return倒数第k个节点的值
                * */
                int Find_K_InList(ListNode* Head, int k);
+               /**24.判断一个链表中是否有环，如果有的话找出环的入口节点
+                * @brief双指针
+                * @param:Head链表头节点
+                * @return:if has ring, return ringNode
+                * */
+                ListNode* FindRingNode(ListNode* Head);
     };
 
     /***

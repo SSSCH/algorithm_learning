@@ -617,5 +617,38 @@ int MySolution::Solution::Find_K_InList(ListNode *Head, int k) {
         fprintf(stderr, "k = %d is not exist !!\n",k);
         return -1;
     }
-
+}
+ListNode* MySolution::Solution::FindRingNode(ListNode *Head) {
+    if (Head == nullptr) return nullptr;
+    ListNode* Index1 = Head;
+    ListNode* Index2 = Head;
+    int RingNodeNumber = 0;
+    //第一步：判断是否有环，利用双指针确定是否有环
+    while ((Index2->M_pNext != nullptr) && (Index2->M_pNext->M_pNext != nullptr) && (Index1->M_pNext != Index2->M_pNext->M_pNext)) {
+        Index2 = Index2->M_pNext->M_pNext;
+        Index1 = Index1->M_pNext;
+    }
+    //没环
+    if ((Index2->M_pNext == nullptr) || (Index2->M_pNext->M_pNext == nullptr)) return nullptr;
+        //第二步：如果有环，确定环内节点的数目n，利用双指针确定环内节点数目
+    else {//有环
+        Index1 = Index1->M_pNext;
+        Index2 = Index2->M_pNext->M_pNext;
+        do {
+            Index2 = Index2->M_pNext->M_pNext;
+            Index1 = Index1->M_pNext;
+            RingNodeNumber++;
+        } while (Index1 != Index2);
+    }
+    //第三步：找到环的头节点，利用双指针找到头节点
+    Index1 = Head;
+    Index2 = Head;
+    for (int i = 0; i < RingNodeNumber ; ++i) {
+        Index2 = Index2->M_pNext;
+    }
+    while (Index1 != Index2) {
+        Index1 = Index1->M_pNext;
+        Index2 = Index2->M_pNext;
+    }
+    return Index1;
 }

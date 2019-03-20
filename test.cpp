@@ -317,6 +317,24 @@ void test_findKinList(){
     EXPECT_EQ(-1, solution.Find_K_InList(Head, 8), "%d");
 
 }
+void test_FindRingNode(){
+    //forward_list<int> list1 = {1,2,3,4,5,6,7,8,9};
+    ListNode* Head = new ListNode;Head->m_nKey = NULL;
+    ListNode* first = new ListNode;first->m_nKey = 1;
+    ListNode* second = new ListNode;second->m_nKey = 2;
+    ListNode* third = new ListNode;third->m_nKey = 3;
+    ListNode* forth = new ListNode;forth->m_nKey = 4;
+    ListNode* fifth = new ListNode;fifth->m_nKey = 5;
+    ListNode* sixth = new ListNode;sixth->m_nKey = 6;
+    Head->M_pNext = first;
+    first->M_pNext = second;
+    second->M_pNext = third;
+    third->M_pNext = forth;
+    forth->M_pNext = fifth;
+    fifth->M_pNext = sixth;
+    sixth->M_pNext = fifth;
+    EXPECT_EQ(fifth->m_nKey, solution.FindRingNode(Head)->m_nKey, "%d");
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -336,8 +354,9 @@ void test_solution(){
     test_DeleteDumplicateNode();
     test_RegularExpressionMtach();
     test_StrToDigital();
-    test_AdjustArrary();\
+    test_AdjustArrary();
     test_findKinList();
+    test_FindRingNode();
 }
 
 

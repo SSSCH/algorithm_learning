@@ -11,6 +11,10 @@ stack
 -
 vector
 -
+list
+-
+bits/forward_list.h
+-
 
 C:/Users/SCH/CLionProjects/algorithm_learning/test.cpp
 iostream
