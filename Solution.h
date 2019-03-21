@@ -190,12 +190,20 @@ namespace MySolution{
                * @return倒数第k个节点的值
                * */
                int Find_K_InList(ListNode* Head, int k);
+
                /**24.判断一个链表中是否有环，如果有的话找出环的入口节点
-                * @brief双指针
+                * @brief双指针的使用
                 * @param:Head链表头节点
                 * @return:if has ring, return ringNode
                 * */
                 ListNode* FindRingNode(ListNode* Head);
+                /**25.反转链表并且输出反转后链表的头节点
+                 * @brief三指针,递归
+                 * @param Head,链表头节点
+                 * @return 反转后链表头节点
+                 * */
+                ListNode* ReverseList(ListNode* Head);
+
     };
 
     /***

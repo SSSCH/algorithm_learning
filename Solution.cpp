@@ -652,3 +652,18 @@ ListNode* MySolution::Solution::FindRingNode(ListNode *Head) {
     }
     return Index1;
 }
+
+ListNode* MySolution::Solution::ReverseList(ListNode *Head) {
+    assert(Head != nullptr);
+    ListNode* NewHead = nullptr;
+    ListNode* FrontNode = nullptr;
+    ListNode* TargetNode = Head;
+    while (TargetNode != nullptr) {
+        ListNode* TmpNextNode = TargetNode->M_pNext;
+        if (TmpNextNode == nullptr) NewHead = TargetNode;
+        TargetNode->M_pNext = FrontNode;
+        FrontNode = TargetNode;
+        TargetNode = TmpNextNode;
+    }
+    return NewHead;
+}

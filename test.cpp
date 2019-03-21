@@ -335,6 +335,31 @@ void test_FindRingNode(){
     sixth->M_pNext = fifth;
     EXPECT_EQ(fifth->m_nKey, solution.FindRingNode(Head)->m_nKey, "%d");
 }
+void test_ReverseList(){
+    ListNode* Head = new ListNode;Head->m_nKey = NULL;
+    ListNode* first = new ListNode;first->m_nKey = 1;
+    ListNode* second = new ListNode;second->m_nKey = 3;
+    ListNode* third = new ListNode;third->m_nKey = 5;
+    ListNode* forth = new ListNode;forth->m_nKey = 7;
+    ListNode* fifth = new ListNode;fifth->m_nKey = 9;
+    ListNode* sixth = new ListNode;sixth->m_nKey = 11;
+    Head->M_pNext = first;
+    first->M_pNext = second;
+    second->M_pNext = third;
+    third->M_pNext = forth;
+    forth->M_pNext = fifth;
+    forth->M_pNext = fifth;
+    fifth->M_pNext = sixth;
+    sixth->M_pNext = nullptr;
+    EXPECT_EQ(sixth, solution.ReverseList(Head), "%d");
+    ListNode* newHead = sixth;
+    printf("25.Reversed List is : \n");
+    while (newHead->M_pNext != nullptr) {
+        printf("%d\t", newHead->m_nKey);
+        newHead = newHead->M_pNext;
+    }
+    printf("%d\n", newHead->m_nKey);
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -357,6 +382,7 @@ void test_solution(){
     test_AdjustArrary();
     test_findKinList();
     test_FindRingNode();
+    test_ReverseList();
 }
 
 
