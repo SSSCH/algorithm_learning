@@ -653,7 +653,7 @@ ListNode* MySolution::Solution::FindRingNode(ListNode *Head) {
     return Index1;
 }
 
-ListNode* MySolution::Solution::ReverseList(ListNode *Head) {
+ListNode* MySolution::Solution::ReverseList_Recursively(ListNode *Head) {
     assert(Head != nullptr);
     ListNode* NewHead = nullptr;
     ListNode* FrontNode = nullptr;
@@ -666,4 +666,12 @@ ListNode* MySolution::Solution::ReverseList(ListNode *Head) {
         TargetNode = TmpNextNode;
     }
     return NewHead;
+}
+ListNode* MySolution::Solution::ReverseList_Iteratively(ListNode *Head) {
+    if (Head->M_pNext == nullptr || Head == nullptr) return Head;
+    ListNode* TmpNext = Head->M_pNext;
+    Head->M_pNext = nullptr;   //如果不加的话反转后的链表为0，1，3，5，7，9，11，9，11，9，11，9....即存在环节点(原Head->M_pNext 没有指向null)。
+    ListNode* NewHead = ReverseList_Iteratively(TmpNext);
+    TmpNext->M_pNext  = Head;
+    return  NewHead;
 }

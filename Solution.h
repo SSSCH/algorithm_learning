@@ -198,11 +198,14 @@ namespace MySolution{
                 * */
                 ListNode* FindRingNode(ListNode* Head);
                 /**25.反转链表并且输出反转后链表的头节点
-                 * @brief三指针,递归
+                 * @brief1.三指针(迭代),2.递归：这边使用递归是十分巧妙的方法，首先利用递归走到链表的尾节点，然后再更新每个节点的pNext，从而实现链表的反转。而NewNext
+                 * 的值在递归到末端并赋值后就没有发生改变。还有一点需要注意的是：最后递归出来时并不会设置原链表Head的pNext=null;所以可以索性一上来在递归至原链表尾部的过程中就把
+                 * 所有节点的pNext=nullptr。
                  * @param Head,链表头节点
                  * @return 反转后链表头节点
                  * */
-                ListNode* ReverseList(ListNode* Head);
+                ListNode* ReverseList_Recursively(ListNode* Head); //迭代实现
+                ListNode* ReverseList_Iteratively(ListNode* Head); //递归实现
 
     };
 

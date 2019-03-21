@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1281">
-              <caret line="386" selection-start-line="386" selection-end-line="386" />
+            <state relative-caret-position="89">
+              <caret line="361" column="36" selection-start-line="361" selection-start-column="36" selection-end-line="361" selection-end-column="36" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -61,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://D:/software/clion/mingw64/x86_64-w64-mingw32/include/stdio.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7458">
+            <state relative-caret-position="293">
               <caret line="339" selection-start-line="339" selection-end-line="339" />
             </state>
           </provider>
@@ -70,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Solution.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="660" column="4" selection-start-line="660" selection-start-column="4" selection-end-line="660" selection-end-column="4" />
+            <state relative-caret-position="255">
+              <caret line="670" column="51" selection-start-line="670" selection-start-column="51" selection-end-line="670" selection-end-column="51" />
               <folding>
                 <element signature="e#0#2#0" />
                 <element signature="e#39#58#0" expanded="true" />
@@ -83,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Solution.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="204" column="37" selection-start-line="204" selection-start-column="37" selection-end-line="204" selection-end-column="37" />
+            <state relative-caret-position="320">
+              <caret line="202" column="38" selection-start-line="202" selection-start-column="38" selection-end-line="202" selection-end-column="38" />
               <folding>
                 <element signature="e#38#54#0" expanded="true" />
               </folding>
@@ -107,8 +107,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/Solution.h" />
         <option value="$PROJECT_DIR$/test.cpp" />
+        <option value="$PROJECT_DIR$/Solution.h" />
         <option value="$PROJECT_DIR$/Solution.cpp" />
       </list>
     </option>
@@ -206,12 +206,12 @@
       <workItem from="1553045489248" duration="1287000" />
       <workItem from="1553046884173" duration="4368000" />
       <workItem from="1553135120879" duration="5301000" />
-      <workItem from="1553143651183" duration="2975000" />
+      <workItem from="1553143651183" duration="6506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202005000" />
+    <option name="totallyTimeSpent" value="205536000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -237,12 +237,12 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49932975" weight="0.3696884" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49865952" weight="0.23796034" />
+      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49932975" weight="0.5042493" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49865952" weight="0.25779036" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.4546742" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3243626" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.28470254" />
-      <window_info active="true" anchor="bottom" id="调试" order="13" sideWeight="0.49932975" visible="true" weight="0.20538244" />
+      <window_info active="true" anchor="bottom" id="调试" order="13" sideWeight="0.49932975" visible="true" weight="0.2266289" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -279,6 +279,7 @@
       <configuration name="CMakeRunConfiguration">
         <watch expression="IndexNode" language="ObjectiveC" />
         <watch expression="PreNode" />
+        <watch expression="NewHead" />
       </configuration>
     </watches-manager>
   </component>
@@ -416,35 +417,35 @@
     </entry>
     <entry file="file://D:/software/clion/mingw64/x86_64-w64-mingw32/include/stdio.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7458">
+        <state relative-caret-position="293">
           <caret line="339" selection-start-line="339" selection-end-line="339" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="386" selection-start-line="386" selection-end-line="386" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Solution.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="204" column="37" selection-start-line="204" selection-start-column="37" selection-end-line="204" selection-end-column="37" />
+        <state relative-caret-position="320">
+          <caret line="202" column="38" selection-start-line="202" selection-start-column="38" selection-end-line="202" selection-end-column="38" />
           <folding>
             <element signature="e#38#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="361" column="36" selection-start-line="361" selection-start-column="36" selection-end-line="361" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Solution.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="660" column="4" selection-start-line="660" selection-start-column="4" selection-end-line="660" selection-end-column="4" />
+        <state relative-caret-position="255">
+          <caret line="670" column="51" selection-start-line="670" selection-start-column="51" selection-end-line="670" selection-end-column="51" />
           <folding>
             <element signature="e#0#2#0" />
             <element signature="e#39#58#0" expanded="true" />

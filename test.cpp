@@ -351,9 +351,10 @@ void test_ReverseList(){
     forth->M_pNext = fifth;
     fifth->M_pNext = sixth;
     sixth->M_pNext = nullptr;
-    EXPECT_EQ(sixth, solution.ReverseList(Head), "%d");
-    ListNode* newHead = sixth;
-    printf("25.Reversed List is : \n");
+    EXPECT_EQ(sixth, solution.ReverseList_Recursively(Head), "%d");
+    EXPECT_EQ(Head, solution.ReverseList_Iteratively(sixth), "%d");
+    ListNode* newHead = Head;
+    printf("25.after 2times Reversed List is : \n");
     while (newHead->M_pNext != nullptr) {
         printf("%d\t", newHead->m_nKey);
         newHead = newHead->M_pNext;
