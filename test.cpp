@@ -361,6 +361,46 @@ void test_ReverseList(){
     }
     printf("%d\n", newHead->m_nKey);
 }
+void test_Merge2List(){
+    ListNode* Head1 = new ListNode;Head1->m_nKey = 1;
+    ListNode* first1 = new ListNode;first1->m_nKey = 2;
+    ListNode* second1 = new ListNode;second1->m_nKey = 3;
+    ListNode* third1 = new ListNode;third1->m_nKey = 4;
+    ListNode* forth1 = new ListNode;forth1->m_nKey = 5;
+    ListNode* fifth1 = new ListNode;fifth1->m_nKey = 6;
+    ListNode* sixth1 = new ListNode;sixth1->m_nKey = 7;
+    Head1->M_pNext = first1;
+    first1->M_pNext = second1;
+    second1->M_pNext = third1;
+    third1->M_pNext = forth1;
+    forth1->M_pNext = fifth1;
+    forth1->M_pNext = fifth1;
+    fifth1->M_pNext = sixth1;
+    sixth1->M_pNext = nullptr;
+
+    ListNode* Head = new ListNode;Head->m_nKey = 1;
+    ListNode* first = new ListNode;first->m_nKey = 2;
+    ListNode* second = new ListNode;second->m_nKey = 3;
+    ListNode* third = new ListNode;third->m_nKey = 4;
+    ListNode* forth = new ListNode;forth->m_nKey = 5;
+    ListNode* fifth = new ListNode;fifth->m_nKey = 6;
+    ListNode* sixth = new ListNode;sixth->m_nKey = 7;
+    Head->M_pNext = first;
+    first->M_pNext = second;
+    second->M_pNext = third;
+    third->M_pNext = forth;
+    forth->M_pNext = fifth;
+    forth->M_pNext = fifth;
+    fifth->M_pNext = sixth;
+    sixth->M_pNext = nullptr;
+    ListNode* NewHead = solution.Merge2List(Head, Head1);
+    printf("26.after Merged List is : \n");
+    while (NewHead->M_pNext != nullptr) {
+        printf("%d\t", NewHead->m_nKey);
+        NewHead = NewHead->M_pNext;
+    }
+    printf("%d\n", NewHead->m_nKey);
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -384,6 +424,7 @@ void test_solution(){
     test_findKinList();
     test_FindRingNode();
     test_ReverseList();
+    test_Merge2List();
 }
 
 

@@ -206,6 +206,13 @@ namespace MySolution{
                  * */
                 ListNode* ReverseList_Recursively(ListNode* Head); //迭代实现
                 ListNode* ReverseList_Iteratively(ListNode* Head); //递归实现
+                /**26.合并两个递增的链表，合并后任然是递增的
+                 * @brief:双指针
+                 * @param:Head1
+                 * @param:Head2
+                 * @retrun:合并后的链表头节点
+                 * */
+                 ListNode* Merge2List(ListNode* Head1, ListNode* Head2);
 
     };
 

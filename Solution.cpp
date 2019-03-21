@@ -675,3 +675,50 @@ ListNode* MySolution::Solution::ReverseList_Iteratively(ListNode *Head) {
     TmpNext->M_pNext  = Head;
     return  NewHead;
 }
+/*void forLiChenXi(){
+    printf("Li Chen Xi I LOVE YOU......\n");
+    while (1) {
+        printf(" 李李李李李              李李李李李\n");
+        printf("晨晨晨晨晨晨            晨晨晨晨晨晨\n");
+        printf("曦曦曦曦曦曦曦          曦曦曦曦曦曦\n");
+        printf(" 我我我我我我我        我我我我我我我\n");
+        printf("   爱爱爱爱爱爱爱    爱爱爱爱爱爱爱\n");
+        printf("     你你你你你你你你你你你你你你\n");
+        printf("       你你你你你你你你你你你你\n");
+        printf("         你你你你你你你你你你\n");
+        printf("           你你你你你你你你\n");
+        printf("            你你你你你你\n");
+        printf("              你你你你\n");
+        printf("                你你\n");
+        printf("                 你\n");
+    }
+
+}*/
+ListNode* MySolution::Solution::Merge2List(ListNode *Head1, ListNode *Head2) {
+    assert(Head1 != nullptr && Head2 != nullptr);
+    ListNode* NewHead = nullptr;
+    ListNode* NewHeadNode = nullptr;
+    ListNode* IndexNode = nullptr;
+    if (Head1->m_nKey <= Head2->m_nKey) {
+        NewHeadNode = Head1;
+        NewHead = Head1;
+        IndexNode = Head2;
+    } else {
+        NewHeadNode = Head2;
+        NewHead = Head2;
+        IndexNode = Head1;
+    }
+    while (IndexNode != nullptr) {
+        while (!((NewHeadNode->M_pNext == nullptr) || (IndexNode->m_nKey <= NewHeadNode->M_pNext->m_nKey))) {
+            NewHeadNode = NewHeadNode->M_pNext;
+        }
+        ListNode* NextNewNode = NewHeadNode->M_pNext;
+        ListNode* NextIndexNode = IndexNode->M_pNext;
+        NewHeadNode->M_pNext = IndexNode;
+        IndexNode->M_pNext = NextNewNode;
+        IndexNode = NextIndexNode;
+        NewHeadNode = NewHeadNode->M_pNext;
+    }
+    //forLiChenXi();
+    return NewHead;
+}
