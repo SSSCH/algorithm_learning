@@ -1,4 +1,0 @@
-C:/Users/SCH/CLionProjects/algorithm_learning/cmake-build-debug/CMakeFiles/Solution.dir
-C:/Users/SCH/CLionProjects/algorithm_learning/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/SCH/CLionProjects/algorithm_learning/cmake-build-debug/CMakeFiles/algorithm_learning.dir
-C:/Users/SCH/CLionProjects/algorithm_learning/cmake-build-debug/CMakeFiles/edit_cache.dir
