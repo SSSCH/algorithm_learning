@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Solution.dir/Solution.cpp.obj"
   "libSolution.pdb"
-  "libSolution.a"
+  "libSolution.dll"
+  "libSolution.dll.a"
+  "libSolution.dll.manifest"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -4,7 +4,7 @@
 # compile CXX with D:/software/clion/mingw64/bin/g++.exe
 CXX_FLAGS = -g   -std=gnu++11
 
-CXX_DEFINES = 
+CXX_DEFINES = -DSolution_EXPORTS
 
-CXX_INCLUDES = 
+CXX_INCLUDES = @CMakeFiles/Solution.dir/includes_CXX.rsp
 

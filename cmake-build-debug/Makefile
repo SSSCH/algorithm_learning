@@ -142,7 +142,6 @@ Solution.obj: Solution.cpp.obj
 # target to build an object file
 Solution.cpp.obj:
 	$(MAKE) -f CMakeFiles\Solution.dir\build.make CMakeFiles/Solution.dir/Solution.cpp.obj
-	$(MAKE) -f CMakeFiles\algorithm_learning.dir\build.make CMakeFiles/algorithm_learning.dir/Solution.cpp.obj
 .PHONY : Solution.cpp.obj
 
 Solution.i: Solution.cpp.i
@@ -152,7 +151,6 @@ Solution.i: Solution.cpp.i
 # target to preprocess a source file
 Solution.cpp.i:
 	$(MAKE) -f CMakeFiles\Solution.dir\build.make CMakeFiles/Solution.dir/Solution.cpp.i
-	$(MAKE) -f CMakeFiles\algorithm_learning.dir\build.make CMakeFiles/algorithm_learning.dir/Solution.cpp.i
 .PHONY : Solution.cpp.i
 
 Solution.s: Solution.cpp.s
@@ -162,7 +160,6 @@ Solution.s: Solution.cpp.s
 # target to generate assembly for a file
 Solution.cpp.s:
 	$(MAKE) -f CMakeFiles\Solution.dir\build.make CMakeFiles/Solution.dir/Solution.cpp.s
-	$(MAKE) -f CMakeFiles\algorithm_learning.dir\build.make CMakeFiles/algorithm_learning.dir/Solution.cpp.s
 .PHONY : Solution.cpp.s
 
 test.obj: test.cpp.obj

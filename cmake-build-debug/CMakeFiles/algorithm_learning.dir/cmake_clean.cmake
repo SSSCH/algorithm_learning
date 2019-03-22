@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/algorithm_learning.dir/test.cpp.obj"
-  "CMakeFiles/algorithm_learning.dir/Solution.cpp.obj"
   "algorithm_learning.pdb"
   "algorithm_learning.exe"
   "algorithm_learning.exe.manifest"

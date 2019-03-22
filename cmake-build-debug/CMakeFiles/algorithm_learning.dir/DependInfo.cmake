@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/SCH/CLionProjects/algorithm_learning/Solution.cpp" "C:/Users/SCH/CLionProjects/algorithm_learning/cmake-build-debug/CMakeFiles/algorithm_learning.dir/Solution.cpp.obj"
   "C:/Users/SCH/CLionProjects/algorithm_learning/test.cpp" "C:/Users/SCH/CLionProjects/algorithm_learning/cmake-build-debug/CMakeFiles/algorithm_learning.dir/test.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../."
   )
 
 # Targets to which this target links.
