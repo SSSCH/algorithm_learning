@@ -15,9 +15,16 @@
         test_parse_count++;} \
     else {\
         fprintf(stderr, "%s%d\n", __FILE__, __LINE__);\
+        fprintf(stderr, "expect is:\n");\
+        for(int i =0; i < length; i++){\
+            fprintf(stderr, "%d\t", expect[i]);\
+        }\
+        fprintf(stderr, "\n");\
+        fprintf(stderr, "actual is:\n");\
         for(int i =0; i < length; i++){\
             fprintf(stderr, "%d\t", actual[i]);\
         }\
+        fprintf(stderr, "\n");\
     }\
 }while(0)
 
@@ -401,6 +408,18 @@ void test_Merge2List(){
     }
     printf("%d\n", NewHead->m_nKey);
 }
+void test_PrintMatrixClockWise(){
+    int matrix[] = {1,2,3,4,5,
+                    6,7,8,9,10,
+                    11,12,13,14,15,
+                    16,17,18,19,20,
+                    21,22,23,24,25};
+    int matrix1[] = {1,2,3,4,5,10,15,20,25,24,23,22,21,	16,11,6,7,8,9,14,19,18,17,12,13};
+    int* ret = (int*)calloc(25, 4);
+    solution.PrintMatrixClockWise(matrix, 5, 5, ret);
+    EXPTCT_EQ_DATA(matrix1, ret, 25);
+    free(ret);
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -425,6 +444,7 @@ void test_solution(){
     test_FindRingNode();
     test_ReverseList();
     test_Merge2List();
+    test_PrintMatrixClockWise();
 }
 
 

@@ -722,3 +722,51 @@ ListNode* MySolution::Solution::Merge2List(ListNode *Head1, ListNode *Head2) {
     //forLiChenXi();
     return NewHead;
 }
+void _PrintMatrixClockWise(int* Matrix, int col, int row, int cols, int rows, int colLimt, int rowLinmt, int* ret, int index){
+
+    while (colLimt >= 0 && rowLinmt >= 0 && index <=cols*rows) {
+        int sideMin = col;   //行列的最小边界
+        while (row < rowLinmt) {
+            ret[index] = Matrix[col*rows + row];
+            index++;
+            row++;
+        }
+        row--;  //while中多加了一次row
+        col++;  //往下拐，行+1
+        while (col < colLimt) {
+            ret[index] = Matrix[col*rows + row];
+            index++;
+            col++;
+        }
+        col--;   //while中多加了一次行col
+        row--;  //往左拐，列-1
+        while (row >= sideMin) {
+            ret[index] = Matrix[col*rows + row];
+            index++;
+            row--;
+        }
+        row++;
+        col--;  //往上拐，行-1
+        while (col > sideMin) {
+            ret[index] = Matrix[col*rows + row];
+            index++;
+            col--;
+        }
+        col++;
+        row++; //往右拐，列+1
+
+        colLimt--;  //最大行数-1
+        rowLinmt--;  //最大列数-1
+        _PrintMatrixClockWise(Matrix, col, row, cols, rows, colLimt, rowLinmt, ret, index);
+    }
+    return ;
+}
+void MySolution::Solution::PrintMatrixClockWise(int *Matrix, int cols, int rows, int *ret) {
+    assert(Matrix != nullptr && cols > 0 && rows > 0&& ret != nullptr);
+    int index = 0;
+    int col = 0;
+    int row = 0;
+    int colLimt = cols;
+    int rowLimt = rows;
+    _PrintMatrixClockWise(Matrix, col, row, cols, rows, colLimt, rowLimt, ret, index);
+}

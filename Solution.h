@@ -213,7 +213,13 @@ namespace MySolution{
                  * @retrun:合并后的链表头节点
                  * */
                  ListNode* Merge2List(ListNode* Head1, ListNode* Head2);
-
+                 /**27顺时针打印矩阵
+                  * @brief:通过画图让抽象的问题具象化
+                  * @param：matrix输入矩阵
+                  * @param:sidelenth矩阵的边长
+                  * @param：ret输出顺时针打印的矩阵
+                  * */
+                    void PrintMatrixClockWise(int* Matrix,int cols,int rows, int* ret);
     };
 
     /***
