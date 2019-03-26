@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <bits/forward_list.h>
+#include <cassert>
 
 #ifndef ALGORITHM_LEARNING_SOLUTION_H
 
@@ -214,10 +215,11 @@ namespace MySolution{
                  * */
                  ListNode* Merge2List(ListNode* Head1, ListNode* Head2);
                  /**27顺时针打印矩阵
-                  * @brief:通过画图让抽象的问题具象化
+                  * @brief:通过画图让抽象的问题具象化,迭代、递归都行
                   * @param：matrix输入矩阵
-                  * @param:sidelenth矩阵的边长
-                  * @param：ret输出顺时针打印的矩阵
+                  * @param:cols:矩阵的行数，rows：矩阵的列数
+                  * @param:col：打印的起点行坐标，row：打印的起点的列坐标，colLimt:打印的行坐标的最大值，rowLimt：打印的列坐标的最大值
+                  * @param：ret，输出顺时针打印的矩阵的头指针
                   * */
                     void PrintMatrixClockWise(int* Matrix,int cols,int rows, int* ret);
     };
@@ -277,6 +279,44 @@ namespace MySolution{
         }
         ret = stack_for_queuepop.top();
         return ret;
+    }
+    /**28.包含min函数的的栈。
+ * 定义栈的数据节后，在该类型中实现一个能够找到栈的最小值的min函数，且调用min、push、pop的时间复杂度都为o（1）
+ * @brief:类模板编程、辅助栈的构建,辅助栈的pop和push和数据栈的pop和push同进度
+ *@brief:举例让抽象问题具体化
+ * */
+    template <typename T>
+    class StackWithMin {
+    public:
+        //push
+        void push(const T& element);
+        //pop
+        void pop();
+        //min
+        T min();
+
+    private:
+        stack<T> Data;
+        stack<T> Min;
+
+    };
+
+    template <typename T> void MySolution::StackWithMin<T>::push(const T& element) {
+        Data.push(element);
+        if (Min.empty() || (element < Min.top())) {
+            Min.push(element);
+        } else {
+            Min.push(Min.top());
+        }
+    }
+    template <typename T> void MySolution::StackWithMin<T>::pop() {
+        assert(Data.size() > 0 && Min.size() > 0);
+        Data.pop();
+        Min.pop();
+    }
+    template <typename T> T MySolution::StackWithMin<T>::min() {
+        assert(Data.size() > 0 && Min.size() > 0);
+        return Min.top();
     }
 }
 

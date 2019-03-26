@@ -722,13 +722,14 @@ ListNode* MySolution::Solution::Merge2List(ListNode *Head1, ListNode *Head2) {
     //forLiChenXi();
     return NewHead;
 }
+//Matrix, cols,rows,ret不会在递归中改变
 void _PrintMatrixClockWise(int* Matrix, int col, int row, int cols, int rows, int colLimt, int rowLinmt, int* ret, int index){
-
-    while (colLimt >= 0 && rowLinmt >= 0 && index <=cols*rows) {
+    //递归结束的条件：打印到矩阵的最后一圈
+    while (colLimt >= col && rowLinmt >= row && index < cols*rows) {
         int sideMin = col;   //行列的最小边界
         while (row < rowLinmt) {
             ret[index] = Matrix[col*rows + row];
-            index++;
+            index++;  //保存结果的指针
             row++;
         }
         row--;  //while中多加了一次row

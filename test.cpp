@@ -11,7 +11,7 @@
 }while(0)
 #define EXPTCT_EQ_DATA(expect, actual, length)  do{ \
     test_count ++;\
-    if((sizeof(expect)/4) == (length) && memcmp(expect, actual, length-1) == 0) {\
+    if((sizeof(expect)/sizeof(int)) == (length) && (memcmp(expect, actual, (length-1)*sizeof(int)) == 0)) {\
         test_parse_count++;} \
     else {\
         fprintf(stderr, "%s%d\n", __FILE__, __LINE__);\
@@ -44,6 +44,7 @@ static int test_parse_count = 0;
 MySolution::Solution solution;
 
 using namespace std;
+using namespace MySolution;
 void test_duplicate(){
    int numbers[] = {3, 5, 4 ,3, 2, 1};
    int duplication[] = { 0 };
@@ -282,7 +283,7 @@ void test_AdjustArrary(){
     int arrary4[] = {1};
     const int AdjustedArraty4[] = {1};
     int arrary5[] = {1,4,6,7,3,6,2,8,9,10};
-    const int AdjustedArraty5[] = {1,9,3,7,6,6,2,4,8,10};
+    const int AdjustedArraty5[] = {1,9,3,7,6,6,2,8,4,10};
     solution.AdjustArary(arrary1, 9,MySolution::Solution::JudgeOdd);
     EXPTCT_EQ_DATA(AdjustedArraty1, arrary1, 9);
 
@@ -420,6 +421,34 @@ void test_PrintMatrixClockWise(){
     EXPTCT_EQ_DATA(matrix1, ret, 25);
     free(ret);
 }
+void test_StackWithMin(){
+    StackWithMin<int> mystack;
+    mystack.push(7);                    //7
+    EXPECT_EQ(7, mystack.min(), "%d");
+
+    mystack.push(3);                    //7，3
+    EXPECT_EQ(3, mystack.min(), "%d");
+
+    mystack.push(4);                    //7，3，4
+    mystack.push(4);                    //7，3，4，4
+    EXPECT_EQ(3, mystack.min(), "%d");
+
+    mystack.push(1);                    //7，3，4，4，1
+    EXPECT_EQ(1, mystack.min(), "%d");
+
+    mystack.push(5);                    //7，3，4，4，1，5
+    EXPECT_EQ(1, mystack.min(), "%d");
+    mystack.pop();                      //7，3，4，4，1
+    mystack.pop();                        //7，3，4，4
+    EXPECT_EQ(3, mystack.min(), "%d");
+    mystack.pop();                      //7，3，4
+    mystack.pop();                      //7，3
+    mystack.pop();                      //7
+    EXPECT_EQ(7, mystack.min(), "%d");
+    mystack.pop();
+
+
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -445,6 +474,7 @@ void test_solution(){
     test_ReverseList();
     test_Merge2List();
     test_PrintMatrixClockWise();
+    test_StackWithMin();
 }
 
 
