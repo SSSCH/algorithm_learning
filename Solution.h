@@ -19,64 +19,84 @@ namespace MySolution{
     class Solution {
     public:
         /**
-         * 3.数组中的重复数字
-        Parameters:
-        @numbers:an arrary integers
-        @length: the length of arrary numbers
-        @duplication(output):the duplicated number in the arrary numbers
-        @return value : @true if the input is valid, and there are some duplication in the arrary numbers
-        otherwise false
+         * 3.数组中的重复数字。
+         * @brief在一个长度为n的数组里，所有的数字都在0-n-1的范围内。数组中某些数字是重复的，
+         * 但不知道有几个是重复的，也不知道每个数字重复了几次。找出数组中任意一个重复的数字。
+         * @note:空间复杂度为o(1),时间复杂度为o(n);将数字放到对应下标的位置。，重复比较和交换过程，知道发现一个重复的数字。
+         * @param,numbers:an arrary integers
+         *@param,length: the length of arrary numbers
+         *@param,duplication(output):the duplicated number in the arrary numbers
+         *@return value : @true if the input is valid, and there are some duplication in the arrary numbers
+         *otherwise false
          * */
         bool duplicate(int numbers[], int length, int* duplication);
         /**
-            4.二维数组中的查找
-            parameters:
-            @numbers:2d arrarys,@rows:hang,@columns:lie
-            target:the given numbers
-            retutn value:@true if the targets exist, otherwise not exist
+            *4.二维数组中的查找
+            * @brief:在一个二维数组中，每一行都按照从左到右递增，每一列按照从上倒下递增。完成一个函数，输入这样一个二维数组和一个整数，判断该数组是否有该整数。
+            * @note:从可以减小数组范围的角度考虑，选择二维数组的右上角/坐下角作为起点，大于目标数则可以删去一行，小于目标数则可以删去一列。
+            *parameters:@numbers:2d arrarys,@rows:hang,@columns:lie,target:the given numbers
+            *retutn value:@true if the targets exist, otherwise not exist
          * */
         bool find_2dArrary(int* numbers, int rows, int columns, int target);
         /**
          * 5.替换空格
-         * parameters:@string(input)
-         * return:the processed string
+         * @brief:把字符串的每一个空格替换成“%20”。
+         * @note:从时间复杂度和空间复杂度的优化考虑，先遍历字符串算出空格数，然后从后往前重置字符串。这样只需移动字符串一次。
+         * @param:@string(input)
+         * &return:the processed string
          * */
         char* submit_blank(char string[]);
         /***
          6.从尾到头打印链表
-         Parameters:@phead(input):链表头节点
+         @brief:输入链表头节点，从尾到头打印每个节点的值。
+         @note:利用栈或者递归的方式（递归的本质就是栈）就能只遍历链表一次，就输出每个节点的值。
+         @Parama:phead(input):链表头节点
          */
         void PrintListReversing_Iteratively(ListNode* phead);//迭代地，栈实现
         void PrintListReversing_Recursively(ListNode* phead);//递归地，递归实现
         /***
          * 10.斐波那契数列
-         * f(0)= 0, f(1)= 1, f(n)=f(n-1)+f(n-2)*/
+         * f(0)= 0, f(1)= 1, f(n)=f(n-1)+f(n-2)
+         * @brief:输入n，求斐波那契（Fibonacci）数列的第n项。
+         * @note：递归和循环，递归的本质是把一个问题分解成两个或者多个小问题。如果多个小问题存在相互重叠的部分，就存在重复的计算。
+         *        通常应用动态规划解决问题是我们都是用递归的思想分析问题，但递归也存在不足：因为其总是自下而上的循环来实现代码，所以递归分解的子问题中
+         *        会存在大量的重复，如在feibonacci数列中求f（10）要先求f（9）和f（8），求f（9）要先求f（8）和f（7）...所以会有很多重复的节点。
+         *        为了避免重复 计算，我们可以把已经得到的数列中间项保存起来，在下次需要计算的时候先查找一下，如果已经计算过来就不要重复计算了。
+         * */
         long long Fibonacci_Recursively(unsigned int n);  //递归实现
         long long Fibonacci_Iteratively(unsigned int n); //循环实现
         /***
-         * 10.1青蛙跳台阶，一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
+         * 10.1青蛙跳台阶，
+         * @brief：一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
+         * @note：feibonacci的应用。
          * f(n)=f(n-1)+f(n-2),f(1)=1, f(2)=2
          * */
         long long JumpStep(unsigned int n);
         /***
-         * 10.2变态跳台阶，一只青蛙一次可以随意跳n级台阶，求它跳上一个n级台阶有多少种方法。
-         * f(n)=f(n-1)+...+f(1)
+         * 10.2变态跳台阶，
+         * @brief：一只青蛙一次可以随意跳n级台阶，求它跳上一个n级台阶有多少种方法。
+         * @note：f(n)=f(n-1)+...+f(1)。feibonacci的引申。
+         *
          * */
         /**
-         * 10.3矩形覆盖，逻辑原理同为10，10.1：fibonacci数列,实现同10.1
+         * 10.3矩形覆盖
+         * @brief:使用8个2×1的小矩形无重叠 的覆盖一个2×8的大矩形都多少中方法
+         * @note:逻辑原理同为10，10.1：fibonacci数列,实现同10.1
          * */
         long long JumpStepPlus_DynamicPlan(unsigned int n);
         long long JumpStepPlus_Math(unsigned int n);
 
         /**11.快速排序的递归实现与循环实现
-         *
+         *@brief：快速排序的关键在于在数组中选择一个数字，接下来把数组中的数字分为两部分，比该数字小的移到数组的左边，比他大的数字移到数组右边。
+         *@note:双指针；一个负责指向最后一个小于该目标数的指针，一个负责遍历。
          * */
          int _QuickSort(int data[], int lenth, int begin, int end);
          void QuickSort(int data[], int length, int begin, int end);
-         /**12.旋转数组最小值
-          * @修改二分法实现 & 顺序查找实现
-          * @input:@number,输入的旋转数组；@length，数组的长度
-          * @output/return:最小值
+         /**12.旋转数组最小值。
+          * @brief：把一个数组最开始的若干元素搬到数组的末尾，我们称之为旋转数组。输入一个递增的旋转数组，输出该数组的最小值。
+          * @note：修改二分法实现 & 顺序查找实现
+          * @param：input:@number,输入的旋转数组；@length，数组的长度
+          * @return:output/return:最小值
           * */
         int MinNumberInRotateArrary(int RotatArrary[], int length);
         int MinNumberByOrder(int RotatArrary[], int length);
@@ -224,15 +244,16 @@ namespace MySolution{
                  void PrintMatrixClockWise(int* Matrix,int cols,int rows, int* ret);
                  /**29.栈的压入和弹出 序列
                   * @brief:给出一个序列表示栈的 压入顺序，判断另一个序列是不是弹出顺序。
-                  * @brief：举例，找规律
+                  * @brief：举例，找规律,建立辅助栈，彻底明白栈的本质（filo）
                   * @param:list_push:压入序列，list_pop:弹出序列,length:序列长度
                   * @return:是的话返回true，否则返回false
                   * */
                  bool Judge_Match_Stcak(const int* list_push, const int* list_pop, const int length);
     };
-
     /***
      * 9.用两个栈模拟队列
+     * @brief:用两个栈实现队列，实现他的两个函数appendTail和deleteHead，分别完成队列尾部的插入节点和在队列头部删除节点的功能。
+     * @note:类模板的编程，队列（先进先出）和栈（先进后出）的本质
      * */
     template<typename T>
     class CQueue {
