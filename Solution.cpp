@@ -725,7 +725,7 @@ ListNode* MySolution::Solution::Merge2List(ListNode *Head1, ListNode *Head2) {
 //Matrix, cols,rows,ret不会在递归中改变
 void _PrintMatrixClockWise(int* Matrix, int col, int row, int cols, int rows, int colLimt, int rowLinmt, int* ret, int index){
     //递归结束的条件：打印到矩阵的最后一圈
-    while (colLimt >= col && rowLinmt >= row && index < cols*rows) {
+    if(colLimt >= col && rowLinmt >= row && index < cols*rows) {
         int sideMin = col;   //行列的最小边界
         while (row < rowLinmt) {
             ret[index] = Matrix[col*rows + row];
@@ -759,8 +759,7 @@ void _PrintMatrixClockWise(int* Matrix, int col, int row, int cols, int rows, in
         colLimt--;  //最大行数-1
         rowLinmt--;  //最大列数-1
         _PrintMatrixClockWise(Matrix, col, row, cols, rows, colLimt, rowLinmt, ret, index);
-    }
-    return ;
+    } else return ;
 }
 void MySolution::Solution::PrintMatrixClockWise(int *Matrix, int cols, int rows, int *ret) {
     assert(Matrix != nullptr && cols > 0 && rows > 0&& ret != nullptr);
@@ -770,4 +769,20 @@ void MySolution::Solution::PrintMatrixClockWise(int *Matrix, int cols, int rows,
     int colLimt = cols;
     int rowLimt = rows;
     _PrintMatrixClockWise(Matrix, col, row, cols, rows, colLimt, rowLimt, ret, index);
+}
+bool MySolution::Solution::Judge_Match_Stcak(const int* list_push, const int* list_pop, const int length) {
+    assert((length > 0) && (list_pop != nullptr) && (list_push != nullptr));
+    int index = 0;
+    stack<int> tmp;
+    for (int i = 0; i < length; ++i) {
+        if (tmp.empty() || list_pop[i] != tmp.top()) {
+            do {
+                if (index == length) return false;
+                tmp.push(list_push[index]);
+                index++;
+            } while (list_pop[i] != tmp.top());
+            tmp.pop();
+        } else tmp.pop();
+    }
+    return true;
 }

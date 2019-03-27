@@ -221,7 +221,14 @@ namespace MySolution{
                   * @param:col：打印的起点行坐标，row：打印的起点的列坐标，colLimt:打印的行坐标的最大值，rowLimt：打印的列坐标的最大值
                   * @param：ret，输出顺时针打印的矩阵的头指针
                   * */
-                    void PrintMatrixClockWise(int* Matrix,int cols,int rows, int* ret);
+                 void PrintMatrixClockWise(int* Matrix,int cols,int rows, int* ret);
+                 /**29.栈的压入和弹出 序列
+                  * @brief:给出一个序列表示栈的 压入顺序，判断另一个序列是不是弹出顺序。
+                  * @brief：举例，找规律
+                  * @param:list_push:压入序列，list_pop:弹出序列,length:序列长度
+                  * @return:是的话返回true，否则返回false
+                  * */
+                 bool Judge_Match_Stcak(const int* list_push, const int* list_pop, const int length);
     };
 
     /***

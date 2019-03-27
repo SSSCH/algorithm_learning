@@ -449,6 +449,28 @@ void test_StackWithMin(){
 
 
 }
+void test_Judge_Match_Stack(){
+    int list_push[] = {1,2,3,4,5,6};
+    int list_pop1[] = {6,5,4,3,2,1};
+    int list_pop2[] = {5,4,3,2,1,6};
+    int list_pop3[] = {4,6,5,3,2,1};
+
+    int list_pop4[] = {6,5,4,3,1,2};
+    int list_pop5[] = {6,4,3,2,1,5};
+    int list_pop6[] = {4,3,2,6,1,5};
+    int list_pop7[] = {5,6,4,2,1,3};
+    int list_pop8[] = {4,3,6,5,1,2};
+    EXPECT_EQ(true, solution.Judge_Match_Stcak(list_push, list_pop1, 6), "%d");
+    EXPECT_EQ(true, solution.Judge_Match_Stcak(list_push, list_pop2, 6), "%d");
+    EXPECT_EQ(true, solution.Judge_Match_Stcak(list_push, list_pop3, 6), "%d");
+
+    EXPECT_EQ(false, solution.Judge_Match_Stcak(list_push, list_pop4, 6), "%d");
+    EXPECT_EQ(false, solution.Judge_Match_Stcak(list_push, list_pop5, 6), "%d");
+    EXPECT_EQ(false, solution.Judge_Match_Stcak(list_push, list_pop6, 6), "%d");
+    EXPECT_EQ(false, solution.Judge_Match_Stcak(list_push, list_pop7, 6), "%d");
+    EXPECT_EQ(false, solution.Judge_Match_Stcak(list_push, list_pop8, 6), "%d");
+
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -475,6 +497,7 @@ void test_solution(){
     test_Merge2List();
     test_PrintMatrixClockWise();
     test_StackWithMin();
+    test_Judge_Match_Stack();
 }
 
 
