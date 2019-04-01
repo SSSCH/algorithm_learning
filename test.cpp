@@ -471,6 +471,80 @@ void test_Judge_Match_Stack(){
     EXPECT_EQ(false, solution.Judge_Match_Stcak(list_push, list_pop8, 6), "%d");
 
 }
+void test_EQ_ComplexList(ComplexListNode* actual, ComplexListNode* expect){
+  test_count ++;
+  ComplexListNode* oldHead = expect;
+  ComplexListNode* cloneHead = actual;
+  bool IsDumplicateSuccess = false;
+  while(actual != nullptr && expect != nullptr){
+    if(((expect->m_nKey) == (actual->m_nKey)) && ((expect->M_pAny == nullptr && actual->M_pAny == nullptr) ||((expect->M_pAny->m_nKey) == (actual->M_pAny->m_nKey)))){
+      expect = expect->M_pNext;
+      actual = actual->M_pNext;
+    }else{
+      IsDumplicateSuccess = false;
+      break;
+    }
+  }
+  IsDumplicateSuccess = (expect == nullptr) && (actual == nullptr);
+  if(!IsDumplicateSuccess){
+    fprintf(stderr, "%s%d\n", __FILE__, __LINE__);
+    fprintf(stderr, "key for old ComplexList:\n");
+    while(oldHead != nullptr){
+      fprintf(stderr, "%d,", oldHead->m_nKey);
+      if (oldHead->M_pAny != nullptr) {
+        fprintf(stderr, "%d\t", oldHead->M_pAny->m_nKey);
+      }else fprintf_s(stderr, "\t");
+      oldHead = oldHead->M_pNext;
+    }
+    fprintf(stderr, "\n");
+    fprintf(stderr, "key for clone ComplexList:\n");
+    while(cloneHead != nullptr){
+      fprintf(stderr, "%d,", cloneHead->m_nKey);
+      if (cloneHead->M_pAny != nullptr) {
+        fprintf(stderr, "%d\t", cloneHead->M_pAny->m_nKey);
+      }else fprintf_s(stderr, "\t");
+      cloneHead = cloneHead->M_pNext;
+    }
+    fprintf(stderr, "\n");
+  }else test_parse_count++;
+}
+
+void test_DumplicateComplexList(){
+  auto Head = new ComplexListNode;
+  auto first = new ComplexListNode;
+  auto second = new ComplexListNode;
+  auto third = new ComplexListNode;
+  auto forth = new ComplexListNode;
+  auto fifth = new ComplexListNode;
+  auto sixth = new ComplexListNode;
+    Head->m_nKey = 1;
+    Head->M_pNext = first;
+    Head->M_pAny = second;
+    first->m_nKey = 3;
+    first->M_pNext = second;
+    first->M_pAny = third;
+    second->m_nKey = 5;
+    second->M_pNext = third;
+    second->M_pAny = forth;
+    third->m_nKey = 3;
+    third->M_pNext = forth;
+    third->M_pAny = fifth;
+    forth->m_nKey = 4;
+    forth->M_pNext = fifth;
+    forth->M_pAny = nullptr;
+    fifth->m_nKey = 1;
+    fifth->M_pNext = sixth;
+    fifth->M_pAny = first;
+    sixth->m_nKey = 5;
+    sixth->M_pNext = nullptr;
+    sixth->M_pAny = second;
+    ComplexListNode* CloneHead = nullptr;
+    ComplexListNode* CloneHead1 = nullptr;
+    solution.DumplicateComplexList_HashMap(Head, &CloneHead);
+    solution.DumplicateComplexList(Head, &CloneHead1);
+    test_EQ_ComplexList(CloneHead, Head);
+    test_EQ_ComplexList(CloneHead1, Head);
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -498,6 +572,7 @@ void test_solution(){
     test_PrintMatrixClockWise();
     test_StackWithMin();
     test_Judge_Match_Stack();
+    test_DumplicateComplexList();
 }
 
 

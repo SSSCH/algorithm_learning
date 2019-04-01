@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <array>
 #include <errno.h>
+#include <map>
 #define ISDIGITAL(ch) ('0' <= (ch) && (ch) <= '9')
 #define ISDIGITAL1T9(ch) ('1' <= (ch) && (ch) <= '9')
 using std::vector;
@@ -785,4 +786,60 @@ bool MySolution::Solution::Judge_Match_Stcak(const int* list_push, const int* li
         } else tmp.pop();
     }
     return true;
+}
+void MySolution::Solution::DumplicateComplexList_HashMap(ComplexListNode *Head, ComplexListNode **CloneHead) {
+  assert(Head != nullptr && CloneHead != nullptr);
+  map<ComplexListNode*, ComplexListNode*> TmpMap;
+  auto tmpNode = Head;
+  *CloneHead = new ComplexListNode;
+  auto cloneNode = *CloneHead;
+    //第一步：将Head的pNext进行复制，并且建立pAny的哈希表。
+    while (tmpNode != nullptr) {
+      cloneNode->m_nKey = tmpNode->m_nKey;
+      if (tmpNode->M_pNext != nullptr) {
+        cloneNode->M_pNext = new ComplexListNode;
+      } else {
+        cloneNode->M_pNext = nullptr;
+      }
+      TmpMap[tmpNode] = cloneNode;
+      cloneNode = cloneNode->M_pNext;
+      tmpNode = tmpNode->M_pNext;
+    }
+    //第二步：复制pAny
+    tmpNode = Head;
+    cloneNode = *CloneHead;
+  while (tmpNode != nullptr) {
+    cloneNode->M_pAny = TmpMap[tmpNode->M_pAny];
+    cloneNode = cloneNode->M_pNext;
+    tmpNode = tmpNode->M_pNext;
+  }
+}
+void MySolution::Solution::DumplicateComplexList(ComplexListNode *Head, ComplexListNode **CloneHead) {
+  assert(Head != nullptr && CloneHead != nullptr);
+  auto oldNode = Head;
+  //第一步：复制pNext并将其接在原链表被复制的节点后面。
+  while (oldNode != nullptr) {
+    auto cloneNode = new ComplexListNode;
+    cloneNode->m_nKey = oldNode->m_nKey;
+    cloneNode->M_pNext = oldNode->M_pNext;
+    oldNode->M_pNext = cloneNode;
+    oldNode = cloneNode->M_pNext;
+  }
+  *CloneHead  = Head->M_pNext;
+  oldNode = Head;
+  //第二步：复制pAny
+  while (oldNode != nullptr) {
+    oldNode->M_pNext->M_pAny = oldNode->M_pAny;
+    oldNode = oldNode->M_pNext->M_pNext;
+  }
+  //第三步：将复制链表拆下来
+  oldNode = Head;
+  while (oldNode->M_pNext->M_pNext != nullptr) {
+    ComplexListNode *tmp = oldNode->M_pNext;
+    oldNode->M_pNext = oldNode->M_pNext->M_pNext;
+    tmp->M_pNext = oldNode->M_pNext->M_pNext;
+    oldNode = oldNode->M_pNext;
+
+  }
+  oldNode->M_pNext = nullptr;
 }

@@ -15,6 +15,11 @@ struct ListNode{
     int m_nKey;
     ListNode* M_pNext;
 };
+struct ComplexListNode{
+    int m_nKey;
+    ComplexListNode* M_pNext;
+    ComplexListNode* M_pAny;
+};
 namespace MySolution{
     class Solution {
     public:
@@ -249,6 +254,14 @@ namespace MySolution{
                   * @return:是的话返回true，否则返回false
                   * */
                  bool Judge_Match_Stcak(const int* list_push, const int* list_pop, const int length);
+                 /**30.复杂链表的复制
+                  * @brief:输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个指向链表中任意一个节点，包括null），返回赋值后的复杂链表的head
+                  * @note：方法1：利用哈希表，o（n）/o(n);方法2：分治思想，不需要辅助空间，时间复杂度为o(n)
+                  * @param:Head：原链表头节点
+                  * @param:CloneHead:复制的复杂链表的头节点的指针。注意：返回值的类型是指针，所以传参类型是ComplexListNode**
+                  * */
+                  void DumplicateComplexList_HashMap(ComplexListNode* Head, ComplexListNode** CloneHead);
+                  void DumplicateComplexList(ComplexListNode* Head, ComplexListNode** CloneHead);
     };
     /***
      * 9.用两个栈模拟队列
