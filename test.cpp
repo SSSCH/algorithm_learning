@@ -545,6 +545,11 @@ void test_DumplicateComplexList(){
     test_EQ_ComplexList(CloneHead, Head);
     test_EQ_ComplexList(CloneHead1, Head);
 }
+void test_string_arrange(){
+  char string1[]= {'a','b','c','\0'};
+
+  solution.StringArrange(string1);
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -573,6 +578,7 @@ void test_solution(){
     test_StackWithMin();
     test_Judge_Match_Stack();
     test_DumplicateComplexList();
+    test_string_arrange();
 }
 
 

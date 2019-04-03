@@ -262,6 +262,15 @@ namespace MySolution{
                   * */
                   void DumplicateComplexList_HashMap(ComplexListNode* Head, ComplexListNode** CloneHead);
                   void DumplicateComplexList(ComplexListNode* Head, ComplexListNode** CloneHead);
+                  /**31.字符串的排列
+                   * @brief:输入一个字符串，输出该字符串的所有排列组合。
+                   * @note:全排列/生成字典；可用递归/迭代/回溯法解决
+                   * @param:pStr:整个字符串的第一个字符
+                   * @param:pBegin:指向执行排列操作的字符串的第一个字符
+                   * */
+                   //递归法
+                  void _StringArrange(char* pStr, char* pBegin);
+                  void StringArrange(char* pStr);
     };
     /***
      * 9.用两个栈模拟队列

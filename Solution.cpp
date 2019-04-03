@@ -25,6 +25,7 @@ void Swap(int* a, int* b){
     *a = *b;
     *b = tmp;
 }
+
 void swap(int nums[], int j, int i){
     assert(nums);
     int tmp = nums[j];
@@ -842,4 +843,27 @@ void MySolution::Solution::DumplicateComplexList(ComplexListNode *Head, ComplexL
 
   }
   oldNode->M_pNext = nullptr;
+}
+void MySolution::Solution::_StringArrange(char *pStr, char *pBegin) {
+  if (*pBegin == '\0') {
+    printf("%s\t", pStr);
+  } else {
+      for (char* Index = pBegin; *Index != '\0'; Index++) {
+          char tmp = *Index;
+          *Index = *pBegin;
+          *pBegin = tmp;
+          _StringArrange(pStr, pBegin+1);
+          tmp = *Index;
+          *Index = *pBegin;
+          *pBegin = tmp;
+      }
+  }
+
+}
+void MySolution::Solution::StringArrange(char* pStr) {
+    assert(pStr != nullptr);
+    char* pBegin = pStr;
+    cout<< "after string arrange:"<< endl;
+    _StringArrange(pStr, pBegin);
+    cout << endl;
 }
