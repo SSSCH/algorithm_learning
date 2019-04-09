@@ -408,7 +408,7 @@ double  MySolution::Solution::PowerWithUnsignedExpenent(double Base, unsigned in
     if (Expenent == 0) {
         return 1;
     }
-    result = PowerWithUnsignedExpenent(Base, Expenent >> 1);
+    result = PowerWithUnsignedExpenent(Base, Expenent >> 1); //>> 1:除以2
     result *= result;
     if (Expenent & 0x1) { //判断奇偶性
         result *= Base;
@@ -431,7 +431,7 @@ bool MySolution::Solution::IncreaseNumber(char *Number) {
 }
 void MySolution::Solution::_PrintNmber(char *Number) {
     for (int i = 0; i < strlen(Number); ++i) {
-        if (Number[i] != '0'){
+        if (Number[i] != '0'){  //从第一个非0的数字开始打印
             Number +=i;  //注意，这边Number的增加只是传参过来的拷贝值，实际的Number不受影响；若想实际的Number也增加的话应该传char**
             break;
         }
@@ -469,11 +469,13 @@ void MySolution::Solution::DeletNode(ListNode **Head, ListNode *ToBeDeletde) {
 int MySolution::Solution::DeleteDumplicateNode(ListNode **Head) {
     assert(Head != nullptr && *Head != nullptr);
     int DumplicateCount = 0;
-    ListNode* IndexNode = *Head;
-    ListNode* PreNode = *Head;
+    ListNode* IndexNode = *Head; //索引节点
+    ListNode* PreNode = *Head;  //保存索引节点的前一个节点
     while (IndexNode->M_pNext != nullptr) {
+      //判断是否重复
         if (IndexNode->m_nKey == IndexNode->M_pNext->m_nKey) {
-            DumplicateCount++;
+            DumplicateCount++; //重复节点计数
+            //删除重复节点
             while (IndexNode->M_pNext != nullptr &&(IndexNode->m_nKey == IndexNode->M_pNext->m_nKey)) {
                 ListNode* tmpNode = IndexNode;
                 IndexNode = IndexNode->M_pNext;
@@ -481,17 +483,18 @@ int MySolution::Solution::DeleteDumplicateNode(ListNode **Head) {
                 tmpNode = nullptr;
             }
             PreNode->M_pNext = IndexNode->M_pNext;
+          //重复节点还剩一个，把它删了，此时重复节点不是最后一个节点
             if (IndexNode->M_pNext != nullptr) {
                 ListNode* tmpNode = IndexNode;
                 IndexNode = IndexNode->M_pNext;
                 delete tmpNode;
                 tmpNode = nullptr;
-            } else {
+            } else { //重复节点是最后一个节点
                 delete IndexNode;
                 IndexNode = nullptr;
                 return DumplicateCount;
             }
-        } else {
+        } else { //不重复
             PreNode = IndexNode;
             IndexNode = IndexNode->M_pNext;
         }
@@ -500,10 +503,11 @@ int MySolution::Solution::DeleteDumplicateNode(ListNode **Head) {
 }
 bool MySolution::Solution::RegularExpressionMatch(const char *str, const char *tempstr) {
     assert(str != nullptr && tempstr != nullptr);
-    int IndexForErgodic = 0; //用于循环
+    int IndexForErgodic = 0; //用于索引/遍历
     int IndexFOrMatch = 0;  //指向str将要对比的第一个指针
     int IndexForTemp = 0;   //指向tempstr将要对比的第一个指针
     while (tempstr[IndexForErgodic] != '\0') {
+      //匹配“.”
         if (tempstr[IndexForErgodic] == '.') {
             for (IndexForTemp; IndexForErgodic>IndexForTemp; ++IndexForTemp) {
                 if (str[IndexFOrMatch] != tempstr[IndexForTemp]) return false;
@@ -512,6 +516,7 @@ bool MySolution::Solution::RegularExpressionMatch(const char *str, const char *t
             IndexFOrMatch++;
             IndexForTemp++;
         }
+        //匹配“*”
         else if (tempstr[IndexForErgodic] == '*') {
             for (IndexForTemp; (IndexForErgodic-IndexForTemp) > 1; ++IndexForTemp) {
                 if (str[IndexFOrMatch] != tempstr[IndexForTemp]) return false;
@@ -522,15 +527,14 @@ bool MySolution::Solution::RegularExpressionMatch(const char *str, const char *t
             }
             IndexForTemp+=2;
         }
-
         IndexForErgodic++;
-
     }
+    //模板的索引指针匹配完毕，将剩余的部分一一对比
     for (IndexForTemp; IndexForTemp <= IndexForErgodic; ++IndexForTemp) {
         if (str[IndexFOrMatch] != tempstr[IndexForTemp]) return false;
         else IndexFOrMatch++;
     }
-    return true;
+  return true;
 }
 
 bool MySolution::Solution::StrToDigital(const char *str, double *number) {
@@ -866,4 +870,23 @@ void MySolution::Solution::StringArrange(char* pStr) {
     cout<< "after string arrange:"<< endl;
     _StringArrange(pStr, pBegin);
     cout << endl;
+}
+bool MySolution::Solution::MoreThanHalfNumber(int *Number, int *targetNumber, int length) {
+  assert(Number != nullptr && targetNumber != nullptr && length > 0);
+  int MaxSize = 0;
+  int MaxNumber = 0;
+  map<int, int> m_map;
+  for (int i = 0; i < length ; ++i) {
+    ++m_map[Number[i]];
+  }
+  for (const auto &number : m_map) {
+    if (number.second > MaxSize) {
+      MaxNumber = number.first;
+      MaxSize = number.second;
+    }
+  }
+  if (MaxSize > length/2) {
+    *targetNumber = MaxNumber;
+    return true;
+  } else return false;
 }

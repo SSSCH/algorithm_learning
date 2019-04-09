@@ -107,15 +107,18 @@ namespace MySolution{
         int MinNumberByOrder(int RotatArrary[], int length);
 
         /**13字符矩阵中的路径
-         * @回溯算法
-         * @input:matrix：字符数组
-         * rows：列数
-         * row：当前列坐标
-         * cols：行数
-         * col：当前行坐标
-         * str：需要找到的路径
-         * PathCharIdex:用于指示str的下标，表示当前正在 寻找哪个字母的路径
-         * IsMarked：用于标记矩阵中的某一位是否已经走过，走过则为true，否则为false
+         * @brief：判断一个矩阵中是否包含在一条某字符串所有的字符的路径。路径可以从矩阵任意一格开始，每一步可以在矩阵中
+         * 上、下、左、右移动一格。如果一条路径经过了矩阵中的某一格，那么该路径就不能再次进入该格子。
+         * @note：回溯算法；回溯算法是蛮力法的升级版，它从解决问题的每一步的所有可能选项里系统地选择出一个可行的解决办法。
+         * 回溯法适合解决由多个步骤组成的问题，且每一个步骤都包含多个选项。
+         * @param:matrix：字符数组
+         * @param:rows：列数
+         * @param:row：当前列坐标
+         * @param:cols：行数
+         * @param:col：当前行坐标
+         * @param:str：需要找到的路径
+         * @param:PathCharIdex:用于指示str的下标，表示当前正在 寻找哪个字母的路径
+         * @param:IsMarked：用于标记矩阵中的某一位是否已经走过，走过则为true，否则为false
          * @return:true:路径存在，otherwise not exist
          * */
         bool _FindPathInMatrix(char* matrix, int col, int cols, int row, int rows, char* str, int* PathCharIdex, bool *IsMarked);
@@ -123,25 +126,30 @@ namespace MySolution{
 
         /**
          * 14.机器人运动范围
-         * @题目描述：在m×n的方格中，机器人从坐标（0,0）开始移动，可上下左右动，但一个坐标只能走一次，而且不能进入坐标位数之和>k的格子。问：机器人能够到达多少个格子
-         * @回溯算法
-         * @input：rows:列数
-         * row：当前列坐标
-         * cols：行数
-         * col：当前行坐标
-         * k：限制值
-         * IsMarked（两个作用合一）:1.用于标记某一位置是否走过，走过为true，否则false；2.同时也用于记录一共走过了多少格子，走过的就对应索引值+1，最后遍历chessboard得出到达的格子数
-         * @output：机器人能够到达的格子数
+         * @brief：在m×n的方格中，机器人从坐标（0,0）开始移动，可上下左右动，但一个坐标只能走一次，
+         * 而且不能进入坐标位数之和>k的格子。问：机器人能够到达多少个格子.如k=18时，能进（35，37），因为3+5+3+7=18.
+         * @note:回溯算法
+         * @param:rows:列数
+         * @param:row：当前列坐标
+         * @param:cols：行数
+         * @param:col：当前行坐标
+         * @param:k：限制值
+         * @param:IsMarked（两个作用合一）:1.用于标记某一位置是否走过，走过为true，否则false；2.同时也用于记录一共走过了多少格子，走过的就对应索引值+1，最后遍历chessboard得出到达的格子数
+         * @return：机器人能够到达的格子数
          * */
-        int DigitalSum(int number);
+        int DigitalSum(int number); //数字各位之和
         void _RobotRunRange(int col, int cols, int row, int rows, int k, int* IsMarked);
         int RobotRunRange(int cols, int rows, int k);
 
         /**
          * 15.剪绳子
-         * @题目描述：将长度为m的绳子减为任意n段，求各段长度乘积的最大值。（m>1，n>1为整数）
-         * @动态规划，@贪婪算法
-         *@input:@length:绳子长度
+         * @brief：将长度为m的绳子减为任意n段，求各段长度乘积的最大值。（m>1，n>1为整数）
+         * @note:动态规划.通常求一个问题的最优解（最大值或者最小值），且该问题能够分解成若干个子问题，子问题之间
+         * 还有重叠的更小的子问题时，就可以考虑用动态规划解决。
+         * @note:贪婪算法：每一步都做出一个贪婪的最优选择，基于这个选择，我们能够得到最优解。
+         * @note:需要我们将一个具体的场景抽象成一个能够用动态规划或者贪婪算法解决的模型。
+         * 关键是要具备从上到下分析问题、从下到上解决问题的能力，以及扎实的数学基本功。
+         *@param:length:绳子长度
          *@return：各段长度乘积最大值
          * */
          //动态规划
@@ -150,52 +158,73 @@ namespace MySolution{
         unsigned int CutRope_GreedyAlgorthm(int length);
 
         /**16.二进制中1的个数
-         * @位运算
-         * @题目描述：输入一个整数，输出该二进制数中1的个数
-         * @input:无符号整数
+         * @brief：输入一个整数，输出该二进制数中1的个数
+         * @note:位运算
+         * @note：统计二进制数中1的个数可以解决很多问题。如：判断一个整数是不是2的整数次方（二进制数只有一个1）；输入两个数m和n，
+         * 计算需要改变m的二进制表示中的多少位才能得到n（先异或，在求1的个数）。
+         * @note：编程语言、数据结构（数组、字符串、堆、栈、队列、链表、树等等）、算法（查找、排序、动态规划、回溯法、贪婪算法、时间/空间复杂度）
+         * @param:number:无符号整数
          * @return：1的个数
          * */
-         //迭代，循环32次
+         //迭代，循环32次。不能右移，负数会补位。
          int Find_1_InNumber(unsigned int number);
          //迭代，多少个1就循环多少次
          int Find_1_InNumberX(unsigned int number);
 
          /**
           * 17.数值的整数次方值
-          * @考察1.代码的规范性：书写清晰；命名规范；布局清晰2.代码的完整性：功能测试；边界测试；负面测试3.错误处理方法：返回值；全局变量；抛出异常
-          * @input：底数&指数
+          * @brief:实现库函数:数值的整数次方值。
+          * @note：普通做法是进行(Expenent-1)次乘法。更好的方法是可以利用动态规划思想：求Expenent/2的指数值。即利用公式：
+          * a^n = {a^n-2 * a^n-2 //n为偶数
+          *       {a^n-2 * a^n-2 * a  //n为奇数
+          * @note:高质量代码三要素：
+          * 1.代码的规范性：书写清晰；布局清晰；命名合理；
+          * 2.代码的完整性：功能测试；边界测试；负面测试；
+          * 3.错误处理方法：返回值；全局变量；抛出异常
+          * @param：base:底数,exponent:指数
           * @return：运算结果
           * */
           double Power(double Base, int Exponent);
           double PowerWithUnsignedExpenent(double Base, unsigned int Expenent);
 
           /**18.打印1-n位最大的整数
-           * @解决大数问题：1.用字符串模拟数学加减2.字符串的表示
-           * @input：位数n
-           * @return：打印1-n位最大的整数
+           * @brief:输入数字n，按顺序打印出从1到n位的最大十进制数。如：n=2,打印1，2，3.。。。99
+           * @note:解决大数问题：1.用字符串模拟数学加减 2.字符串的表示
+           * @note:遵循单一职责原则，一个模块只负责一个功能。IncreaseNumber（）负责生成模拟加减的字符串；_printNumber负责打印该字符串。
+           * @param：n:最大的位数n
+           * @param：Number:用于存放字符串的数组
            * */
            bool IncreaseNumber(char* Number);
            void _PrintNmber(char* Number);
            void PrintNumber(int n);
 
            /**19.删除链表任意节点，o（1）时间
-            * @input:@Head:链表头节点@ToBeDeleted：需要被删除的节点
-            *@该算法会导致不能连续删除相邻的节点
+            * @brief：最直接的方法是遍历链表，找到要删除的节点的前一个节点和后一个节点。这样时间复杂度为o（n）
+            * @note：通过节点替换（覆盖），来实现删除节点
+            * @note：o(1)方法有个问题：无法再删除已经删除了的节点的下一个节点，即（不能删除两个相邻的节点）
+            * @param:Head:链表头节点
+            * @param:ToBeDeleted：需要被删除的节点
             * */
             void DeletNode(ListNode** Head, ListNode* ToBeDeletde);
 
             /**20.删除链表重复的节点,且重复的节点是连续的
-             * @input:@Head：链表头节点
+             * @brief:在一个排序链表中，存在连续的重复节点，删除链表中重复的节点。
+             * @note：考察对链表的理解和编程能力，重复节点可能出现在链表头、中间、尾部位置，也可能没有重复节点。
+             * 如何删除重复节点（如何重置删除重复节点后的链表，即需要（双指针）保存一个PreNode（非重复节点指针）和一个IndexNode（索引指针））
+             *@param:@Head：链表头节点
              *@return:重复节点的个数
              * */
              int DeleteDumplicateNode(ListNode** Head);
              /**21.正则表达式的匹配
-              * @三指针，两个用来匹配，一个用来循环
-              * @input：@str：要匹配的字符串@tempstr：匹配的模板
+              * @brief:实现一个函数，用于匹配包含“*”和“.”的正则表达式。模式中的“.”可以匹配任意一个字符，而“*”匹配表示
+              * 它前面的字符可以出现任意次数（含0次）。
+              * @note：三指针，两个用来匹配，一个用来循环
+              * @note：可以用有限状态机来建模
+              * @param：str：要匹配的字符串
+              * @param：tempstr：匹配的模板
               * @retrun:true if match success,otherwise is false
               * */
               bool RegularExpressionMatch(const char* str, const char* tempstr);
-
               /**22.字符串转数字
                * @功能考虑齐全
                * @ input：@str:字符串
@@ -264,13 +293,25 @@ namespace MySolution{
                   void DumplicateComplexList(ComplexListNode* Head, ComplexListNode** CloneHead);
                   /**31.字符串的排列
                    * @brief:输入一个字符串，输出该字符串的所有排列组合。
-                   * @note:全排列/生成字典；可用递归/迭代/回溯法解决
+                   * @note:全排列/生成字典；可用递归/迭代/回溯法解决；对于那些按照一定要求摆放数字或者字母的题目，
+                   * 我们可以先求出全排列，然后一一判断每个排列是否满足要求。
                    * @param:pStr:整个字符串的第一个字符
                    * @param:pBegin:指向执行排列操作的字符串的第一个字符
                    * */
                    //递归法
                   void _StringArrange(char* pStr, char* pBegin);
                   void StringArrange(char* pStr);
+                  /**32.数组中出现次数过半的数字
+                   * @brief：判断一个数组中是否有出现次数过半的数字，如果有则找出这个数字
+                   * @note:判断多种方法的时间复杂度&空间复杂度
+                   * @note:解法1：基于Partition函数的时间复杂度为o（n）的算法，基于快排算法的思想，找出中位数。
+                   * @note：解法2：利用HashMap，空间换时间，空间复杂度为o（n），时间复杂度为o（n）？。
+                   * @note：解法3：
+                   * @param:Number:输入的数组
+                   * @param:targetNumer:过半的数字
+                   * @return: 如果存在则返回true，否则返回false
+                   * */
+                   bool MoreThanHalfNumber(int Number[], int* targetNumber, int length);
     };
     /***
      * 9.用两个栈模拟队列

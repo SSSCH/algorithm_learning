@@ -230,7 +230,7 @@ void test_RegularExpressionMtach(){
     const char* str4 = "fgg";
     const char* str5 = "xggg";
     const char* str6 = "fhaksdfh";
-    const char* str7 = "abcdefg";
+    const char* str7 = "abcdefgt";
     const char* tempstr1 = ".f*g";
     const char* tempstr2 = ".f*";
     const char* tempstr3 = "f*.ggf*.g";
@@ -251,7 +251,7 @@ void test_RegularExpressionMtach(){
     EXPECT_EQ(true, ret4, "%d");
     EXPECT_EQ(true, ret5, "%d");
     EXPECT_EQ(true, ret6, "%d");
-    EXPECT_EQ(true, ret7, "%d");
+    EXPECT_EQ(false, ret7, "%d");
 }
 void test_StrToDigital(){
     double number = 0;
@@ -508,7 +508,6 @@ void test_EQ_ComplexList(ComplexListNode* actual, ComplexListNode* expect){
     fprintf(stderr, "\n");
   }else test_parse_count++;
 }
-
 void test_DumplicateComplexList(){
   auto Head = new ComplexListNode;
   auto first = new ComplexListNode;
@@ -550,6 +549,15 @@ void test_string_arrange(){
 
   solution.StringArrange(string1);
 }
+void test_find_MoreThanHalf_Number(){
+    int number1[] = {7,7,7,4,7,6,7,7,9};
+    int number2[] = {1,3,7,4,7,6,5,7,9};
+    int ret = 0;
+    EXPECT_EQ(true, solution.MoreThanHalfNumber(number1, &ret, 9), "%s");
+    EXPECT_EQ(false, solution.MoreThanHalfNumber(number2, &ret, 9), "%s");
+    EXPECT_EQ(7, ret, "%d");
+}
+
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -579,9 +587,8 @@ void test_solution(){
     test_Judge_Match_Stack();
     test_DumplicateComplexList();
     test_string_arrange();
+    test_find_MoreThanHalf_Number();
 }
-
-
 
 int main() {
     /*string s1, s2;
