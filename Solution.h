@@ -293,8 +293,8 @@ namespace MySolution{
                   void DumplicateComplexList(ComplexListNode* Head, ComplexListNode** CloneHead);
                   /**31.字符串的排列
                    * @brief:输入一个字符串，输出该字符串的所有排列组合。
-                   * @note:全排列/生成字典；可用递归/迭代/回溯法解决；对于那些按照一定要求摆放数字或者字母的题目，
-                   * 我们可以先求出全排列，然后一一判断每个排列是否满足要求。
+                   * @note:全排列/生成字典；可用递归/迭代/回溯法解决.
+                   * @note:对于那些按照一定要求摆放数字或者字母的题目，我们可以先求出全排列，然后一一判断每个排列是否满足要求。
                    * @param:pStr:整个字符串的第一个字符
                    * @param:pBegin:指向执行排列操作的字符串的第一个字符
                    * */
@@ -306,12 +306,23 @@ namespace MySolution{
                    * @note:判断多种方法的时间复杂度&空间复杂度
                    * @note:解法1：基于Partition函数的时间复杂度为o（n）的算法，基于快排算法的思想，找出中位数。
                    * @note：解法2：利用HashMap，空间换时间，空间复杂度为o（n），时间复杂度为o（n）？。
-                   * @note：解法3：
                    * @param:Number:输入的数组
                    * @param:targetNumer:过半的数字
                    * @return: 如果存在则返回true，否则返回false
                    * */
                    bool MoreThanHalfNumber(int Number[], int* targetNumber, int length);
+                   /**33.最小的k个数
+                    * @brief:输入n个整数，找出其中最小的k个数。
+                    * @note: 最优解法和32题相同，利用partition（隔断）函数，基于快速排列算法思想（类似二分法），找到分界点k即可。
+                    * 此时时间复杂度o（n），没有用额外空间。
+                    * @note:利用一个存储量为k的临时空间，先将数组前四个元素塞进去，然后遍历数组，比容器中最大值小的就替换进去。
+                    * 此算法和partition的解法时间复杂度相同，但空间复杂度为o（n）。但优点是：在处理海量数据存在优势。
+                    * @param:number:输入数组
+                    * @param:length：数组长度
+                    * @param:k
+                    * */
+                    void PrintLittle_k_Number_Partition(int number[], int length, int k);
+                    void PrintLittle_k_Number_UseSpace(int number[], int length, int k);
     };
     /***
      * 9.用两个栈模拟队列

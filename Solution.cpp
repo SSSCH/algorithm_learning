@@ -13,6 +13,7 @@
 #include <array>
 #include <errno.h>
 #include <map>
+#include <queue>
 #define ISDIGITAL(ch) ('0' <= (ch) && (ch) <= '9')
 #define ISDIGITAL1T9(ch) ('1' <= (ch) && (ch) <= '9')
 using std::vector;
@@ -176,7 +177,7 @@ long long MySolution::Solution::JumpStepPlus_Math(unsigned int n) {
 }
 
 int RandomInRange(int n, int m){
-    assert(n>=0 && m>=0 && m >= n);
+    assert(m >= n);
     return (rand()%(m-n+1)+n);
 }
 int MySolution::Solution::_QuickSort(int data[], int length, int begin, int end) {
@@ -889,4 +890,59 @@ bool MySolution::Solution::MoreThanHalfNumber(int *Number, int *targetNumber, in
     *targetNumber = MaxNumber;
     return true;
   } else return false;
+}
+int partition(int* number, int begin, int end){
+    int big = begin ; //数组分界线指针,指向排序后random右边的数
+    int random = RandomInRange(begin, end); //生成begin-end间的随机数
+    swap(number, random, end);
+    for (int i = begin; i < end; ++i) {
+        if (number[i] < number[end]) {
+            if (i != big) {
+                swap(number, big, i);
+            }
+            big++;
+        }
+    }
+    swap(number, big, end);
+    return big;
+}
+void MySolution::Solution::PrintLittle_k_Number_Partition(int *number, int k, int length) {
+  assert((number != nullptr) && (length > 0) && (k > 0) && (length >=k));
+  int begin = 0;
+  int end = length - 1;
+  int target = 0;
+    target = partition(number, begin, end);
+    while (target != (k-1)) {  //注意是k-1，不是k，target对应的是下标
+        if (target > k) {
+            end = target - 1;
+            target = partition(number, begin,end);
+        } else if (target < k) {
+            begin = target + 1;
+            target = partition(number, begin, end);
+        } else break;
+    }
+    printf("33.最小的%d个数为：\n",k);
+    for (int i = 0; i < k; ++i) {
+        printf("%d\t", number[i]);
+    }
+    printf("\n");
+}
+void MySolution::Solution::PrintLittle_k_Number_UseSpace(int *number, int k, int length) {
+    assert(number != nullptr && k > 0 && length >0 && length >= k);
+    priority_queue<int,vector<int>,less<int> > myqueue;
+    for (int i = 0; i < k; ++i) {
+        myqueue.push(number[i]);
+    }
+    for (int j = k; j < length; ++j) {
+        if (myqueue.top() > number[j]) {
+            myqueue.pop();
+            myqueue.push(number[j]);
+        }
+    }
+    printf("33.最小的%d个数为：\n",k);
+    for (int i = 0; i < k; ++i) {
+        printf("%d\t", myqueue.top());
+        myqueue.pop();
+    }
+    printf("\n");
 }

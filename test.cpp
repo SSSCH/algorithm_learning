@@ -557,7 +557,19 @@ void test_find_MoreThanHalf_Number(){
     EXPECT_EQ(false, solution.MoreThanHalfNumber(number2, &ret, 9), "%s");
     EXPECT_EQ(7, ret, "%d");
 }
+void test_PrintLittle_k_Number(){
+  int number1[] = {2,5,7,6,4,2,8,7,4};
+  solution.PrintLittle_k_Number_Partition(number1, 1, 9);
+  solution.PrintLittle_k_Number_Partition(number1, 2, 9);
+  solution.PrintLittle_k_Number_Partition(number1, 3, 9);
+  solution.PrintLittle_k_Number_Partition(number1, 4, 9);
+  solution.PrintLittle_k_Number_Partition(number1, 5, 9);
+  solution.PrintLittle_k_Number_UseSpace(number1, 6, 9);
+  solution.PrintLittle_k_Number_UseSpace(number1, 7, 9);
+  solution.PrintLittle_k_Number_UseSpace(number1, 8, 9);
+  solution.PrintLittle_k_Number_UseSpace(number1, 9, 9);
 
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -588,6 +600,7 @@ void test_solution(){
     test_DumplicateComplexList();
     test_string_arrange();
     test_find_MoreThanHalf_Number();
+    test_PrintLittle_k_Number();
 }
 
 int main() {
