@@ -266,8 +266,9 @@ void test_StrToDigital(){
     EXPECT_EQ(true, solution.StrToDigital("0123", &number), "%d");
     EXPECT_EQ(false, solution.StrToDigital("0.e.2", &number), "%d");
     EXPECT_EQ(false, solution.StrToDigital("0..e", &number), "%d");
-    EXPECT_EQ(false, solution.StrToDigital("0.e.2", &number), "%d");
-    EXPECT_EQ(true, solution.StrToDigital("0e", &number), "%d");
+    EXPECT_EQ(false, solution.StrToDigital("0.e5.2", &number), "%d");
+    EXPECT_EQ(false, solution.StrToDigital("0.e", &number), "%d");
+    EXPECT_EQ(false, solution.StrToDigital("0e", &number), "%d");
     EXPECT_EQ(false, solution.StrToDigital("23awef12", &number), "%d");
     EXPECT_EQ(true, solution.StrToDigital("-0234", &number), "%d");
     //EXPECT_EQ(false, solution.StrToDigital("e+79797941234124123424123413465", &number), "%d");//to large
@@ -570,6 +571,16 @@ void test_PrintLittle_k_Number(){
   solution.PrintLittle_k_Number_UseSpace(number1, 9, 9);
 
 }
+void test_find_biggest_Sumof_SubArrary(){
+  int arrary1[] = {1,-2,3,10,-4,7,2,-5};
+  int arrary2[] = {-2,4,-9,10,2,-1,7,2,-5};
+  int arrary3[] = {-2,-4,-9,-10,-2,-1,-7,-2,-5};
+  int arrary4[] = {1,1,1,1,1,1,1,1,1};
+  EXPECT_EQ(18, solution.FindBiggestSumOfSubArrary(arrary1, 8),"%d");
+  EXPECT_EQ(20, solution.FindBiggestSumOfSubArrary(arrary2, 9),"%d");
+  EXPECT_EQ(-1, solution.FindBiggestSumOfSubArrary(arrary3, 9),"%d");
+  EXPECT_EQ(9, solution.FindBiggestSumOfSubArrary(arrary4, 9),"%d");
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -601,6 +612,7 @@ void test_solution(){
     test_string_arrange();
     test_find_MoreThanHalf_Number();
     test_PrintLittle_k_Number();
+    test_find_biggest_Sumof_SubArrary();
 }
 
 int main() {

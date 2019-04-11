@@ -71,7 +71,7 @@ namespace MySolution{
         long long Fibonacci_Recursively(unsigned int n);  //递归实现
         long long Fibonacci_Iteratively(unsigned int n); //循环实现
         /***
-         * 10.1青蛙跳台阶，
+         * 10.1青蛙跳台阶
          * @brief：一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
          * @note：feibonacci的应用。
          * f(n)=f(n-1)+f(n-2),f(1)=1, f(2)=2
@@ -215,6 +215,7 @@ namespace MySolution{
              *@return:重复节点的个数
              * */
              int DeleteDumplicateNode(ListNode** Head);
+
              /**21.正则表达式的匹配
               * @brief:实现一个函数，用于匹配包含“*”和“.”的正则表达式。模式中的“.”可以匹配任意一个字符，而“*”匹配表示
               * 它前面的字符可以出现任意次数（含0次）。
@@ -225,24 +226,35 @@ namespace MySolution{
               * @retrun:true if match success,otherwise is false
               * */
               bool RegularExpressionMatch(const char* str, const char* tempstr);
-              /**22.字符串转数字
-               * @功能考虑齐全
-               * @ input：@str:字符串
-               * @output:@number:匹配后的字符串
+              /**22.表示数值的字符串
+               * @brief:实现一个函数，判断一个字符串是否能够表示数值（包括整数和小数）。如“+122”，“-123”，“5e2”，“-1E-19”
+               * 都是正确的。但“12e”，“1a3.14”，“1.2.3”，“-+2”，“12e+5.4”都不是。
+               * @note：就是josn的数字的解析，字符串编程能力。需要注意的就是要考虑各种情况。
+               * @param:str:字符串
+               * @param:number:匹配后输出的字符串
                * @return ：if match retrun true,otherwise return false
                * */
                bool StrToDigital(const char* str, double* number);
 
                /**22.调整数组，使得奇数在前，偶数在后
-                * @breaf双指针,代码的可移植性/可扩展性/可重用性
-                * @param：arrary数组，func函数指针，length数组长度
+                * @brief:输入一个整数数组，实现一个函数来调整该数组中的数字的顺序，使得奇数在前偶数在后。
+                * @note：双指针,一头一尾。代码的可移植性/可扩展性/可重用性，单一职责原则。
+                * @param：输入arrary:数组
+                * @param:func:函数指针，代码可重用的关键，是一个一元谓词。
+                * @param:length数组长度（无法判断数组的长度，只能从外部传入）。
               * */
               static bool JudgeOdd(int number);
               void AdjustArary(int arrary[], int length, bool(*func)(int));
               /**23.链表倒数第k个节点
-               *@brief双指针，鲁棒性
-               * @param:Head链表头节点，k倒数第k个节点
-               * @return倒数第k个节点的值
+               *@brief:输入一个链表，输入该链表的倒数第k个节点。从1开始计数，即链表的尾节点是倒数第一个节点。
+               *@note：双指针，倒数第k个节点就是顺数第n-k+1个节点。想象一下：
+               *一个长度为 n 的链表，我们要求倒数第k个节点，关键在于知道顺数时其前面的n-k+1个节点。
+               * 可以用一个指针，先走k-1个节点，这样它和另一个从头开始动的节点之间的距离永远是k-1；在先行的指针运动到尾部时：
+               * 另一个节点就运动到了n-k+1的位置，即倒数第k个节点。
+               *@note：同样的双指针思路，还可以求链表的中间节点，1/3处、1/4处（若是存在）...等等求相对位置的节点。
+               *@param:Head：链表头节点
+               *@param：k：倒数第k个节点
+               *@return：倒数第k个节点的值
                * */
                int Find_K_InList(ListNode* Head, int k);
 
@@ -323,6 +335,17 @@ namespace MySolution{
                     * */
                     void PrintLittle_k_Number_Partition(int number[], int length, int k);
                     void PrintLittle_k_Number_UseSpace(int number[], int length, int k);
+                    /**34.连续子数组的最大和
+                     * @brief:输入一个整形数组，数组里面有正数也有 负数。数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
+                     * 要求时间复杂度为o(n).如：输入数组为{1,-2,3,10,-4,7,2,-5},和最大子数组为{3,10,-4,7,2},输出和为18.
+                     * @note：动态规划思想：用函数f(i)表示以第i个数字结尾的所有子数组中的最大和，那么,我们可以用如下递归公式求f(i)：
+                     * f(i) = {f(i-1) + number[i]  //i >= 1 && f(i-1) > 0
+                     *        {number[i]          //i >= 1 && f(i-1) <= 0
+                     * @param：arrary:输入数组
+                     * @param：length：数组长度
+                     * @return: 子数组最大和
+                     * */
+                     int FindBiggestSumOfSubArrary(int* arrary, int length);
     };
     /***
      * 9.用两个栈模拟队列

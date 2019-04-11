@@ -541,6 +541,7 @@ bool MySolution::Solution::RegularExpressionMatch(const char *str, const char *t
 bool MySolution::Solution::StrToDigital(const char *str, double *number) {
     assert(str != nullptr && number != nullptr);
     int DocNumber = 0;
+    bool IsEAppeared =false;
     for (int i = 0; str[i] != '\0' ; ++i) {
         if (!ISDIGITAL(str[i])) {
             switch (str[i]) {
@@ -551,12 +552,16 @@ bool MySolution::Solution::StrToDigital(const char *str, double *number) {
                     if (i == 0 || str[i - 1] == 'e' || str[i - 1] == 'E') break;
                     else return false;
                 case 'e':
-                    break;
+                    IsEAppeared = true;
+                    if (ISDIGITAL(str[i-1]) && (str[i+1] != '\0')) break;
+                    else return false;
                 case 'E':
-                    break;
+                  IsEAppeared = true;
+                  if (ISDIGITAL(str[i-1]) && (str[i+1] != '\0')) break;
+                  else return false;
                 case '.':
                     DocNumber++;
-                    if (DocNumber>1) return false;
+                    if ((DocNumber>1) && IsEAppeared) return false;
                     else break;
                 default:
                     return false;
@@ -569,7 +574,6 @@ bool MySolution::Solution::StrToDigital(const char *str, double *number) {
         printf("errno:%d\n", errno);
         return false;
     }
-
     return true;
 }
 //判断是否为奇数
@@ -945,4 +949,21 @@ void MySolution::Solution::PrintLittle_k_Number_UseSpace(int *number, int k, int
         myqueue.pop();
     }
     printf("\n");
+}
+int MySolution::Solution::FindBiggestSumOfSubArrary(int *arrary, int length) {
+  assert(arrary != nullptr && length > 0);
+  int nCurrentSum = arrary[0];
+  int BiggestSum = nCurrentSum;
+  //f(i)为以下标i为最后元素的子数组的最大和
+  //f(i) = {f(i-1) + number[i]  //f(i-1) >=0
+  //       {number[i]  //f(i-1) < 0
+  for (int j = 1; j < length; ++j) {
+    if (nCurrentSum > 0) {
+      nCurrentSum = nCurrentSum + arrary[j];
+    } else {
+      nCurrentSum = arrary[j];
+    }
+    if (nCurrentSum > BiggestSum) BiggestSum = nCurrentSum;
+  }
+  return BiggestSum;
 }
