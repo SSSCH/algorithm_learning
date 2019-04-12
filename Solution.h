@@ -207,11 +207,11 @@ namespace MySolution{
             * */
             void DeletNode(ListNode** Head, ListNode* ToBeDeletde);
 
-            /**20.删除链表重复的节点,且重复的节点是连续的
+            /**20.删除链表重复的节点
              * @brief:在一个排序链表中，存在连续的重复节点，删除链表中重复的节点。
              * @note：考察对链表的理解和编程能力，重复节点可能出现在链表头、中间、尾部位置，也可能没有重复节点。
              * 如何删除重复节点（如何重置删除重复节点后的链表，即需要（双指针）保存一个PreNode（非重复节点指针）和一个IndexNode（索引指针））
-             *@param:@Head：链表头节点
+             *@param:Head：链表头节点
              *@return:重复节点的个数
              * */
              int DeleteDumplicateNode(ListNode** Head);
@@ -258,16 +258,23 @@ namespace MySolution{
                * */
                int Find_K_InList(ListNode* Head, int k);
 
-               /**24.判断一个链表中是否有环，如果有的话找出环的入口节点
-                * @brief双指针的使用
+               /**24.链表中环的入口节点
+                * @brief：如果一个链表中包含环，如何找出环的入口节点？
+                * @note：双指针的应用。
+                * @note：需要解决两个问题：1.如何确定一个链表中包含环？2.如何找到入口节点
+                * 1.双指针，一快一慢，如果能相遇说明有环。2.如果环中有n个节点，可以让快指针先走n步，最终相遇时就会在入口节点，那么如何确定n？
+                *只要确定有环后，从相遇点再跑一圈计数就行了。
                 * @param:Head链表头节点
-                * @return:if has ring, return ringNode
+                * @return:if has ring, return ringNode，otherwise return nullptr.
                 * */
                 ListNode* FindRingNode(ListNode* Head);
                 /**25.反转链表并且输出反转后链表的头节点
-                 * @brief1.三指针(迭代),2.递归：这边使用递归是十分巧妙的方法，首先利用递归走到链表的尾节点，然后再更新每个节点的pNext，从而实现链表的反转。而NewNext
+                 * @brief:定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
+                 * @note：1.三指针(迭代),分别保存迭代时的currentNode、preNode、NextNode。
+                 * @note:2.递归：这边使用递归是十分巧妙的方法，首先利用递归走到链表的尾节点，然后再更新每个节点的pNext，从而实现链表的反转。而NewNext
                  * 的值在递归到末端并赋值后就没有发生改变。还有一点需要注意的是：最后递归出来时并不会设置原链表Head的pNext=null;所以可以索性一上来在递归至原链表尾部的过程中就把
                  * 所有节点的pNext=nullptr。
+                 * @note：3.利用栈，也是递归的本质。
                  * @param Head,链表头节点
                  * @return 反转后链表头节点
                  * */

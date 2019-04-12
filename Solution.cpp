@@ -615,6 +615,7 @@ int MySolution::Solution::Find_K_InList(ListNode *Head, int k) {
     ListNode* KNode = Head;
     int Index_1 = 0;
     while (TmpNode->M_pNext != nullptr) {
+      //TmpNode先走k-1步
         if (Index_1 != k-1) {
             Index_1++;
         } else {
@@ -622,6 +623,7 @@ int MySolution::Solution::Find_K_InList(ListNode *Head, int k) {
         }
         TmpNode = TmpNode->M_pNext;
     }
+    //链表不足k个节点时报错，即KNode没动
     if (KNode != Head) {
         return KNode->m_nKey;
     } else {
@@ -642,7 +644,7 @@ ListNode* MySolution::Solution::FindRingNode(ListNode *Head) {
     //没环
     if ((Index2->M_pNext == nullptr) || (Index2->M_pNext->M_pNext == nullptr)) return nullptr;
         //第二步：如果有环，确定环内节点的数目n，利用双指针确定环内节点数目
-    else {//有环
+    else {//有环，也可以就用一个指针确定环内节点数
         Index1 = Index1->M_pNext;
         Index2 = Index2->M_pNext->M_pNext;
         do {
@@ -664,9 +666,9 @@ ListNode* MySolution::Solution::FindRingNode(ListNode *Head) {
     return Index1;
 }
 
-ListNode* MySolution::Solution::ReverseList_Recursively(ListNode *Head) {
+ListNode* MySolution::Solution::ReverseList_Recursively(ListNode *Head) {//迭代
     assert(Head != nullptr);
-    ListNode* NewHead = nullptr;
+    ListNode* NewHead = nullptr; //用于保存新的头节点
     ListNode* FrontNode = nullptr;
     ListNode* TargetNode = Head;
     while (TargetNode != nullptr) {
@@ -678,33 +680,16 @@ ListNode* MySolution::Solution::ReverseList_Recursively(ListNode *Head) {
     }
     return NewHead;
 }
-ListNode* MySolution::Solution::ReverseList_Iteratively(ListNode *Head) {
+ListNode* MySolution::Solution::ReverseList_Iteratively(ListNode *Head) { //递归
     if (Head->M_pNext == nullptr || Head == nullptr) return Head;
     ListNode* TmpNext = Head->M_pNext;
     Head->M_pNext = nullptr;   //如果不加的话反转后的链表为0，1，3，5，7，9，11，9，11，9，11，9....即存在环节点(原Head->M_pNext 没有指向null)。
     ListNode* NewHead = ReverseList_Iteratively(TmpNext);
+    //递归出来后要干的事：反转链表
     TmpNext->M_pNext  = Head;
     return  NewHead;
 }
-/*void forLiChenXi(){
-    printf("Li Chen Xi I LOVE YOU......\n");
-    while (1) {
-        printf(" 李李李李李              李李李李李\n");
-        printf("晨晨晨晨晨晨            晨晨晨晨晨晨\n");
-        printf("曦曦曦曦曦曦曦          曦曦曦曦曦曦\n");
-        printf(" 我我我我我我我        我我我我我我我\n");
-        printf("   爱爱爱爱爱爱爱    爱爱爱爱爱爱爱\n");
-        printf("     你你你你你你你你你你你你你你\n");
-        printf("       你你你你你你你你你你你你\n");
-        printf("         你你你你你你你你你你\n");
-        printf("           你你你你你你你你\n");
-        printf("            你你你你你你\n");
-        printf("              你你你你\n");
-        printf("                你你\n");
-        printf("                 你\n");
-    }
 
-}*/
 ListNode* MySolution::Solution::Merge2List(ListNode *Head1, ListNode *Head2) {
     assert(Head1 != nullptr && Head2 != nullptr);
     ListNode* NewHead = nullptr;
