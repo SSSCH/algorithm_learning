@@ -581,6 +581,12 @@ void test_find_biggest_Sumof_SubArrary(){
   EXPECT_EQ(-1, solution.FindBiggestSumOfSubArrary(arrary3, 9),"%d");
   EXPECT_EQ(9, solution.FindBiggestSumOfSubArrary(arrary4, 9),"%d");
 }
+void test_count_digital_one(){
+  EXPECT_EQ(5, solution.CountDigitalOne(12), "%d");
+  EXPECT_EQ(16, solution.CountDigitalOne(51), "%d");
+  EXPECT_EQ(20, solution.CountDigitalOne(98), "%d");
+  EXPECT_EQ(57, solution.CountDigitalOne(123), "%d");
+}
 void test_solution(){
     test_duplicate();
     test_find2dArrary();
@@ -613,6 +619,7 @@ void test_solution(){
     test_find_MoreThanHalf_Number();
     test_PrintLittle_k_Number();
     test_find_biggest_Sumof_SubArrary();
+    test_count_digital_one();
 }
 
 int main() {

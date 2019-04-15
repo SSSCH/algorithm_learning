@@ -952,3 +952,11 @@ int MySolution::Solution::FindBiggestSumOfSubArrary(int *arrary, int length) {
   }
   return BiggestSum;
 }
+int MySolution::Solution::CountDigitalOne(int n) {
+  int cnt = 0;
+  for (long long i = 1; i <= n; i*=10) {
+    int a = n/i, b = n%i;
+    cnt += (a+8)/10*i +(a%10 == 1)*(b+1);//之所以补8，是因为当i位为0，则a/10==(a+8)/10，当百位>=2，补8会产生进位位，效果等同于(a/10+1)
+  }
+  return cnt;
+}
