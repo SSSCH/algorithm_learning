@@ -960,3 +960,30 @@ int MySolution::Solution::CountDigitalOne(int n) {
   }
   return cnt;
 }
+int MySolution::Solution::DigitalAtIndex(int n) {
+    assert(n >=0);
+    if (n < 10) return n;
+    //第一步：确定n位所在的数字是多少
+    int CurNumber  = 0;
+    int cnt = 10; //个位，十位，百位。。。。的最大序列值
+    int index = 2;
+    //先确定n所在数字是多少位的，由index表示
+    while (n >= (cnt + 9*pow(10,index-1)*index)) { //>=若变成>,那么遇到最大位数的边界值时会出问题
+        cnt+=9*(int)pow(10,index-1)*index;
+        ++index;
+    }
+    //cnt为比n所在数字的位数小一位的所有数的序列最大值
+    cnt = n - cnt; //n所在位数的数字的序列到n的和，如n=19，cnt=10时，到n位置的cnt = 9；
+    CurNumber = (int)pow(10, index-1) + cnt/index; //cnt =9时， 其所在数字为10+4
+
+    //第二步：确定n是所在的数字的第几位,并求出来
+    index -= cnt%index; //如123，index=1就是第一位，=3就是第三位
+    while (index != 1) { //若index =2 ，则CurNumber 输出为12，所以要取余
+        CurNumber /=10;
+        --index;
+    }
+    CurNumber %= 10;
+    return CurNumber;
+}
+
+

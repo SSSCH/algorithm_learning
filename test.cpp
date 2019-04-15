@@ -587,39 +587,50 @@ void test_count_digital_one(){
   EXPECT_EQ(20, solution.CountDigitalOne(98), "%d");
   EXPECT_EQ(57, solution.CountDigitalOne(123), "%d");
 }
+void test_digital_at_index(){
+    EXPECT_EQ(0, solution.DigitalAtIndex(0), "%d");
+    EXPECT_EQ(5, solution.DigitalAtIndex(5), "%d");
+    EXPECT_EQ(4, solution.DigitalAtIndex(19), "%d");
+    EXPECT_EQ(1, solution.DigitalAtIndex(20), "%d");
+    EXPECT_EQ(9, solution.DigitalAtIndex(249), "%d");
+    EXPECT_EQ(6, solution.DigitalAtIndex(5459), "%d");
+    EXPECT_EQ(1, solution.DigitalAtIndex(55575), "%d");
+
+}
 void test_solution(){
-    test_duplicate();
-    test_find2dArrary();
-    test_SubmitBlank();
-    test_PrintListReversingly_Iteratively();
-    test_2stack_simulate_queue();
-    test_Fibonacci();
-    test_quick_sort();
-    test_MinNumberInRotatArrary();
-    test_Find_Matrix_Path();
-    test_RobotRunRange();
-    test_CutRope();
-    test_Find1InNumber();
-    test_Power();
-    test_PrintNumber();
-    test_DeleteNode();
-    test_DeleteDumplicateNode();
-    test_RegularExpressionMtach();
-    test_StrToDigital();
-    test_AdjustArrary();
-    test_findKinList();
-    test_FindRingNode();
-    test_ReverseList();
-    test_Merge2List();
-    test_PrintMatrixClockWise();
-    test_StackWithMin();
-    test_Judge_Match_Stack();
-    test_DumplicateComplexList();
-    test_string_arrange();
-    test_find_MoreThanHalf_Number();
-    test_PrintLittle_k_Number();
-    test_find_biggest_Sumof_SubArrary();
-    test_count_digital_one();
+//    test_duplicate();
+//    test_find2dArrary();
+//    test_SubmitBlank();
+//    test_PrintListReversingly_Iteratively();
+//    test_2stack_simulate_queue();
+//    test_Fibonacci();
+//    test_quick_sort();
+//    test_MinNumberInRotatArrary();
+//    test_Find_Matrix_Path();
+//    test_RobotRunRange();
+//    test_CutRope();
+//    test_Find1InNumber();
+//    test_Power();
+//    test_PrintNumber();
+//    test_DeleteNode();
+//    test_DeleteDumplicateNode();
+//    test_RegularExpressionMtach();
+//    test_StrToDigital();
+//    test_AdjustArrary();
+//    test_findKinList();
+//    test_FindRingNode();
+//    test_ReverseList();
+//    test_Merge2List();
+//    test_PrintMatrixClockWise();
+//    test_StackWithMin();
+//    test_Judge_Match_Stack();
+//    test_DumplicateComplexList();
+//    test_string_arrange();
+//    test_find_MoreThanHalf_Number();
+//    test_PrintLittle_k_Number();
+//    test_find_biggest_Sumof_SubArrary();
+//    test_count_digital_one();
+//    test_digital_at_index();
 }
 
 int main() {
