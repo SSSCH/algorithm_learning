@@ -597,6 +597,14 @@ void test_digital_at_index(){
     EXPECT_EQ(1, solution.DigitalAtIndex(55575), "%d");
 
 }
+void  test_sort_mostlittle_number(){
+  vector<int> numbers1 = {3,32,321};
+  vector<int> numbers2 = {12,352,121,35431,0};
+  vector<int> numbers3 = {13,342,1321,78,7812};
+  EXPTCT_EQ_STRING("321323", solution.SortMostLittleNumber(numbers1).c_str(), 6);
+  EXPTCT_EQ_STRING("01211235235431", solution.SortMostLittleNumber(numbers2).c_str(), 14);
+  EXPTCT_EQ_STRING("131321342781278", solution.SortMostLittleNumber(numbers3).c_str(), 15);
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -631,6 +639,7 @@ void test_solution(){
 //    test_find_biggest_Sumof_SubArrary();
 //    test_count_digital_one();
 //    test_digital_at_index();
+//      test_sort_mostlittle_number();
 }
 
 int main() {

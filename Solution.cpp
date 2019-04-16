@@ -14,6 +14,8 @@
 #include <errno.h>
 #include <map>
 #include <queue>
+#include <algorithm>
+
 #define ISDIGITAL(ch) ('0' <= (ch) && (ch) <= '9')
 #define ISDIGITAL1T9(ch) ('1' <= (ch) && (ch) <= '9')
 using std::vector;
@@ -984,6 +986,19 @@ int MySolution::Solution::DigitalAtIndex(int n) {
     }
     CurNumber %= 10;
     return CurNumber;
+}
+string MySolution::Solution::SortMostLittleNumber(vector<int> numbers) {
+  string ret = "";
+  vector<string> s_number;
+  for (const auto &num : numbers) {
+    string tmp = to_string(num);
+    s_number.push_back(tmp);
+  }
+  sort(s_number.begin(), s_number.end(), [](const string &a, const string &b){string x = a+b;string y = b+a;return x<y;});
+  for (const auto &s_num : s_number) {
+    ret.append(s_num);
+  }
+  return ret;
 }
 
 

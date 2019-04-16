@@ -6,6 +6,7 @@
 #include <list>
 #include <bits/forward_list.h>
 #include <cassert>
+#include <string>
 
 #ifndef ALGORITHM_LEARNING_SOLUTION_H
 
@@ -377,14 +378,23 @@ namespace MySolution{
                       *@return: 整数中1出现的次数
                       * */
                       int CountDigitalOne(int n);
-                      /*36.数字序列中的某一位数字
+                      /**36.数字序列中的某一位数字
                        * @brief:数字以0123456789101112131415...的格式序列化到一个字符序列中。
                        * 在这个序列中，第五位（从0开始计数）是5，第19位是4.写一个函数，求任意第n位对应的数字。
+                       * @note:序列和数字的关系10×1+90×2+900×3+9000×4...
                        * @note：先确定该序列所在数的位数和值，再缺点该序列是数字的第几位
                        * @param:n：输入序列值
                        * @retrun: 该序列所在的数字
                        * */
                       int DigitalAtIndex(int n);
+                      /**37.把数组排列成最小的数
+                       * @brief:输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接处的所有数字中最小的一个。
+                       * 例如：输入{3,32,321},则打印出321323
+                       * @note：
+                       * @param:
+                       * @return:
+                       * */
+                       string SortMostLittleNumber(vector<int> numbers);
 
     };
     /***
