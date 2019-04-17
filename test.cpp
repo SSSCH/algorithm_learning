@@ -605,6 +605,14 @@ void  test_sort_mostlittle_number(){
   EXPTCT_EQ_STRING("01211235235431", solution.SortMostLittleNumber(numbers2).c_str(), 14);
   EXPTCT_EQ_STRING("131321342781278", solution.SortMostLittleNumber(numbers3).c_str(), 15);
 }
+void test_translate_number_to_string(){
+  const long long number1(12258);
+  const long long number2(123123321457);
+  const long long number3(159674546);
+  EXPECT_EQ(5, solution.TranslateNumberToString(number1), "%d");
+  EXPECT_EQ(27, solution.TranslateNumberToString(number2), "%d");
+  EXPECT_EQ(2, solution.TranslateNumberToString(number3), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -639,7 +647,8 @@ void test_solution(){
 //    test_find_biggest_Sumof_SubArrary();
 //    test_count_digital_one();
 //    test_digital_at_index();
-//      test_sort_mostlittle_number();
+//    test_sort_mostlittle_number();
+      test_translate_number_to_string();
 }
 
 int main() {

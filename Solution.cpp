@@ -988,6 +988,7 @@ int MySolution::Solution::DigitalAtIndex(int n) {
     return CurNumber;
 }
 string MySolution::Solution::SortMostLittleNumber(vector<int> numbers) {
+  if (numbers.empty()) return "";
   string ret = "";
   vector<string> s_number;
   for (const auto &num : numbers) {
@@ -999,6 +1000,22 @@ string MySolution::Solution::SortMostLittleNumber(vector<int> numbers) {
     ret.append(s_num);
   }
   return ret;
+}
+int MySolution::Solution::TranslateNumberToString(const long long &number) {
+    assert(number >= 0);
+   string TmpNumber = to_string(number);
+   string dowmlimt("10");
+   string uplimt("25");
+   //f(i) = f(i-1) +g(2)*f(i-2)   g(2)属于10-25便为1，否则为0.
+   //利用数组保存子问题的值
+   //假如输入为12258
+   int tmpResult[TmpNumber.size()+1];  //6
+   tmpResult[TmpNumber.size()] = 1;  //不存在的
+   tmpResult[TmpNumber.size()-1] = 1;   //从后往前保存子数组结果
+    for (auto i = (int)TmpNumber.size() - 2; i >= 0; --i) { //从倒数第二个数字开始
+        tmpResult[i] = tmpResult[i+1] + ((TmpNumber.substr(i, 2) >= dowmlimt) && (TmpNumber.substr(i, 2) <= uplimt))*tmpResult[i+2]; //f(i) = f(i-1) +g(2)*f(i-2)   g(2)属于10-25便为1，否则为0.
+    }
+    return tmpResult[0];
 }
 
 

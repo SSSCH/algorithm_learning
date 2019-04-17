@@ -325,7 +325,7 @@ namespace MySolution{
                    * @brief：判断一个数组中是否有出现次数过半的数字，如果有则找出这个数字
                    * @note:判断多种方法的时间复杂度&空间复杂度
                    * @note:解法1：基于Partition函数的时间复杂度为o（n）的算法，基于快排算法的思想，找出中位数。
-                   * @note：解法2：利用HashMap，空间换时间，空间复杂度为o（n），时间复杂度为o（n）？。
+                   * @note：解法2：利用HashMap，空间换时间，空间复杂度为o（n），时间复杂度为o（n）。
                    * @param:Number:输入的数组
                    * @param:targetNumer:过半的数字
                    * @return: 如果存在则返回true，否则返回false
@@ -390,11 +390,22 @@ namespace MySolution{
                       /**37.把数组排列成最小的数
                        * @brief:输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接处的所有数字中最小的一个。
                        * 例如：输入{3,32,321},则打印出321323
-                       * @note：
-                       * @param:
-                       * @return:
+                       * @note：可以看成是一个排序问题，在比较两个字符串 S1 和 S2 的大小时，
+                       * 应该比较的是 S1+S2 和 S2+S1 的大小，如果 S1+S2 < S2+S1，那么应该把 S1 排在前面，否则应该把 S2 排在前面。
+                       * 可以利用sort，传入自定义的lamda表达式
+                       * @param: numbers:输入的数组
+                       * @return: 最小的数
                        * */
                        string SortMostLittleNumber(vector<int> numbers);
+                       /**38.把数字翻译成字符串
+                        * @brief:给定一个数字，我们按照如下规则把它翻译成字符串：0翻译成a，1翻译成b，...,25翻译成z。一个数字可以有多个翻译。如：
+                        * 12258有5中不同的翻译，分别是bccfi，bwfi,bczi,mcfi,和mzi。实现一个函数，计算一个数字有多少中不同的翻译方法。
+                        * @note: 典型的类似斐波那契数列，若是采用递归的思路，是从最大的问题开始自上而下解决问题会存在重复的子问题。所以我们应该从最小的子问题开始
+                        * 自下而上的解决问题，这样可以消除重复的子问题。
+                        * @param: number：输入的数字
+                        * @return: 总共翻译方法数
+                        * */
+                        int TranslateNumberToString(const long long& number);
 
     };
     /***
