@@ -406,6 +406,18 @@ namespace MySolution{
                         * @return: 总共翻译方法数
                         * */
                         int TranslateNumberToString(const long long& number);
+                        /**39.礼物的最大价值
+                         * @brief:在一个m*n的棋盘的每一个都放一个礼物，每个礼物都有一定的价值（价值大于0）。你可以从棋盘的左上角开始那格子里的礼物，
+                         * 并每次可以向右或向下移动一格，直到棋盘右下角。计算出礼物的最大价值。
+                         * @note:方法1：动态规划思想，GiftValue(i,j) = value(i,j) + max[GiftValue(i+1, j), GiftValue(i,j+1)],i为行，j为列
+                         * 可以往下走也可以往右走，直到走到行/列的边界。
+                         * @param: board:棋盘数组
+                         * @param：cols:棋盘的行数
+                         * @param：rows：棋盘的列数
+                         * @return: 礼物的最大价值
+                         * */
+                         //递归处理
+                        int GiftMaxValue(const int *board, const int cols, const int rows);
 
     };
     /***

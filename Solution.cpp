@@ -1017,5 +1017,56 @@ int MySolution::Solution::TranslateNumberToString(const long long &number) {
     }
     return tmpResult[0];
 }
+//MaxGiftValue：传递的指针，因为要保存最大值，实时更新。
+// GiftValue：保存一次完整的递归的礼物价值。
+//col:出发点行坐标
+//row：出发点列坐标
+void _GiftMaxValue(const int *board, const int cols, const int rows, int col, int row, int GiftValue, int* MaxGiftValue){
+  //走到最右边一列
+    if (row == rows-1) {
+        while (col <= cols -1) {
+            GiftValue += board[rows*(col) + row];
+            col++;
+        }
+      //更新最大值
+        if (GiftValue > *MaxGiftValue) {
+            *MaxGiftValue = GiftValue;
+        }
+        return;
+    }
+    //走到最下面一行
+    if (col == cols -1) {
+        while (row <= rows -1) {
+            GiftValue += board[rows*col + row];
+            row++;
+        }
+        //更新最大值
+        if (GiftValue > *MaxGiftValue) {
+            *MaxGiftValue = GiftValue;
+        }
+        return;
+    }
+    GiftValue += board[rows*col + row];
+    //(col <= cols-1) 边界值
+    //(row !=rows-1)  如果已经走到最下面一行，那就不需要列增加了（往右移了）；因为已经在上面的递归结束点处理过了。
+    if ((col <= cols-1) && (row !=rows-1)) {
+        _GiftMaxValue(board, cols, rows, col+1, row, GiftValue, MaxGiftValue);
+    }
+    //(row <= rows-1) 边界值
+    //(col != cols-1)如果已经走到最右边一列，那就不需要行增加了（往下移）；因为已经在上面的递归结束点处理过了。
+    if ((row <= rows-1) && (col != cols-1)) {
+        _GiftMaxValue(board, cols, rows, col, row+1, GiftValue, MaxGiftValue);
+    }
+
+}
+ int MySolution::Solution::GiftMaxValue(const int *board, const int cols, const int rows) {
+  assert(board != nullptr && cols >=0 && rows >=0);
+  int MaxGiftValue = 0;
+  int GiftValue = 0;
+  int col = 0;
+  int row = 0;
+  _GiftMaxValue(board, cols, rows, col, row, GiftValue, &MaxGiftValue);
+  return  MaxGiftValue;
+}
 
 

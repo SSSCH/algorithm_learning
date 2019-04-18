@@ -613,6 +613,27 @@ void test_translate_number_to_string(){
   EXPECT_EQ(27, solution.TranslateNumberToString(number2), "%d");
   EXPECT_EQ(2, solution.TranslateNumberToString(number3), "%d");
 }
+void test_gift_max_value(){
+  const int board[] ={1,10,3,8,
+                12,2,9,6,
+                5,7,4,11,
+                3,7,16,0};
+    const int board1[] ={1,10,3,8,
+                         2,10,10,6};
+    const int board2[] ={1,7,9,8,
+                         2,2,9,6,
+                         5,7,8,1,
+                         3,7,9,0};
+    const int board3[] ={1,1,
+                         10,2,
+                         10,10,
+                         3,0};
+  EXPECT_EQ(48, solution.GiftMaxValue(board, 4, 4), "%d");
+  EXPECT_EQ(37, solution.GiftMaxValue(board1, 2, 4), "%d");
+  EXPECT_EQ(43, solution.GiftMaxValue(board2, 4, 4), "%d");
+  EXPECT_EQ(48, solution.GiftMaxValue(board, 4, 4), "%d");
+  EXPECT_EQ(31, solution.GiftMaxValue(board, 4, 2), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -648,7 +669,8 @@ void test_solution(){
 //    test_count_digital_one();
 //    test_digital_at_index();
 //    test_sort_mostlittle_number();
-      test_translate_number_to_string();
+//    test_translate_number_to_string();
+//      test_gift_max_value();
 }
 
 int main() {
