@@ -634,6 +634,16 @@ void test_gift_max_value(){
   EXPECT_EQ(48, solution.GiftMaxValue(board, 4, 4), "%d");
   EXPECT_EQ(31, solution.GiftMaxValue(board, 4, 2), "%d");
 }
+void test_longest_string_without_duplication(){
+  const string str1("arabcracfd");
+  const string str2("aaaaaaa");
+  const string str3("weoinmvhgbiuoeg");
+  const string str4("qwoxzcvnawterpeoitngxfbns");
+  EXPECT_EQ(5, solution.LongestStringWithoutDuplication(str1).size(), "%d");
+  EXPECT_EQ(1, solution.LongestStringWithoutDuplication(str2).size(), "%d");
+  EXPECT_EQ(10, solution.LongestStringWithoutDuplication(str3).size(), "%d");
+  EXPECT_EQ(12, solution.LongestStringWithoutDuplication(str4).size(), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -670,7 +680,8 @@ void test_solution(){
 //    test_digital_at_index();
 //    test_sort_mostlittle_number();
 //    test_translate_number_to_string();
-//      test_gift_max_value();
+//    test_gift_max_value();
+//    test_longest_string_without_duplication();
 }
 
 int main() {

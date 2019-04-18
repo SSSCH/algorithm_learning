@@ -418,7 +418,15 @@ namespace MySolution{
                          * */
                          //递归处理
                         int GiftMaxValue(const int *board, const int cols, const int rows);
-
+                        /**40.最长不含重复字符的子字符串
+                         * @brief: 从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度。
+                         * @note: 动态规划思想：设以i-1为结束点的最长字符串为f(i-1),
+                         * 则f（i） = { f(i-1) + str[i]  //f(i-1)不包含str[i]
+                         *           { substr(pos+1) + str[i]  //f(i-1)包含str[i],且出现的位置为pos
+                         * @param: str：输入字符串
+                         * @return: 最长子字符串
+                         * */
+                        string LongestStringWithoutDuplication(const string &str);
     };
     /***
      * 9.用两个栈模拟队列

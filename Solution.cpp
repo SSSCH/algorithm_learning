@@ -1068,5 +1068,21 @@ void _GiftMaxValue(const int *board, const int cols, const int rows, int col, in
   _GiftMaxValue(board, cols, rows, col, row, GiftValue, &MaxGiftValue);
   return  MaxGiftValue;
 }
-
+string MySolution::Solution::LongestStringWithoutDuplication(const string &str) {
+  if (str.empty()) return "";
+  string ret = str.substr(0,1);
+  string front = ret;
+    for (auto i = 1; i < str.size(); ++i) {
+        //得到以i结尾的最长不重复子字符串
+        auto position = front.find(str[i]);
+        front.push_back(str[i]);
+        //没找到，front+1,若是找到了，先front+1，再截取front（position）
+        if (position != front.npos) {
+            front = front.substr(position+1);
+        }
+        //更新ret
+        if (ret.size() < front.size()) ret = front;
+    }
+    return ret;
+}
 
