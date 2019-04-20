@@ -658,6 +658,16 @@ void test_ugly_number(){
   EXPECT_EQ(58385852050781250, solution.UglyNumber(8899), "%llu");
   EXPECT_EQ(2433151904186341120, solution.UglyNumber(168899), "%llu");
 }
+void test_find_first_unique_char(){
+    string str("abaccdeff");
+    string str1;
+    string str2("aabbccddeeff");
+    string str3("aderredacyucuyj");
+    EXPECT_EQ('b', solution.FirstUniqueChar(str), "%a");
+    EXPECT_EQ('\0', solution.FirstUniqueChar(str1), "%a");
+    EXPECT_EQ('\0', solution.FirstUniqueChar(str2), "%a");
+    EXPECT_EQ('j', solution.FirstUniqueChar(str3), "%c");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -697,6 +707,7 @@ void test_solution(){
 //    test_gift_max_value();
 //    test_longest_string_without_duplication();
 //    test_ugly_number();
+//    test_find_first_unique_char();
 }
 
 int main() {

@@ -1108,4 +1108,14 @@ unsigned long long MySolution::Solution::UglyNumber(unsigned int N) {
   }
   return Unumber[N-1];
 }
+char MySolution::Solution::FirstUniqueChar(string str) {
+    map<char, int> m_map;
+    for (const auto &chr : str) {
+        m_map[chr]++;
+    }
+    for (const auto &value : m_map) {
+        if (value.second == 1 ) return value.first;
+    }
+    return '\0';
+}
 
