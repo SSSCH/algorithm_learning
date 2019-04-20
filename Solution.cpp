@@ -697,6 +697,7 @@ ListNode* MySolution::Solution::Merge2List(ListNode *Head1, ListNode *Head2) {
     ListNode* NewHead = nullptr;
     ListNode* NewHeadNode = nullptr;
     ListNode* IndexNode = nullptr;
+    //确定合并后的链表头以及两个指针
     if (Head1->m_nKey <= Head2->m_nKey) {
         NewHeadNode = Head1;
         NewHead = Head1;
@@ -707,24 +708,30 @@ ListNode* MySolution::Solution::Merge2List(ListNode *Head1, ListNode *Head2) {
         IndexNode = Head1;
     }
     while (IndexNode != nullptr) {
+        //将IndexNode和NewHeadNode的下一个节点比较，IndxNode值要比NewHeadNode的值小，否则NewHeadNode就往后移
         while (!((NewHeadNode->M_pNext == nullptr) || (IndexNode->m_nKey <= NewHeadNode->M_pNext->m_nKey))) {
             NewHeadNode = NewHeadNode->M_pNext;
         }
+        //保存新链表的下一个节点
         ListNode* NextNewNode = NewHeadNode->M_pNext;
+        //保存插入链表的下一个节点
         ListNode* NextIndexNode = IndexNode->M_pNext;
+        //插入IndexNode
         NewHeadNode->M_pNext = IndexNode;
         IndexNode->M_pNext = NextNewNode;
+        //更新IndexNode，指向下一个
         IndexNode = NextIndexNode;
+        //更新NewHeadNode，指向插入IndexNode后的链表的下一个，也就是IndexNode
         NewHeadNode = NewHeadNode->M_pNext;
     }
-    //forLiChenXi();
     return NewHead;
 }
 //Matrix, cols,rows,ret不会在递归中改变
 void _PrintMatrixClockWise(int* Matrix, int col, int row, int cols, int rows, int colLimt, int rowLinmt, int* ret, int index){
     //递归结束的条件：打印到矩阵的最后一圈
     if(colLimt >= col && rowLinmt >= row && index < cols*rows) {
-        int sideMin = col;   //行列的最小边界
+        int ColSideMin = col;   //保存当前循环中的行的最小边界
+        int RowSideMin = row;   //保存当前循环中的列的最小边界
         while (row < rowLinmt) {
             ret[index] = Matrix[col*rows + row];
             index++;  //保存结果的指针
@@ -739,14 +746,14 @@ void _PrintMatrixClockWise(int* Matrix, int col, int row, int cols, int rows, in
         }
         col--;   //while中多加了一次行col
         row--;  //往左拐，列-1
-        while (row >= sideMin) {
+        while (row >= RowSideMin) {
             ret[index] = Matrix[col*rows + row];
             index++;
             row--;
         }
         row++;
         col--;  //往上拐，行-1
-        while (col > sideMin) {
+        while (col > ColSideMin) {
             ret[index] = Matrix[col*rows + row];
             index++;
             col--;
@@ -1059,7 +1066,7 @@ void _GiftMaxValue(const int *board, const int cols, const int rows, int col, in
     }
 
 }
- int MySolution::Solution::GiftMaxValue(const int *board, const int cols, const int rows) {
+int MySolution::Solution::GiftMaxValue(const int *board, const int cols, const int rows) {
   assert(board != nullptr && cols >=0 && rows >=0);
   int MaxGiftValue = 0;
   int GiftValue = 0;
@@ -1084,5 +1091,21 @@ string MySolution::Solution::LongestStringWithoutDuplication(const string &str) 
         if (ret.size() < front.size()) ret = front;
     }
     return ret;
+}
+unsigned long long MySolution::Solution::UglyNumber(unsigned int N) {
+  assert(N >=1);
+  if (N < 7) return N;
+  vector<unsigned long long> Unumber(N, 0);
+  Unumber[0] = 1;
+  unsigned int i2 = 0;
+  unsigned int i3 = 0;
+  unsigned int i5 = 0;
+  for (unsigned int i = 1; i < N; ++i) {
+    Unumber[i] = min(Unumber[i2]*2, min(Unumber[i3]*3, Unumber[i5]*5));
+    if (Unumber[i] == Unumber[i2]*2) ++i2;
+    if (Unumber[i] == Unumber[i3]*3) ++i3;
+    if (Unumber[i] == Unumber[i5]*5) ++i5;
+  }
+  return Unumber[N-1];
 }
 

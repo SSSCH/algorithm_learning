@@ -644,6 +644,20 @@ void test_longest_string_without_duplication(){
   EXPECT_EQ(10, solution.LongestStringWithoutDuplication(str3).size(), "%d");
   EXPECT_EQ(12, solution.LongestStringWithoutDuplication(str4).size(), "%d");
 }
+void test_ugly_number(){
+  EXPECT_EQ(1, solution.UglyNumber(1), "%lld");
+  EXPECT_EQ(2, solution.UglyNumber(2), "%lld");
+  EXPECT_EQ(3, solution.UglyNumber(3), "%lld");
+  EXPECT_EQ(4, solution.UglyNumber(4), "%lld");
+  EXPECT_EQ(5, solution.UglyNumber(5), "%lld");
+  EXPECT_EQ(6, solution.UglyNumber(6), "%lld");
+  EXPECT_EQ(8, solution.UglyNumber(7), "%lld");
+  EXPECT_EQ(9, solution.UglyNumber(8), "%lld");
+  EXPECT_EQ(10, solution.UglyNumber(9), "%lld");
+  EXPECT_EQ(51018336, solution.UglyNumber(999), "%lld");
+  EXPECT_EQ(58385852050781250, solution.UglyNumber(8899), "%llu");
+  EXPECT_EQ(2433151904186341120, solution.UglyNumber(168899), "%llu");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -682,6 +696,7 @@ void test_solution(){
 //    test_translate_number_to_string();
 //    test_gift_max_value();
 //    test_longest_string_without_duplication();
+//    test_ugly_number();
 }
 
 int main() {
