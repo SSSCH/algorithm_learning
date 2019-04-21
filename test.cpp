@@ -668,6 +668,16 @@ void test_find_first_unique_char(){
     EXPECT_EQ('\0', solution.FirstUniqueChar(str2), "%a");
     EXPECT_EQ('j', solution.FirstUniqueChar(str3), "%c");
 }
+void test_inverse_pairs(){
+  vector<int> nums1 = {7,5,6,4};
+  vector<int> nums2;
+  vector<int> nums3 = {7,5};
+  vector<int> nums4 = {1,2,3,4,5,6,7,0};
+  EXPECT_EQ(5, solution.InversePairs(nums1), "%d");
+  EXPECT_EQ(0, solution.InversePairs(nums2), "%d");
+  EXPECT_EQ(1, solution.InversePairs(nums3), "%d");
+  EXPECT_EQ(7, solution.InversePairs(nums4), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -708,6 +718,7 @@ void test_solution(){
 //    test_longest_string_without_duplication();
 //    test_ugly_number();
 //    test_find_first_unique_char();
+    test_inverse_pairs();
 }
 
 int main() {

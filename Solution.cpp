@@ -1118,4 +1118,15 @@ char MySolution::Solution::FirstUniqueChar(string str) {
     }
     return '\0';
 }
+int MySolution::Solution::InversePairs(vector<int> nums) {
+    if(nums.size() <= 1) return 0;
+    if(nums.size() == 2) return nums[0] > nums[1] ? 1:0;
+    int cout = 0;
+    for(int i = 0;i <= nums.size()-1; ++i){
+        for(int j = i+1; j < nums.size(); ++j){
+            if(nums[i] > nums[j]) cout++;
+        }
+    }
+    return cout;
+}
 

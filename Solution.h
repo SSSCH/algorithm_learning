@@ -470,6 +470,14 @@ namespace MySolution{
                           * @return: 第一个只出现一次的字符，若是str为空或者str没有只出现一次的字符则输出空字符‘\0’。
                           * */
                           char FirstUniqueChar(string str);
+                          /**43.数组中的逆序对
+                           * @brief：在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。对输入一个数组，求出这个数组中的逆序对的总数。
+                           * @note:算法1：顺序比较，时间复杂度为o(n^2)
+                           *       算法2(还没有用完全理解)：基于归并排序，时间复杂度为o(nlogn)，空间复杂度度为o(n).
+                           * @param:nums:数组
+                           * @return: 逆序对的个数
+                           * */
+                          int InversePairs(vector<int> nums);
     };
     /***
      * 9.用两个栈模拟队列
