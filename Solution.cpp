@@ -1129,4 +1129,83 @@ int MySolution::Solution::InversePairs(vector<int> nums) {
     }
     return cout;
 }
+ListNode* MySolution::Solution::FindFirstPublicNode(ListNode *Head1, ListNode *Head2) {
+  if (Head1 == nullptr || Head2 == nullptr) return nullptr;
+  //第一遍遍历求出两个链表长度的差值
+  int distance = 0;
 
+  ListNode *TmpNode1 = Head1;
+  ListNode *TmpNode2 = Head2;
+  ListNode *LongHead = nullptr;
+  ListNode *ShortHead = nullptr;
+  ListNode *ret = nullptr;
+  while ((TmpNode1 != nullptr) && (TmpNode2 != nullptr)) {
+    TmpNode1 = TmpNode1->M_pNext;
+    TmpNode2 = TmpNode2->M_pNext;
+  }
+  LongHead = (TmpNode2 == nullptr) ? Head1:Head2;
+  ShortHead = (TmpNode2 == nullptr) ? Head2:Head1;
+  //用两个if而不用ifelse，是因为可能出现两个链表长度相等，此时distance为0。
+  if (TmpNode1 != nullptr) {
+    while (TmpNode1 != nullptr) {
+      TmpNode1 = TmpNode1->M_pNext;
+      ++distance;
+    }
+  }
+  if (TmpNode2 != nullptr) {
+    while (TmpNode2 != nullptr) {
+      TmpNode2 = TmpNode2->M_pNext;
+      ++distance;
+    }
+  }
+  //第二遍遍历先后距离差值开始遍历，直到遇到一个相等的节点。
+  while ((LongHead != nullptr) && (ShortHead != nullptr)){
+    if (distance != 0) {
+      LongHead = LongHead->M_pNext;
+      --distance;
+    }
+    if (LongHead == ShortHead) {
+      ret = LongHead;
+      break;
+    } else{
+      LongHead = LongHead->M_pNext;
+      ShortHead = ShortHead->M_pNext;
+    }
+  }
+  return ret;
+}
+int MySolution::Solution::_TimesOfNumber(int *nums, int n, int start, int end, bool oritation){
+    int mid = (start+end)/2;
+    //此时n不存在，返回-1。
+    if ((end == start) && (nums[start] != n)) return -1;
+    //当中间索引对应数等于n时，判断mid的前后元素是否不是n，来判断是否为左右边界。oritation用于标记是左边界还是又边界
+    if (nums[mid] == n){
+        if ((nums[mid-1] != n) && (!oritation)) return mid; //要求的是左边界
+        else if ((nums[mid+1] != n) && (oritation)) return mid; //求的是右边界
+        //不是任何一个边界
+        else{
+            if (!oritation) end = mid - 1; //如果要求左边界
+            else start = mid + 1; //求的是又边界
+        }
+    }
+    //当中间索引对应数字大于n时，说明边界一定在中间索引右边
+    else if (nums[mid] > n) end = mid-1;
+    //当中间索引对应数字小于n时，说明边界一定在中间索引左边
+    else start = mid+1;
+
+    return _TimesOfNumber(nums, n, start, end, oritation);
+}
+int MySolution::Solution::TimesOfNumber(int *nums, int length, int n) {
+    assert(nums != nullptr);
+    int start = 0;
+    int end = length - 1;
+    int left = 0;int right = 0;
+    int cout = 0;
+    //确定n的左界
+    left = _TimesOfNumber(nums, n, start, end, false);
+    //确定右边界
+    right = _TimesOfNumber(nums, n, start, end, true);
+    if (left == -1) return 0;
+    cout = right-left+1;
+    return cout;
+}

@@ -678,6 +678,74 @@ void test_inverse_pairs(){
   EXPECT_EQ(1, solution.InversePairs(nums3), "%d");
   EXPECT_EQ(7, solution.InversePairs(nums4), "%d");
 }
+void test_find_first_public_node(){
+  ListNode* Head1 = new ListNode;
+  ListNode* first1 = new ListNode;first1->m_nKey = 1;
+  ListNode* second1 = new ListNode;second1->m_nKey = 2;
+  ListNode* third = new ListNode;third->m_nKey = 3;
+  ListNode* forth = new ListNode;forth->m_nKey = 4;
+  ListNode* fifth = new ListNode;fifth->m_nKey = 5;
+  ListNode* sixth = new ListNode;sixth->m_nKey = 6;
+  Head1->M_pNext = first1;
+  first1->M_pNext = second1;
+  second1->M_pNext = third;
+  third->M_pNext = forth;
+  forth->M_pNext = fifth;
+  fifth->M_pNext = sixth;
+  sixth->M_pNext = nullptr;
+
+  ListNode* Head2 = new ListNode;
+  ListNode* first2 = new ListNode;first2->m_nKey = 1;
+  ListNode* second2 = new ListNode;second2->m_nKey = 2;
+  ListNode* third2 = new ListNode;third2->m_nKey = 3;
+  ListNode* forth2 = new ListNode;forth2->m_nKey = 4;
+  ListNode* fifth2 = new ListNode;fifth2->m_nKey = 5;
+  ListNode* sixth2 = new ListNode;sixth2->m_nKey = 6;
+  Head2->M_pNext = first2;
+  first2->M_pNext = second2;
+  second2->M_pNext = third2;
+  third2->M_pNext = forth2;
+  forth2->M_pNext = fifth2;
+  fifth2->M_pNext = sixth2;
+  sixth2->M_pNext = third;
+  //存在公共节点
+  EXPECT_EQ(third, solution.FindFirstPublicNode(Head1, Head2), "%d");
+
+  auto Head3 = new ListNode;
+  ListNode *Head5 = nullptr;
+  //传入空指针
+  EXPECT_EQ(nullptr, solution.FindFirstPublicNode(Head3, Head5), "%d");
+
+  ListNode* Head4 = new ListNode;
+  ListNode* first4 = new ListNode;first4->m_nKey = 1;
+  ListNode* second4 = new ListNode;second4->m_nKey = 2;
+  ListNode* third4 = new ListNode;third4->m_nKey = 3;
+  ListNode* forth4 = new ListNode;forth4->m_nKey = 4;
+  ListNode* fifth4 = new ListNode;fifth4->m_nKey = 5;
+  ListNode* sixth4 = new ListNode;sixth4->m_nKey = 6;
+  Head4->M_pNext = first4;
+  first4->M_pNext = second4;
+  second4->M_pNext = third4;
+  third4->M_pNext = forth4;
+  forth4->M_pNext = fifth4;
+  fifth4->M_pNext = sixth4;
+  sixth4->M_pNext = nullptr;
+  //咩有公共节点
+  EXPECT_EQ(nullptr, solution.FindFirstPublicNode(Head1, Head4), "%d");
+}
+void test_times_of_number(){
+    int num1[] = {1,2,2,2,2,2,4,5,6,7,8,9,10};
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 1), "%d");
+    EXPECT_EQ(5,solution.TimesOfNumber(num1, 13, 2), "%d");
+    EXPECT_EQ(0,solution.TimesOfNumber(num1, 13, 3), "%d");
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 4), "%d");
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 5), "%d");
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 6), "%d");
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 7), "%d");
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 8), "%d");
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 9), "%d");
+    EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 10), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -718,7 +786,9 @@ void test_solution(){
 //    test_longest_string_without_duplication();
 //    test_ugly_number();
 //    test_find_first_unique_char();
-    test_inverse_pairs();
+//    test_inverse_pairs();
+//    test_find_first_public_node();
+    test_times_of_number();
 }
 
 int main() {
