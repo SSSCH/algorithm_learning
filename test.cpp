@@ -762,6 +762,34 @@ void test_find_nums_appear_once(){
   EXPECT_EQ(-1, num1, "%d");
   EXPECT_EQ(-1, num2, "%d");
 }
+void test_find_nums_sum_of_s(){
+  int nums1[] = {1,2,3,4,5,6,7,9,12,16,18,20};
+  int num1,num2;
+  EXPECT_EQ(true, solution.FindNumsSumOfS(nums1, 12, &num1, &num2, 17), "%d");
+  EXPECT_EQ(1, num1, "%d");
+  EXPECT_EQ(16, num2, "%d");
+}
+void test_find_sequence_sum(){
+  int nums1[] = {1,2,3,4,5,6,7,9,12,16,18,20};
+  vector<vector<int>> result;
+  EXPECT_EQ(true, solution.FindSequenceSum(nums1, 12, result, 18), "%d");
+  cout << "47.1和为s的连续正数序列:" << endl;
+  for (auto &nums : result) {
+    for ( auto &nums1 : nums) {
+      cout << nums1 << "\t";
+    }
+    cout << endl;
+  }
+  EXPECT_EQ(false, solution.FindSequenceSum(nums1, 12, result, 0), "%d");
+  EXPECT_EQ(false, solution.FindSequenceSum(nums1, 12, result, 200), "%d");
+  EXPECT_EQ(true, solution.FindSequenceSum(nums1, 12, result, 38), "%d");
+}
+void test_reverse_string(){
+    const string str("You are so beautiful!");
+    string dest;
+    solution.ReverseString(str, dest);
+    EXPTCT_EQ_STRING("beautiful! so are You", dest.c_str(), dest.size());
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -806,6 +834,9 @@ void test_solution(){
 //    test_find_first_public_node();
 //    test_times_of_number();
 //    test_find_nums_appear_once();
+//    test_find_nums_sum_of_s();
+//    test_find_sequence_sum();
+//    test_reverse_string();
 }
 
 int main() {

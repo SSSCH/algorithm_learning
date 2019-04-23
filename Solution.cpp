@@ -1235,3 +1235,99 @@ void MySolution::Solution::FindNumsAppearOnce(vector<int> nums, int *num1, int *
     else *num2 ^= num;
   }
 }
+bool MySolution::Solution::FindNumsSumOfS(int *number, int length, int *num1, int *num2, int s) {
+  assert(number != nullptr && length >=2 && num1 != nullptr && num2 != nullptr);
+  //首尾双指针
+  int pFront = 0;
+  int pBack = length - 1;
+  bool IsHaveAnswer = false;
+  while ((pBack-pFront) >= 1) {
+    int tmp = number[pBack] + number[pFront];
+    if (tmp == s) {
+      *num1 = number[pFront];
+      *num2 = number[pBack];
+      IsHaveAnswer = true;
+      return IsHaveAnswer;
+    } else if (tmp < s) {
+      ++pFront;
+    } else {
+      --pBack;
+    }
+  }
+  return IsHaveAnswer;
+}
+bool MySolution::Solution::FindSequenceSum(int *number, int length, vector<vector<int>> &result, int s) {
+  assert(number != nullptr && length >= 2);
+  bool IsHaveSequence = false;
+  int pFront = 0;
+  int pBack = 1;
+  int TmpSum = number[pFront] + number[pBack];
+  //循环结束条件：pBack走到数组尾/首尾指针之间 间隔<2/首指针对应的元素>(s/2).
+  while (pBack <= (length-1) && number[pFront] <= (s/2) && ((pBack-pFront)>=1)) {
+    //TmpSum<s时，pBackwang往后移,并加上后一个元素值，但需要判断后一个元素是否存在。
+    if (TmpSum < s) {
+      if (pBack <= (length-2)) {
+        TmpSum += number[pBack+1];
+        ++pBack;
+      } else {
+        return IsHaveSequence;
+      }
+    }
+    //TmpSum<s时，减去首指针的元素值，并且指针往后移一个，但与要判断两个指针之间的间隔是否>=2.
+    else if (TmpSum > s) {
+      if ((pBack-pFront) > 1) {
+        TmpSum -= number[pFront];
+        ++pFront;
+      } else {
+        return IsHaveSequence;
+      }
+    } else {//TmpSum == s时，保存序列；然后接着移动pBack，并加上尾指针对应的元素值,同时也要检查后一个pBack是否合法。
+      IsHaveSequence = true;
+      auto arr  = new vector<int>;
+      //保存序列
+      for (int i = pFront; i <= pBack; ++i) {
+        arr->push_back(number[i]);
+      }
+      result.push_back(*arr);
+      //加上尾指针对应的元素值,同时也要检查后一个pBack是否合法。
+      if (pBack < (length-1)) {
+        TmpSum += number[pBack+1];
+        ++pBack;
+      } else {
+        return IsHaveSequence;
+      }
+    }
+  }
+  return IsHaveSequence;
+}
+void MySolution::Solution::ReverseString(const string &str, string &dest) {
+  if (str.empty()) return;
+  //保存翻转后的字符串
+  stack<string> m_stack;
+  //保存单词
+  string tmp;
+  unsigned long long int Begin = 0;
+  unsigned long long int End = 0;
+  //双指针，分别用于指向一个单词的首尾指针，尾指针移动直到遇到空格。然后截取字符串入栈，并加上一个空格
+  while (End != str.size()-1){
+    //遇到空格就截取单词并压栈，并清空临时string。
+    if(str[End] == ' ') {
+      tmp = str.substr(Begin, End-Begin);
+      tmp += ' ';
+      m_stack.push(tmp);
+      tmp.clear();
+      Begin = (++End);
+    }//没遇到就增加尾指针
+    else ++End;
+  }
+  //判断最后一个字符是否为空格，使得话就不加进去。
+  tmp = str.substr(Begin,((str[End] == ' ') ? (End-Begin) : (End - Begin + 1)));
+  tmp.append(" ");
+  m_stack.push(tmp);
+  while (!m_stack.empty()) {
+    dest.append(m_stack.top());
+    m_stack.pop();
+  }
+  //去掉原字符串中第一个单词后面的空格
+  dest = dest.substr(0, dest.size()-1);
+}

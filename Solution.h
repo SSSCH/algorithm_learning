@@ -522,6 +522,40 @@ namespace MySolution{
                             * @return:
                             * */
                             void FindNumsAppearOnce(vector<int> nums, int *num1, int *num2);
+                            /**47.和为s的数字
+                             * @brief:输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字和等于s，则输出任意一对即可。
+                             * @note: 首尾双指针，因为数组递增，所以如果双指针元素和>s说明要移动左边的指针，若是<则要移动右边的指针。
+                             * @param number：输入数组
+                             * @param length：数组长度
+                             * @param num1：存放第一个结果
+                             * @param num2:存放第二个结果
+                             * @param s：要求的和
+                             * @return 如果存在和为s的数字则为true，否则为 false
+                             * */
+                             bool FindNumsSumOfS(int number[], int length, int *num1, int *num2, int s);
+                             /**47.1和为s的连续正数序列
+                              * @brief:输入一个哦正数s，打印出所有和为s的连续正数序列（至少含有两个数）。
+                              * @note：连续双指针，从数组的第一个第二个元素开始，根据首尾指针之间所有元素的和与s的比较结果来移动指针。
+                              *         难点1：循环结束标志：1.pBack走到数组尾
+                              *                         2.首尾指针之间间隔<2
+                              *                         3.首指针对应的元素>(s/2).
+                              *         难点2：结果序列的保存：利用vector<vector<int>>
+                              *
+                              * @param number:输入数组
+                              * @param length:数组长度
+                              * @param result:保存返回序列
+                              * @param s：要求的序列和
+                              * @return 如果存在和为s的序列就是true，否则为false。
+                              * */
+                              bool FindSequenceSum(int number[], int length, vector<vector<int>> &result, int s);
+                              /**48.翻转字符串
+                               * @brief 输入一个英文句子，翻转句子中的单词的顺序，但单词内支付的顺序不变。为简单起见，标点符号和普通字符一样处理。
+                               * 如：输入“i am a boy.”,则输出“boy. a am i”.
+                               * @note：利用双指针确定单词，要注意第一个单词和最后一个单词的空格处理；利用栈进行字符串的翻转。
+                               * 时间复杂度：o(n),空间复杂度：o(n)
+                               * @param str:源字符串，dest：翻转后的字符串
+                               * */
+                               void ReverseString(const string &str, string &dest);
     };
     /***
      * 9.用两个栈模拟队列
