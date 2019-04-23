@@ -1055,12 +1055,12 @@ void _GiftMaxValue(const int *board, const int cols, const int rows, int col, in
     }
     GiftValue += board[rows*col + row];
     //(col <= cols-1) 边界值
-    //(row !=rows-1)  如果已经走到最下面一行，那就不需要列增加了（往右移了）；因为已经在上面的递归结束点处理过了。
+    //(row !=rows-1)  如果已经走到最右边一列，那就不需要行增加了（往下移）；因为已经在上面的递归结束点处理过了。
     if ((col <= cols-1) && (row !=rows-1)) {
         _GiftMaxValue(board, cols, rows, col+1, row, GiftValue, MaxGiftValue);
     }
     //(row <= rows-1) 边界值
-    //(col != cols-1)如果已经走到最右边一列，那就不需要行增加了（往下移）；因为已经在上面的递归结束点处理过了。
+    //(col != cols-1) 如果已经走到最下面一行，那就不需要列增加了（往右移了）；因为已经在上面的递归结束点处理过了。
     if ((row <= rows-1) && (col != cols-1)) {
         _GiftMaxValue(board, cols, rows, col, row+1, GiftValue, MaxGiftValue);
     }
@@ -1208,4 +1208,30 @@ int MySolution::Solution::TimesOfNumber(int *nums, int length, int n) {
     if (left == -1) return 0;
     cout = right-left+1;
     return cout;
+}
+void MySolution::Solution::FindNumsAppearOnce(vector<int> nums, int *num1, int *num2) {
+    assert(nums.size() >= 2);
+    *num1 = 0;
+    *num2 = 0;
+    //对整个数组元素进行异或，最终结果一定不为0,如果为0，说明数组中的数是成对出现的。
+    int tmp1 = 0;
+    for (auto iter = nums.begin(); iter != nums.end(); ++iter) {
+        tmp1 ^= *iter;
+    }
+    //tmp1 =0时说明输入有误。
+    if (tmp1 == 0) {
+        *num1 = *num2 = -1;
+        return;
+    }
+    //按照异或结果中第一个不为0的位将数组分成俩个部分，那两个只出现一次的数就肯定不在同一边。
+    int first1 = 0;
+    //第一个为1的位数
+    while (0 == (tmp1 & (1<<first1))) {
+        ++first1;
+    }
+    //分数组,//分完组后对两个数组分别进行异或，结果即所求。
+  for (const auto &num : nums) {
+    if (num & (1<<first1)) *num1 ^= num;
+    else *num2 ^= num;
+  }
 }

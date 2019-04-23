@@ -746,6 +746,22 @@ void test_times_of_number(){
     EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 9), "%d");
     EXPECT_EQ(1,solution.TimesOfNumber(num1, 13, 10), "%d");
 }
+void test_find_nums_appear_once(){
+  vector<int> nums = {1,2,4,6,8,1,2,6,9,8}; //4,9
+  vector<int> nums1 = {21,21,2123,2123,3345,3345,467,467,5897,5897,6123,756,821,821,93,93}; //6123,756
+  vector<int> nums2 = {22,33,77,88,99,22,77,99,88,33,234,234}; //234,556
+  int num1 = -1;
+  int num2 = -1;
+  solution.FindNumsAppearOnce(nums, &num1, &num2);
+  EXPECT_EQ(9, num1, "%d");
+  EXPECT_EQ(4, num2, "%d");
+  solution.FindNumsAppearOnce(nums1, &num1, &num2);
+  EXPECT_EQ(6123, num1, "%d");
+  EXPECT_EQ(756, num2, "%d");
+  solution.FindNumsAppearOnce(nums2, &num1, &num2);
+  EXPECT_EQ(-1, num1, "%d");
+  EXPECT_EQ(-1, num2, "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -788,7 +804,8 @@ void test_solution(){
 //    test_find_first_unique_char();
 //    test_inverse_pairs();
 //    test_find_first_public_node();
-    test_times_of_number();
+//    test_times_of_number();
+//    test_find_nums_appear_once();
 }
 
 int main() {
