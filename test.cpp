@@ -790,6 +790,18 @@ void test_reverse_string(){
     solution.ReverseString(str, dest);
     EXPTCT_EQ_STRING("beautiful! so are You", dest.c_str(), dest.size());
 }
+void test_max_num_of_sliding_window(){
+  const vector<int> nums1 = {2,3,4,2,6,2,5,1};
+  vector<int> ret;
+  solution.MaxNumOfSlidingWindow(nums1, 3, ret);
+  cout << "49.滑动窗口的大小：" << endl;
+  cout << "一共有"<< ret.size()<<"个滑动窗口"<<endl;
+  cout << "他们的最大值分别是：";
+  for(const auto &max : ret){
+    cout << max << "\t";
+  }
+  cout << endl;
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -837,6 +849,7 @@ void test_solution(){
 //    test_find_nums_sum_of_s();
 //    test_find_sequence_sum();
 //    test_reverse_string();
+    test_max_num_of_sliding_window();
 }
 
 int main() {

@@ -551,11 +551,23 @@ namespace MySolution{
                               /**48.翻转字符串
                                * @brief 输入一个英文句子，翻转句子中的单词的顺序，但单词内支付的顺序不变。为简单起见，标点符号和普通字符一样处理。
                                * 如：输入“i am a boy.”,则输出“boy. a am i”.
-                               * @note：利用双指针确定单词，要注意第一个单词和最后一个单词的空格处理；利用栈进行字符串的翻转。
+                               * @note：方法1：利用双指针确定单词，要注意第一个单词和最后一个单词的空格处理；利用栈进行字符串的翻转。
                                * 时间复杂度：o(n),空间复杂度：o(n)
+                               *        方法2：进行两次翻转：一次为整个字符串，一次为我们的目标。时间复杂度：o(n),(其中反转字符串的时间复杂度为o(n)).
                                * @param str:源字符串，dest：翻转后的字符串
                                * */
                                void ReverseString(const string &str, string &dest);
+                               /**49.滑动窗口的最大值
+                                * @brief 给定一个数组和滑动窗口的大小，请找出所有滑动窗口的里的最大值。
+                                * @note 方法1：动态规划/在线处理，时间复杂度为o(mn)：max(i) = {max(max(i-1),num[i])   //max(i-1)的最左边元素不是max（i-1）的最大值
+                                *                        {max(SecondMax(i-1), num[i])  //max(i-1)的最左边元素是max(i-1)的最大值。
+                                *       方法2：将问题具象化为：制造一个定容的双端队列，实现在o(1)时间内获取容器的最大值。时间复杂度为：o(n)。
+                                * @param nums：输入数组
+                                * @param WindowLength:滑动窗口的大小
+                                * @param ret：返回值，存放每个滑动窗口的最大值
+                                * @return
+                                * */
+                                void MaxNumOfSlidingWindow(const vector<int> &nums, int WindowLength, vector<int> &ret);
     };
     /***
      * 9.用两个栈模拟队列

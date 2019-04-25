@@ -15,6 +15,7 @@
 #include <map>
 #include <queue>
 #include <algorithm>
+#include <ntdef.h>
 
 #define ISDIGITAL(ch) ('0' <= (ch) && (ch) <= '9')
 #define ISDIGITAL1T9(ch) ('1' <= (ch) && (ch) <= '9')
@@ -1330,4 +1331,30 @@ void MySolution::Solution::ReverseString(const string &str, string &dest) {
   }
   //去掉原字符串中第一个单词后面的空格
   dest = dest.substr(0, dest.size()-1);
+}
+
+void MySolution::Solution::MaxNumOfSlidingWindow(const vector<int> &nums, int WindowLength, vector<int> &ret) {
+  //不存在滑动窗口时，清空返回数组
+  if(nums.size() < WindowLength) {
+    ret.clear();
+    return;
+  }
+  int CurMax = 0;
+  int WindowTail = WindowLength-1;
+  //先求出当前索引结尾的滑动窗口的最大值
+  CurMax = *max_element(&nums[WindowTail-WindowLength+1], &nums[WindowTail+1]);
+  ret.push_back(CurMax);
+  //max(i) = {max(max(i-1),num[i])   //max(i-1)的最左边元素不是max（i-1）的最大值
+  //         {max(SecondMax(i-1), num[i])  //max(i-1)的最左边元素是max(i-1)的最大值。
+  ++WindowTail;
+  for (WindowTail; WindowTail != nums.size(); ++WindowTail) {
+    //最左边的元素不是最大值时， max(i) = max(CurMax, num[i])
+    if (nums[WindowTail-WindowLength] != CurMax) {
+      CurMax = max(CurMax, nums[WindowTail]);
+    } else {//最左边的元素是最大值，max(i) = max(CurSecondMax,num[i])
+        //max_element的比较区间为前闭后开
+      CurMax = *max_element(&nums[WindowTail-WindowLength+1], &nums[WindowTail+1]);
+    }
+    ret.push_back(CurMax);
+  }
 }
