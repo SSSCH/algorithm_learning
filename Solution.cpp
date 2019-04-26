@@ -1358,3 +1358,25 @@ void MySolution::Solution::MaxNumOfSlidingWindow(const vector<int> &nums, int Wi
     ret.push_back(CurMax);
   }
 }
+vector<int> MySolution::Solution::MaxInSlidingWindow(const vector<int> &nums, int WindowLength) {
+  //ret和num存放的都是下标
+  vector<int> ret;
+  deque<int> num;
+  if ((nums.size() < WindowLength) || (WindowLength == 0))  return ret;
+  for (int i = 0; i < nums.size(); ++i) {
+    //将队列内小于当前值的都踢出去，然后在把当前值放入队列
+    while ((!num.empty()) && (nums[num.back()] < nums[i])) {
+      num.pop_back();
+    }
+    num.push_back(i);
+    //当队列首元素不在当前滑动窗口范围内时，踢出去
+    if ((!num.empty()) && ((i-num.front()+1) > WindowLength)) {
+      num.pop_front();
+    }
+    //当i+1>=WindowLength时，需要输出滑动窗口最大值的下标，即队列的首元素
+    if ((i+1) >= WindowLength) {
+      ret.push_back(num.front());
+    }
+  }
+  return ret;
+}
