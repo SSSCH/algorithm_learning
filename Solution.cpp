@@ -1380,3 +1380,43 @@ vector<int> MySolution::Solution::MaxInSlidingWindow(const vector<int> &nums, in
   }
   return ret;
 }
+map<int, double> MySolution::Solution::ProbabilitySumOfDice(int DiceNumber) {
+  assert(DiceNumber >= 1);
+  map<int, double > ret;
+  //i个骰子的点数和，只和i-1个骰子点数和有关，所以只要一个2行的二维数组即可，列数为DiceNumber个骰子所能扔出的最大点数。
+  int Matrix[2][DiceNumber*6];//或者用两个vector也可以
+  //f(i,j) = f(i-1, j-1) + ...f(i-1, j-6) ,其中j-x不能小于i-1，因为n个骰子最少是n点
+  //Matrix[i][j]表示（i+1）个骰子和为(j+1)的次数，总次数为6^(i+1)，
+  //设置1个骰子的情况
+  memset(Matrix, 0, 2*6*DiceNumber* sizeof(int));
+  for (int sum = 0; sum < 6; ++sum) {
+    Matrix[0][sum] = 1;
+  }
+  //n为骰子个数
+  for (int n = 2;  n <= DiceNumber; ++n) {
+    //s为当前骰子个数所能扔出的点数 n<=s<=6n
+    for (int s = n; s <= 6*n; ++s) {
+      int tmp = 1;
+      //f(i,j) = f(i-1, j-1) + ...f(i-1, j-6) ,其中j-x不能小于i-1，因为n个骰子最少是n点
+      //tmp表示一个骰子能摇的点数，我们这边是1-6，s-tmp >= n-1代表 m个骰子最少要m点。
+      while ((tmp <= 6) && (s-tmp >= n-1)) {
+        //下标对应的i和j是从0开始，所以要-1
+        Matrix[1][s-1] += Matrix[0][s-tmp-1];
+        ++tmp;
+      }
+      }
+
+    //计算完n个骰子的所有点数出现次数后，重置Matrix。
+    for (int i = n; i <=6*n; ++i) {
+      Matrix[0][i-1] = Matrix[1][i-1];
+    }
+    //内存清零
+    memset(&Matrix[1][0], 0, 6*DiceNumber* sizeof(int));
+    }
+
+  //将结果存储到map当中。
+  for (int i = DiceNumber; i <=DiceNumber*6; ++i) {
+    ret[i] = Matrix[0][i-1]/pow(6, DiceNumber);
+  }
+  return ret;
+}

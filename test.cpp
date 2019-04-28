@@ -804,6 +804,18 @@ void test_max_num_of_sliding_window(){
   }
   cout << endl;
 }
+void test_dice_sum(){
+  map<int, double> ret;
+  ret = solution.ProbabilitySumOfDice(12);
+  //6n-n + 1 =  ret.size();所以，n= (ret.size()-1)/5
+  cout << "50." << (ret.size()-1)/5 << "个骰子的点数出现的概率分别是：" << endl;
+  double r =0;
+  for (const auto &ele : ret) {
+    cout << "和为" << ele.first << "的概率为：" << ele.second << endl;
+    r+=ele.second;
+  }
+  printf("总概率为：%3.2f%%", r);
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -852,6 +864,7 @@ void test_solution(){
 //    test_find_sequence_sum();
 //    test_reverse_string();
 //    test_max_num_of_sliding_window();
+    test_dice_sum();
 }
 
 int main() {

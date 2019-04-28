@@ -7,6 +7,7 @@
 #include <bits/forward_list.h>
 #include <cassert>
 #include <string>
+#include <map>
 
 #ifndef ALGORITHM_LEARNING_SOLUTION_H
 
@@ -591,6 +592,14 @@ namespace MySolution{
                                 * */
                                 void MaxNumOfSlidingWindow(const vector<int> &nums, int WindowLength, vector<int> &ret);
                                 vector<int> MaxInSlidingWindow(const vector<int> &nums, int WindowLength);
+                                /**50.n个骰子的点数
+                                 * @brief：把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值以及出现的概率。
+                                 * @note：动态规划/在线处理：f(n,s) = 【最后一个骰子是1】f(n-1, s-1) + 【是2】f(n-1, s-2) + ...【是6】f(n-1, s-6)。
+                                 *                                  最多为6项，其中s-i >= n-1. f(n,s)为n个骰子扔出s的次数，可能出现情况的总次数= 6^n
+                                 * @param：DiceNumber：骰子个数
+                                 * @return：点数和，对应的概率的map
+                                 * */
+                                 map<int, double> ProbabilitySumOfDice(int DiceNumber);
     };
     /***
      * 9.用两个栈模拟队列
