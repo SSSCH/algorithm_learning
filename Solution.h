@@ -600,6 +600,15 @@ namespace MySolution{
                                  * @return：点数和，对应的概率的map
                                  * */
                                  map<int, double> ProbabilitySumOfDice(int DiceNumber);
+                                 /**51.扑克牌中的顺子
+                                  * @brief:从扑克牌中随机抽取5张牌，判断是不是一个顺子，即这5章牌是不是连续的。2-10为数字本身，A为1，j为11，Q为12，k为13，大小王可以视为任意数字。
+                                  * @note: 抽象建模。令大小王为0，计算0的个数是否和数字之间间隔的数字个数是否相等；同时注意特殊情况：0的次数>3,有相同的数字。
+                                  * @param:number存放5张扑克牌
+                                  * @param:length数组长度
+                                  * @return:是顺子就返回true，否则为false
+                                  * */
+                                  bool ISContinous(int number[], int length);
+
     };
     /***
      * 9.用两个栈模拟队列

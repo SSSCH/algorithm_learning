@@ -816,6 +816,18 @@ void test_dice_sum(){
   }
   printf("总概率为：%3.2f%%", r);
 }
+void test_is_continous(){
+  int num1[] = {1, 5, 3, 2, 4};
+  int num2[] = {5, 7, 9, 0, 10};
+  int num4[] = {5, 7, 9, 0, 8,10};
+  int num3[] = {5, 7, 8, 0, 8};
+  int num5[] = {0, 0, 0, 0, 8};
+  EXPECT_EQ(true, solution.ISContinous(num1, 5), "%d");
+  EXPECT_EQ(false, solution.ISContinous(num2, 5), "%d");
+  EXPECT_EQ(false, solution.ISContinous(num3, 5), "%d");
+  //EXPECT_EQ(false, solution.ISContinous(num4, 6), "%d");
+  EXPECT_EQ(true, solution.ISContinous(num5, 5), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -864,7 +876,8 @@ void test_solution(){
 //    test_find_sequence_sum();
 //    test_reverse_string();
 //    test_max_num_of_sliding_window();
-    test_dice_sum();
+//    test_dice_sum();
+//    test_is_continous();
 }
 
 int main() {

@@ -1420,3 +1420,27 @@ map<int, double> MySolution::Solution::ProbabilitySumOfDice(int DiceNumber) {
   }
   return ret;
 }
+bool MySolution::Solution::ISContinous(int *number, int length) {
+  assert(number != nullptr && length == 5);
+  int TimesOf0 = 0;
+  int NumGap = 0;
+  //先排序
+  sort(number, number+length);
+  //排序后计算相邻数字之间的未出现数字个数和0出现的次数是否相同，不同则不是顺子。
+  for (int i = 0; i < (length-1); ++i) {
+    if (number[i] == 0) {
+      ++TimesOf0;
+      //大小王出现了3次以上，就肯定是顺子了
+      if (TimesOf0 > 3) {
+        return true;
+      }
+      continue;
+    }
+    //出现相同的就肯定不是顺子
+    if (number[i] == number[i+1]) {
+      return false;
+    }
+    NumGap += number[i+1] - number[i] - 1;
+  }
+  return NumGap == TimesOf0;
+}
