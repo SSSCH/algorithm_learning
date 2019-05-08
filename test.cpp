@@ -828,6 +828,13 @@ void test_is_continous(){
   //EXPECT_EQ(false, solution.ISContinous(num4, 6), "%d");
   EXPECT_EQ(true, solution.ISContinous(num5, 5), "%d");
 }
+void test_JosephRing(){
+  EXPECT_EQ(4, solution.LastRemaining(5, 1), "%d");
+  EXPECT_EQ(2, solution.LastRemaining(5, 2), "%d");
+  EXPECT_EQ(3, solution.LastRemaining(5, 3), "%d");
+  EXPECT_EQ(0, solution.LastRemaining(5, 4), "%d");
+  EXPECT_EQ(1, solution.LastRemaining(5, 5), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -878,6 +885,7 @@ void test_solution(){
 //    test_max_num_of_sliding_window();
 //    test_dice_sum();
 //    test_is_continous();
+    test_JosephRing();
 }
 
 int main() {

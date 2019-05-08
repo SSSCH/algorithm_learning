@@ -1444,3 +1444,30 @@ bool MySolution::Solution::ISContinous(int *number, int length) {
   }
   return NumGap == TimesOf0;
 }
+int MySolution::Solution::LastRemaining(int n, int m) {
+  assert(n >= 1 && m > 0);
+  if (n == 1) return 1;
+  list<int> TmpList;
+  for (int i = 0; i < n; ++i) {
+    TmpList.push_back(i);
+  }
+  //TmpList为单向链表，所以走到最后一个元素是要手动让迭代器指向首元素
+  auto iter = TmpList.begin();
+  int index = 1;
+  while (TmpList.size() != 1) {
+    //从起点开始走m个元素，将第m个元素删除，并将起点重置为第m+1个元素
+    //走到第m个元素
+    while (index != m) {
+      ++iter;
+      if (iter == TmpList.end()) iter = TmpList.begin();
+      ++index;
+    }
+    //删除第m个元素并指向下一个位置
+    auto TmpNode = iter;
+    ++iter;
+    if (iter == TmpList.end()) iter = TmpList.begin();
+    TmpList.erase(TmpNode);
+    index = 1;
+  }
+  return *iter;
+}

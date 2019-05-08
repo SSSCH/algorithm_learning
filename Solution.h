@@ -608,6 +608,18 @@ namespace MySolution{
                                   * @return:是顺子就返回true，否则为false
                                   * */
                                   bool ISContinous(int number[], int length);
+                                  /**52.约瑟夫环
+                                   * @brief:0，1，2...,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里面删除第m个数字。求出这个圆圈里面剩下的最后一个数字。
+                                   * @note:方法1：用循环链表模拟圆圈，时间复杂度为o(mn).
+                                   *        方法2：公式推导：圆环长度为n的解可以看成长度为n-1的解加上报数的长度m。因为是圆圈，所以最后需要对n取余。可以用递归或者循环实现。时间复杂度o(n)
+                                   *        f(n,m) = {0                   n=1
+                                   *                 {[f(n-1,m)+m]%n      n>1
+                                   * @param:n:数字的个数
+                                   * @param:m:圆圈中第m个数字
+                                   * @return:最后剩下的数字
+                                   * */
+                                   //模拟链表实现
+                                   int LastRemaining(int n, int m);
 
     };
     /***
