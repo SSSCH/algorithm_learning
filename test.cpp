@@ -835,6 +835,10 @@ void test_JosephRing(){
   EXPECT_EQ(0, solution.LastRemaining(5, 4), "%d");
   EXPECT_EQ(1, solution.LastRemaining(5, 5), "%d");
 }
+void test_max_profit(){
+  int price[] = {23,45,12,55,67,78,34,15,77,90,55,30};
+  EXPECT_EQ(78,solution.MaxProfit(price, 12), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -885,7 +889,8 @@ void test_solution(){
 //    test_max_num_of_sliding_window();
 //    test_dice_sum();
 //    test_is_continous();
-    test_JosephRing();
+//    test_JosephRing();
+    test_max_profit();
 }
 
 int main() {

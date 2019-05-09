@@ -1471,3 +1471,18 @@ int MySolution::Solution::LastRemaining(int n, int m) {
   }
   return *iter;
 }
+int MySolution::Solution::MaxProfit(int *price, int length) {
+  assert(price != nullptr && length > 1);
+  int TmpMaxProfit = price[1] - price[0];
+  int MinBuyPrice = price[0];
+  int MaxProfit = TmpMaxProfit;
+
+  for (int i = 1; i < length; ++i) {
+    //确定最小的买入价格,最小买入价格只需判断 已经知道的上次的最小价格和price[i-1] 之间的最小值。
+    MinBuyPrice = MinBuyPrice < price[i-1] ? MinBuyPrice : price[i-1];
+    //计算在i处卖出的利润最大值，并跟新利润最大值
+    TmpMaxProfit = price[i] - MinBuyPrice;
+    MaxProfit = MaxProfit < TmpMaxProfit ? TmpMaxProfit : MaxProfit;
+  }
+  return MaxProfit;
+}
