@@ -1486,3 +1486,12 @@ int MySolution::Solution::MaxProfit(int *price, int length) {
   }
   return MaxProfit;
 }
+long long MySolution::Solution::SumOfN(unsigned int n) {
+  long long sum = n;
+  n && (sum += SumOfN(n-1));
+  return sum;
+}
+long long MySolution::Solution::SumOfX(unsigned int x) {
+  bool tmp[x][x+1]; //是否支持可变数组的性质要看编译器
+  return sizeof(tmp) >> 1;
+}

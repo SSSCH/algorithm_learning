@@ -839,6 +839,9 @@ void test_max_profit(){
   int price[] = {23,45,12,55,67,78,34,15,77,90,55,30};
   EXPECT_EQ(78,solution.MaxProfit(price, 12), "%d");
 }
+void test_sum_of_n(){
+  EXPECT_EQ(solution.SumOfX(100), solution.SumOfN(100), "%lld");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -890,7 +893,8 @@ void test_solution(){
 //    test_dice_sum();
 //    test_is_continous();
 //    test_JosephRing();
-    test_max_profit();
+//    test_max_profit();
+    test_sum_of_n();
 }
 
 int main() {

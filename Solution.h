@@ -628,6 +628,15 @@ namespace MySolution{
                                     * @return 最大利润
                                     * */
                                 int MaxProfit(int price[], int length);
+                                /**54.求1+2+3+...+n
+                                 * @brief：要求不能使用乘除法，条件语句，循环语句，以及判断语句（?:）
+                                 * @note:递归,利用逻辑与&&的短路原则，即在第一个条件语句为false时不会去执行第二个条件语句。
+                                 * @param：n，前n项和
+                                 * @return: 1+2+3+....n的和
+                                 * */
+                                 long long SumOfN(unsigned int n);
+                                 //利用对多维数组的sizeof实现乘法，用位运算实现除法
+                                 long long SumOfX(unsigned int x);
     };
     /***
      * 9.用两个栈模拟队列
