@@ -842,6 +842,12 @@ void test_max_profit(){
 void test_sum_of_n(){
   EXPECT_EQ(solution.SumOfX(100), solution.SumOfN(100), "%lld");
 }
+void test_addition_without_arithmetic(){
+  EXPECT_EQ(solution.AdditionWithoutArithemticRecursively(45, 55), solution.AdditionWithoutArithmetic(45, 55), "%d");
+  EXPECT_EQ(solution.AdditionWithoutArithemticRecursively(45234, 12345), solution.AdditionWithoutArithmetic(45234, 12345), "%d");
+  EXPECT_EQ(solution.AdditionWithoutArithemticRecursively(515, 4455), solution.AdditionWithoutArithmetic(515, 4455), "%d");
+  EXPECT_EQ(solution.AdditionWithoutArithemticRecursively(1524, 242), solution.AdditionWithoutArithmetic(1524, 242), "%d");
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -894,7 +900,8 @@ void test_solution(){
 //    test_is_continous();
 //    test_JosephRing();
 //    test_max_profit();
-    test_sum_of_n();
+//    test_sum_of_n();
+    test_addition_without_arithmetic();
 }
 
 int main() {

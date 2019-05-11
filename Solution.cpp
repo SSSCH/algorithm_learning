@@ -1495,3 +1495,22 @@ long long MySolution::Solution::SumOfX(unsigned int x) {
   bool tmp[x][x+1]; //是否支持可变数组的性质要看编译器
   return sizeof(tmp) >> 1;
 }
+int MySolution::Solution::AdditionWithoutArithmetic(int a, int b) {
+//位与查看进位位（都是1）
+//位异或查看不需要进位位（只有一个1）
+//循环查看是否存在进位位了
+int n1 = (a & b) << 1;
+int n2 = a ^ b;
+  while (n1 & n2) {
+    a = n1;
+    b = n2;
+    n1 = (a & b) << 1;
+    n2 = a ^ b;
+  }
+  return  n1 | n2;
+}
+int MySolution::Solution::AdditionWithoutArithemticRecursively(int a, int b) {
+  //a ^ b表示看两个数那些位只有一个1，即只看那些不进位的位。a&b表示两个数对应位同时是1，即是那些需要进位的位，左移一位表示进位。
+  //递归结束条件：没有要进位的位,此时b = 0
+  return b ? AdditionWithoutArithemticRecursively(a ^ b, (a & b) << 1) : a;
+}

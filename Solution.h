@@ -637,6 +637,17 @@ namespace MySolution{
                                  long long SumOfN(unsigned int n);
                                  //利用对多维数组的sizeof实现乘法，用位运算实现除法
                                  long long SumOfX(unsigned int x);
+                                 /**55.不用四则运算实现加法
+                                  * @brief 写一个函数，求两个整数之和，要求在函数体内不能使用四则运算符号。
+                                  * @note step1：按位与查看两个数都是1，此时这些位都要进位，结果需要左移一位，表示进位后的结果。
+                                  *       step2：按位异或查看两个数哪些二进制位只有一个是1，此时这些位不需要进位，可以直接加减，结果表示非进位位进行加操作后的结果
+                                  *       step3：n1 & n2查看有没有需要进位的位了，如果有就要重复step1和step2；如果没有就保留n1，n2上二进制位上的1部分，即n1|n2.
+                                  * @param a:被加数，b：加数
+                                  * @return 返回两数之和
+                                  * */
+                                  int AdditionWithoutArithmetic(int a, int b);
+                                  //递归写法，最简洁！
+                                  int AdditionWithoutArithemticRecursively(int a, int b);
     };
     /***
      * 9.用两个栈模拟队列
