@@ -648,6 +648,13 @@ namespace MySolution{
                                   int AdditionWithoutArithmetic(int a, int b);
                                   //递归写法，最简洁！
                                   int AdditionWithoutArithemticRecursively(int a, int b);
+                                  /**56.构建乘积数组
+                                   * @brief 给定一个数组A[0,1,...n-1],请构建一个数组，B[0,1,2,...,n-1],其中B的元素B[i] = A[0]*A[1]*...A[i-1]*A[i+1]*...A[n-1].不能使用除法。
+                                   * @note 将B[i]看成两个部分，c[i] = A[0]*A[1]*...A[i-1],D[n-1-i] = A[i+1]*...A[n-1].C和D都可以通过动态规划得到：C[i] = C[i-1]*A[i],D[n-1-i] = D[n-i]*A[n-i]
+                                   * @param
+                                   * @return
+                                   * */
+                                   vector<int> ConstructMultiplyArrary(const vector<int> &A);
     };
     /***
      * 9.用两个栈模拟队列

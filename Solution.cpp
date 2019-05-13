@@ -1514,3 +1514,21 @@ int MySolution::Solution::AdditionWithoutArithemticRecursively(int a, int b) {
   //递归结束条件：没有要进位的位,此时b = 0
   return b ? AdditionWithoutArithemticRecursively(a ^ b, (a & b) << 1) : a;
 }
+vector<int> MySolution::Solution::ConstructMultiplyArrary(const vector<int> &A) {
+  static vector<int> ret(A.size(), 0);//static不加效果一样
+  if (A.empty()) {
+    ret.clear();
+    return ret;
+  }
+  int length = A.size();
+  //从左往右累乘,tmp *= A[i]放循环体中或者放（）内效果基本一样
+  for (int i = 0, tmp = 1; i < length; ++i) {
+    ret[i] = tmp;
+    tmp *= A[i];
+  }
+  //从右往左累乘
+  for (int j = length -1, tmp = 1; j >= 0 ; tmp *= A[j], --j) {
+    ret[j] *= tmp;
+  }
+  return ret;
+}

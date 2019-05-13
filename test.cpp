@@ -848,6 +848,15 @@ void test_addition_without_arithmetic(){
   EXPECT_EQ(solution.AdditionWithoutArithemticRecursively(515, 4455), solution.AdditionWithoutArithmetic(515, 4455), "%d");
   EXPECT_EQ(solution.AdditionWithoutArithemticRecursively(1524, 242), solution.AdditionWithoutArithmetic(1524, 242), "%d");
 }
+void test_construct_multiply_arrary(){
+  vector<int> A = {2,2,2,2,2};
+  auto ret = solution.ConstructMultiplyArrary(A);
+  cout << "56.test construct multiply arrary:" << "arrary size :" << ret.size() << endl;
+  for (const auto &num : ret) {
+    cout << num << "\t";
+  }
+  cout << endl;
+}
 void test_solution(){
 //    test_duplicate();
 //    test_find2dArrary();
@@ -901,7 +910,8 @@ void test_solution(){
 //    test_JosephRing();
 //    test_max_profit();
 //    test_sum_of_n();
-    test_addition_without_arithmetic();
+//    test_addition_without_arithmetic();
+//    test_construct_multiply_arrary();
 }
 
 int main() {
